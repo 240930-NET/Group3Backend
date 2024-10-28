@@ -1,0 +1,6 @@
+@ABCDoubleE.API_HostAddress = http://localhost:5105
+
+GET {{ABCDoubleE.API_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

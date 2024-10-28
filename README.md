@@ -9,7 +9,8 @@ For our project, we will be creating a book tracker and recommendation web appli
 - Personal Book Library.
     
 ## ERD
-    
+https://lucid.app/lucidchart/5e45fc94-6996-40b1-a5bc-a57dcbbd9821/edit?viewport_loc=-1149%2C-292%2C2219%2C1079%2C0_0&invitationId=inv_296c2d1c-afc7-4d7c-88a3-ac8f6c1b80d3
+
 ## External API you plan on using
 Google Books API
 

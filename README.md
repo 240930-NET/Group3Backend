@@ -9,7 +9,7 @@ For our project, we will be creating a book tracker and recommendation web appli
 - Personal Book Library.
     
 ## ERD
-![ERD PDF](https://github.com/240930-NET/Group3Backend/blob/main/Media/ERDcurrent.pdf)
+![ERD PDF](https://github.com/240930-NET/Group3Backend/blob/main/Media/ERDcurrentPic.png)
 
 
 ## External API you plan on using

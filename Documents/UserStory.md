@@ -18,7 +18,9 @@
 ## Book Interaction
 
 - **As a user**, I want to be able to **update the status of a book** (Want to Read, Currently Reading, Finished) so that I can easily manage my reading list.
+  **As a user**, I want to be able to **Add book to my bookshelf** (Want to Read, Currently Reading, Finished) so that I can easily manage my reading list.
 - **As a user**, I want to **search for and add books to my bookshelves** in my personal library so that I can organize what I’m currently reading, want to read, and have read.
+## Review Interaction
 - **As a user**, I want to be able to **leave a review on a book** so I can express my thoughts and share them with others.
 
 ## Preferences Interaction
@@ -32,35 +34,35 @@
 # Checklist Based on Theme
 
 ## User and Authentication
-
-- User Model
-- User Service
-- User Repository
-- User Controller
-- Authentication Controller
+- **Back End**
+    - User Model
+    - User Repository
+    - User Service
+    - User Controller
+    - Authentication Controller
 - **Frontend**:
-  - Register Page
-  - Login Page
-  - User Page
+    - Register Page
+    - Login Page
+    - User Page
 
 ## BookShelf Interaction
-
-- Bookshelf Model
-- Bookshelf Service
-- Bookshelf Repository
+- **Back End**:
+    - Bookshelf Model
+    - Bookshelf Service
+    - Bookshelf Repository
 - **Fronted**:
   - Bookshelf Page (Display/Add/Delete Books or bookshelf)
 
 ## Book Interaction
-
-- Book Model
-- Book Repository
-- Book Service
-- Book Controller
-- Review Model
-- Review Repository
-- Review Service
-- Review Controller
+- **Back End**:
+    - Book Model
+    - Book Repository
+    - Book Service
+    - Book Controller
+    - Review Model
+    - Review Repository
+    - Review Service
+    - Review Controller
 - Fronted
   - Book Page (Display all information of books + add to Library button)
 

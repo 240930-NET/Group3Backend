@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ABCDoubleE.Models;
-public class Preferences{
+public class Preference{
 
     [Key]
     public int preferenceId {get; set; }

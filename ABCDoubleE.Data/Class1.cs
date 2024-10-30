@@ -8,7 +8,7 @@ public partial class ABCDoubleEContext : DbContext{
     public virtual DbSet<Book> Books {get; set; }
     public virtual DbSet<Bookshelf> Bookshelves {get; set; }
     public virtual DbSet<Library> Libraries {get; set; }
-    public virtual DbSet<Preferences> Preferences {get; set; }
+    public virtual DbSet<Preference> Preferences {get; set; }
     public virtual DbSet<Review> Reviews {get; set; }
     public virtual DbSet<User> Users {get; set; }
     public virtual DbSet<BookshelfBook> BookshelfBooks {get; set; }
@@ -30,7 +30,7 @@ public partial class ABCDoubleEContext : DbContext{
 
         //One User - One Prefence *
         modelBuilder.Entity<User>()
-            .HasOne(user => user.preferences)
+            .HasOne(user => user.preference)
             .WithOne(library => library.user);
 
         //One Libray to many Bookshelves

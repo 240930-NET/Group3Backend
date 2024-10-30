@@ -1,9 +1,10 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
+    <UserSecretsId>bec10cae-074c-41da-9bec-2ca55c7f818d</UserSecretsId>
   </PropertyGroup>
 
   <ItemGroup>
@@ -18,6 +19,13 @@
       <PrivateAssets>all</PrivateAssets>
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\ABCDoubleE.Services\ABCDoubleE.Services.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.Models\ABCDoubleE.Models.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.Repositories\ABCDoubleE.Repositories.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.Controllers\ABCDoubleE.Controllers.csproj" />
   </ItemGroup>
 
 </Project>

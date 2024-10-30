@@ -1,5 +1,12 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
+  <ItemGroup>
+    <ProjectReference Include="..\ABCDoubleE.Models\ABCDoubleE.Models.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.Data\ABCDoubleE.Data.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.Repositories\ABCDoubleE.Repositories.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.DTOs\ABCDoubleE.DTOs.csproj" />
+  </ItemGroup>
+
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>

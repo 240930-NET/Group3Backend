@@ -1,5 +1,9 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace ABCDoubleE.Models;
 public class Preferences{
+
+    [Key]
     public int preferenceId {get; set; }
     public ICollection<string> favGenres {get; set; }= [];
     public ICollection<Book> favBooks {get; set; }= [];

@@ -1,5 +1,6 @@
 namespace ABCDoubleE.Models;
 public class Bookshelf{
+    public string name {get;set;} = "";
     public int bookshelfId {get; set; }
     public ICollection<Book> listOfBooks {get; set; } = [];
 

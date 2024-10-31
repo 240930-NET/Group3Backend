@@ -48,7 +48,7 @@ public class ReviewService : IReviewService
 
     public async Task UpdateReviewAsync(Review review){
         if(await _reviewRepository.GetReviewByIdAsync(review.reviewId) == null){
-            throw new Exception($"Invalid. Cannot update review to null.");
+            throw new Exception($"Invalid. Must enter an id to update.");
         }
         else if(review.rating < 0){
             throw new Exception("A valid rating is required.");

@@ -1,5 +1,6 @@
 using ABCDoubleE.Models;
 using ABCDoubleE.Repositories;
+using ABCDoubleE.DTOs;
 
 namespace ABCDoubleE.Services;
 public class ReviewService : IReviewService
@@ -29,14 +30,18 @@ public class ReviewService : IReviewService
         }
     }
 
-    public async Task AddReviewAsync(Review review){
-        if(review.rating < 0){
+    public async Task AddReviewAsync(ReviewCreateDTO reviewCreateDTO){
+        if(reviewCreateDTO.rating < 0){
             throw new Exception("A valid rating is required.");
         }
-        else if(review.review == "" || review.review == null){
+        else if(reviewCreateDTO.review == "" || reviewCreateDTO.review == null){
             throw new Exception("Missing review.");
         }
         else{
+            Review review = new Review();
+            review.rating = reviewCreateDTO.rating;
+            review.review = reviewCreateDTO.review;
+            
             await _reviewRepository.AddReviewAsync(review);
         }
     }

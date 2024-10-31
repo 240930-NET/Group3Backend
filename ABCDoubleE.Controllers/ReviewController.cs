@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ABCDoubleE.Models;
 using ABCDoubleE.Services;
+using ABCDoubleE.DTOs;
 
 namespace ABCDoubleE.Controllers;
 
@@ -38,10 +39,10 @@ public class ReviewController: Controller{
     }
 
     [HttpPost]
-    public async Task<IActionResult> AddNewReview([FromBody] Review review){
+    public async Task<IActionResult> AddNewReview([FromBody] ReviewCreateDTO reviewCreateDTO){
         
         try{
-            await _reviewService.AddReviewAsync(review);
+            await _reviewService.AddReviewAsync(reviewCreateDTO);
             return Ok("Added review.");
         }
         catch(Exception e){
@@ -61,7 +62,6 @@ public class ReviewController: Controller{
         }
     }
 
-    //Delete an expense
     [HttpDelete("DeleteUserById/{reviewId}")]
     public async Task<IActionResult> DeleteReview(int reviewId){
         try{    

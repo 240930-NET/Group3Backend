@@ -4,15 +4,15 @@ namespace ABCDoubleE.Repositories;
 
 public interface IBookshelfRepo
 {
-    public List<BookShelf> getAllBookshelfRecords();
+    public List<Bookshelf> GetAllBookshelfRecords();
 
-    public BookShelf getBookshelfByID(int BookshelfId);
+    public Bookshelf GetBookshelfByID(int BookshelfId);
 
-    public  void addBookshelf(Bookshelf bookshelf);
+    public  void AddBookshelf(Bookshelf bookshelf);
 
-    public void deleteBookshelf(Bookshelf bookshelf);
+    public void DeleteBookshelf(Bookshelf bookshelf);
 
-    public void updateBookshelf(Bookshelf bookshelf);
+    public void UpdateBookshelf(Bookshelf bookshelf);
 
 
 

@@ -5,14 +5,14 @@ namespace ABCDoubleE.Services;
 
 public interface IBookshelfService
 {
-   public List<BookShelf> GetAllBookshelfRecords();
+   public List<Bookshelf> GetAllBookshelfRecords();
 
-    public BookShelf GetBookshelfByID(int BookshelfId);
+    public Bookshelf GetBookshelfByID(int BookshelfId);
 
-    public  void AddBookshelf(Bookshelf bookshelf);
+    public  string AddBookshelf(Bookshelf bookshelf);
 
-    public void DeleteBookshelf(Bookshelf bookshelf);
+    public string DeleteBookshelf(int BookshelfId);
 
-    public void UpdateBookshelf(Bookshelf bookshelf);
+    public Bookshelf UpdateBookshelf(Bookshelf bookshelf);
  
 }

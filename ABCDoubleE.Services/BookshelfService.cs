@@ -16,7 +16,7 @@ public class BookshelfService : IBookshelfService
     
    public List<Bookshelf> GetAllBookshelfRecords()
    {
-    List<Bookshelf> result = _bookshelfrepo.getAllBookshelfRecords();
+    List<Bookshelf> result = _bookshelfrepo.GetAllBookshelfRecords();
     if(result.Count == 0)
     {
         return null;
@@ -29,7 +29,7 @@ public class BookshelfService : IBookshelfService
 
     public Bookshelf GetBookshelfByID(int BookshelfId)
     {
-        Bookshelf bookshelf = _bookshelfrepo.getBookshelfByID(BookshelfId);
+        Bookshelf bookshelf = _bookshelfrepo.GetBookshelfByID(BookshelfId);
         if(bookshelf != null)
         {
             return bookshelf;
@@ -43,10 +43,10 @@ public class BookshelfService : IBookshelfService
 
     public  string AddBookshelf(Bookshelf bookshelf)
     {
-        if(bookshelf.List<Bookshelf> != null)
+        if(bookshelf.name != null)
         {
-            _bookshelfrepo.addBookshelf(bookshelf);
-            return $"Bookshelf {bookshelf.List<Bookshelf>} added successfully!";
+            _bookshelfrepo.AddBookshelf(bookshelf);
+            return $"Bookshelf {bookshelf.name} added successfully!";
         }
         else 
         {
@@ -54,12 +54,12 @@ public class BookshelfService : IBookshelfService
         }
     }
 
-    public string DeleteBookshelf(Bookshelf BookshelfID)
+    public string DeleteBookshelf(int BookshelfID)
     {
-        Bookshelf searchedBookshelf = _bookshelfrepo.getBookshelfByID(BookshelfID);
+        Bookshelf searchedBookshelf = _bookshelfrepo.GetBookshelfByID(BookshelfID);
         if(searchedBookshelf != null)
         {
-            _bookshelfrepo.deleteBookshelf(searchedBookshelf);
+            _bookshelfrepo.DeleteBookshelf(searchedBookshelf);
             return $"Bookshelf with id {BookshelfID} deleted successfully!";
         }
         else
@@ -70,35 +70,19 @@ public class BookshelfService : IBookshelfService
 
     public Bookshelf UpdateBookshelf(Bookshelf bookshelf)
     {
-        Bookshelf searchedBookshelf = _bookshelfrepo.getBookshelfByID(bookshelf.BookshelfID);
+        Bookshelf searchedBookshelf = _bookshelfrepo.GetBookshelfByID(bookshelf.bookshelfId);
         if(searchedBookshelf != null)
         {
-            searchedBookshelf.List<Bookshelf>Bookshelf = bookshelf.List<Bookshelf>Bookshelf;
-            _bookshelfrepo.updateBookshelf(searchedBookshelf);
-            return searchedBookshelf
+            searchedBookshelf.name = bookshelf.name;
+            _bookshelfrepo.UpdateBookshelf(searchedBookshelf);
+            return searchedBookshelf;
         }
         else
         {
             throw new Exception("Invalid Bookshelf. Please check if the bookshelf list is empty or not!");
         }
-        else 
-        {
-            throw new Exception("Invalid Bookshelf!")
-        }
+        
 
     }
-
- 
-
-
-
-
-
-
-
-
-
-
-
 
 }

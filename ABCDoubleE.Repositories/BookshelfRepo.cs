@@ -7,33 +7,33 @@ public class BookshelfRepo : IBookshelfRepo
 {
     private readonly ABCDoubleEContext _context;
 
-    public BookShelfRepo(ABCDoubleEContext context){
+    public BookshelfRepo(ABCDoubleEContext context){
         _context = context;
     }
-    public List<BookShelf> getAllBookshelfRecords()
+    public List<Bookshelf> GetAllBookshelfRecords()
     {
         return _context.Bookshelves.ToList();
     }
 
-    public BookShelf getBookshelfByID(int BookshelfId)
+    public Bookshelf GetBookshelfByID(int Id)
     {
-        return _context.Bookshelves.FirstOrDefault(b => b.BookshelfId == BookshelfId);
+        return _context.Bookshelves.FirstOrDefault(b => b.bookshelfId == Id);
     }
 
-    public  void addBookshelf(Bookshelf bookshelf)
+    public  void AddBookshelf(Bookshelf bookshelf)
     {
-         _context.Bookshelves.add(bookshelf);
+         _context.Bookshelves.Add(bookshelf);
          _context.SaveChanges();
 
     }
 
-    public void deleteBookshelf(Bookshelf bookshelf)
+    public void DeleteBookshelf(Bookshelf bookshelf)
     {
         _context.Bookshelves.Remove(bookshelf);
         _context.SaveChanges();
     }
 
-    public void updateBookshelf(Bookshelf bookshelf)
+    public void UpdateBookshelf(Bookshelf bookshelf)
     {
         _context.Bookshelves.Update(bookshelf);
         _context.SaveChanges();

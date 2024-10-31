@@ -31,7 +31,8 @@ public partial class ABCDoubleEContext : DbContext{
         //One User - One Prefence *
         modelBuilder.Entity<User>()
             .HasOne(user => user.preference)
-            .WithOne(library => library.user);
+            .WithOne(preference => preference.user)
+            .HasForeignKey<Preference>(preference => preference.userId);
 
         //One Libray to many Bookshelves
         modelBuilder.Entity<Library>()
@@ -58,6 +59,5 @@ public partial class ABCDoubleEContext : DbContext{
             .HasOne(review => review.book)
             .WithMany(book => book.reviewList)
             .HasForeignKey(review => review.bookId);
-
     }
 }

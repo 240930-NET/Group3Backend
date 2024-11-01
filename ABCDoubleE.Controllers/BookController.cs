@@ -30,7 +30,7 @@ public class BookController : Controller{
     public IActionResult GetBookByISBN(string isbn){
         try{
             Book book = _bookservice.GetBookByISBN(isbn);
-            return Ok(book);
+                return Ok(book);
         }
         catch(Exception e){
             return StatusCode(500, e.Message);
@@ -41,10 +41,10 @@ public class BookController : Controller{
     public IActionResult AddBook(BookDTO book){
         try{
             _bookservice.AddBook(book);
-            return Ok(book);
+            return Ok("Book added succesfully!");
         }
         catch(Exception e){
-            return BadRequest("Could not add book "+e.Message);
+            return BadRequest("Could not add book. "+e.Message);
         }
     }
 
@@ -52,10 +52,10 @@ public class BookController : Controller{
     public IActionResult DeleteBook(string isbn){
         try{
             _bookservice.DeleteBook(isbn);
-            return Ok("Book Deleted");
+            return Ok("Book Deleted succesfully!");
         }
         catch(Exception e){
-            return BadRequest("Could not delete book "+e.Message);
+            return BadRequest("Could not delete book. "+e.Message);
         }
     }
 

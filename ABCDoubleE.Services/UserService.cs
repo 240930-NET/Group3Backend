@@ -38,10 +38,32 @@ public class UserService : IUserService {
         if (string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.password) || string.IsNullOrEmpty(user.fullName)) {
             throw new Exception("Cannot have empty name, username, or password");
         }
-        else {
-            return await _userRepo.AddUser(user);
-        }
+
+        return await _userRepo.GetUserByUserNameAsync(userName); //make sure that this can return null to work with authentication. Don;t throw exception here!
     }
+
+public async Task<User> AddUser(User user) {
+    if (string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.passwordHash) || string.IsNullOrEmpty(user.fullName)) {
+        throw new Exception("Cannot have empty name, username, or password");
+    }
+
+    try
+    {
+        var existingUser = await _userRepo.GetUserByUserNameAsync(user.userName);
+        if (existingUser != null)
+        {
+            throw new InvalidOperationException("Username already exists.");
+        }
+
+        return await _userRepo.AddUser(user);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error in AddUser: {ex.Message}");
+        throw;
+    }
+}
+
 
     public async Task<User> UpdateUser(UserDTO userDTO, int id) {
         User searchedUser = await _userRepo.GetUserById(id);

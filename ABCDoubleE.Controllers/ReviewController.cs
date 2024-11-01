@@ -37,6 +37,7 @@ public class ReviewController: Controller{
         }
         
     }
+    /*
 
     [HttpPost]
     public async Task<IActionResult> AddNewReview([FromBody] ReviewCreateDTO reviewCreateDTO){
@@ -49,6 +50,25 @@ public class ReviewController: Controller{
             return BadRequest("Could not add review: " + e.Message);
         }
     }
+    */
+
+    [HttpPost]
+    public async Task<IActionResult> AddNewReview([FromBody] ReviewCreateDTO reviewCreateDTO)
+    {
+        if (!ModelState.IsValid)
+            return BadRequest("Invalid data.");
+
+        try
+        {
+            await _reviewService.AddReviewAsync(reviewCreateDTO);
+            return CreatedAtAction(nameof(getReviewById), new { reviewId = reviewCreateDTO.bookId }, "Added review.");
+        }
+        catch (Exception e)
+        {
+            return StatusCode(500, "Could not add review: " + e.Message);
+        }
+    }
+
 
     [HttpPut]
     public async Task<IActionResult> EditReview([FromBody] Review review){

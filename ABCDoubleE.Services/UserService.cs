@@ -43,15 +43,19 @@ public class UserService : IUserService {
         }
     }
 
-    public async Task<User> UpdateUser(User user) {
-        if (await _userRepo.GetUserById(user.userId) == null) {
-            throw new Exception($"No user with id {user.userId}");
+    public async Task<User> UpdateUser(UserDTO userDTO, int id) {
+        User searchedUser = await _userRepo.GetUserById(id);
+        if (searchedUser == null) {
+            throw new Exception($"No user with id {id}");
         }
-        else if(string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.password) || string.IsNullOrEmpty(user.fullName)) {
+        else if(string.IsNullOrEmpty(userDTO.userName) || string.IsNullOrEmpty(userDTO.password) || string.IsNullOrEmpty(userDTO.fullName)) {
             throw new Exception("Cannot have empty name, username, or password");
         }
         else {
-            return await _userRepo.UpdateUser(user);
+            searchedUser.fullName = userDTO.fullName;
+            searchedUser.userName = userDTO.userName;
+            searchedUser.password = userDTO.password;
+            return await _userRepo.UpdateUser(searchedUser);
         }
     }
 

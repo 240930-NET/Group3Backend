@@ -53,12 +53,12 @@ public class UserController : Controller{
     }
 
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateUser([FromBody] User user) {
+    [HttpPut("UpdateUser/{id}")]
+    public async Task<IActionResult> UpdateUser([FromBody] UserDTO userDTO, int id) {
 
         try {
-            await _userService.UpdateUser(user);
-            return Ok(user);
+            await _userService.UpdateUser(userDTO, id);
+            return Ok(userDTO);
         }
         catch(Exception e) {
             return BadRequest(e.Message);

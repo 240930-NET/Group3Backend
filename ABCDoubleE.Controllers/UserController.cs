@@ -44,7 +44,12 @@ public class UserController : Controller{
     public async Task<IActionResult> AddUser([FromBody] UserDTO userDTO) {
 
         try {
-            await _userService.AddUser(userDTO);
+            User user = new(){
+                fullName = userDTO.fullName,
+                userName = userDTO.userName,
+                passwordHash = userDTO.passwordHash
+             };
+            await _userService.AddUser(user);
             return Ok(userDTO);
         }
         catch(Exception e) {

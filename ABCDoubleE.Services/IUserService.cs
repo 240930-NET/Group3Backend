@@ -1,3 +1,4 @@
+using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 
 namespace ABCDoubleE.Services;
@@ -8,7 +9,7 @@ public interface IUserService {
 
     public Task<User> GetUserById(int id);
 
-    public Task<User> AddUser(User user);
+    public Task<User> AddUser(UserDTO userDTO);
 
     public Task<User> UpdateUser(User user);
 

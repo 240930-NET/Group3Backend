@@ -1,3 +1,4 @@
+using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Repositories;
 
@@ -26,7 +27,14 @@ public class UserService : IUserService {
         }
     }
 
-    public async Task<User> AddUser(User user) {
+    public async Task<User> AddUser(UserDTO userDTO) {
+
+        User user = new(){
+            fullName = userDTO.fullName,
+            userName = userDTO.userName,
+            password = userDTO.password
+        };
+
         if (string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.password) || string.IsNullOrEmpty(user.fullName)) {
             throw new Exception("Cannot have empty name, username, or password");
         }

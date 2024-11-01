@@ -1,3 +1,4 @@
+using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,11 +41,11 @@ public class UserController : Controller{
 
 
     [HttpPost]
-    public async Task<IActionResult> AddUser([FromBody] User user) {
+    public async Task<IActionResult> AddUser([FromBody] UserDTO userDTO) {
 
         try {
-            await _userService.AddUser(user);
-            return Ok(user);
+            await _userService.AddUser(userDTO);
+            return Ok(userDTO);
         }
         catch(Exception e) {
             return BadRequest(e.Message);

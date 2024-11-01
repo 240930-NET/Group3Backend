@@ -1,3 +1,4 @@
+using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Services;
 using Microsoft.AspNetCore.Mvc;
@@ -40,11 +41,11 @@ public class UserController : Controller{
 
 
     [HttpPost]
-    public async Task<IActionResult> AddUser([FromBody] User user) {
+    public async Task<IActionResult> AddUser([FromBody] UserDTO userDTO) {
 
         try {
-            await _userService.AddUser(user);
-            return Ok(user);
+            await _userService.AddUser(userDTO);
+            return Ok(userDTO);
         }
         catch(Exception e) {
             return BadRequest(e.Message);
@@ -52,12 +53,12 @@ public class UserController : Controller{
     }
 
 
-    [HttpPut]
-    public async Task<IActionResult> UpdateUser([FromBody] User user) {
+    [HttpPut("UpdateUser/{id}")]
+    public async Task<IActionResult> UpdateUser([FromBody] UserDTO userDTO, int id) {
 
         try {
-            await _userService.UpdateUser(user);
-            return Ok(user);
+            await _userService.UpdateUser(userDTO, id);
+            return Ok(userDTO);
         }
         catch(Exception e) {
             return BadRequest(e.Message);

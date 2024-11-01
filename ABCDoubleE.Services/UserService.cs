@@ -26,20 +26,44 @@ public class UserService : IUserService {
         }
     }
 
-    public async Task<User> AddUser(User user) {
-        if (string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.password) || string.IsNullOrEmpty(user.fullName)) {
-            throw new Exception("Cannot have empty name, username, or password");
+    public async Task<User> GetUserByUserNameAsync(string userName)
+    {
+        if (string.IsNullOrEmpty(userName))
+        {
+            throw new ArgumentException("Username cannot be null or empty", nameof(userName));
         }
-        else {
-            return await _userRepo.AddUser(user);
-        }
+
+        return await _userRepo.GetUserByUserNameAsync(userName); //make sure that this can return null to work with authentication. Don;t throw exception here!
     }
+
+public async Task<User> AddUser(User user) {
+    if (string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.passwordHash) || string.IsNullOrEmpty(user.fullName)) {
+        throw new Exception("Cannot have empty name, username, or password");
+    }
+
+    try
+    {
+        var existingUser = await _userRepo.GetUserByUserNameAsync(user.userName);
+        if (existingUser != null)
+        {
+            throw new InvalidOperationException("Username already exists.");
+        }
+
+        return await _userRepo.AddUser(user);
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error in AddUser: {ex.Message}");
+        throw;
+    }
+}
+
 
     public async Task<User> UpdateUser(User user) {
         if (await _userRepo.GetUserById(user.userId) == null) {
             throw new Exception($"No user with id {user.userId}");
         }
-        else if(string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.password) || string.IsNullOrEmpty(user.fullName)) {
+        else if(string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.passwordHash) || string.IsNullOrEmpty(user.fullName)) {
             throw new Exception("Cannot have empty name, username, or password");
         }
         else {

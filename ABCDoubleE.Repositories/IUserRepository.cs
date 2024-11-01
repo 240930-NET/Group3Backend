@@ -7,6 +7,7 @@ public interface IUserRepository{
     public Task<List<User>> GetAllUsers();
 
     public Task<User> GetUserById(int id);
+    Task<User> GetUserByUserNameAsync(string userName);
 
     public Task<User> AddUser(User user);
 

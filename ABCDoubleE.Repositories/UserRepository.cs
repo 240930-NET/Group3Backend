@@ -21,11 +21,28 @@ public class UserRepository : IUserRepository {
         return await _context.Users.FindAsync(id);
     }
 
+    public async Task<User> GetUserByUserNameAsync(string userName) 
+    {
+        return await _context.Users.FirstOrDefaultAsync(u => u.userName == userName);
+    }
+    /*
     public async Task<User> AddUser(User user) {
         await _context.Users.AddAsync(user);
         await _context.SaveChangesAsync();
         return user;
+    }*/
+
+    public async Task<User> AddUser(User user) {
+    try {
+        await _context.Users.AddAsync(user);
+        await _context.SaveChangesAsync();
+        return user;
+    } catch (Exception ex) {
+        Console.WriteLine($"Error in UserRepository.AddUser: {ex.Message}");
+        throw;
     }
+}
+
 
     public async Task<User> UpdateUser(User user) {
         _context.Users.Update(user);

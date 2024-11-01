@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABCDoubleE.API.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    [Migration("20241030162920_InitialCreate")]
+    [Migration("20241101192651_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />
@@ -33,9 +33,6 @@ namespace ABCDoubleE.API.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("bookId"));
 
-                    b.Property<int?>("PreferencespreferenceId")
-                        .HasColumnType("int");
-
                     b.Property<int?>("bookshelfId")
                         .HasColumnType("int");
 
@@ -47,11 +44,14 @@ namespace ABCDoubleE.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<int?>("preferenceId")
+                        .HasColumnType("int");
+
                     b.HasKey("bookId");
 
-                    b.HasIndex("PreferencespreferenceId");
-
                     b.HasIndex("bookshelfId");
+
+                    b.HasIndex("preferenceId");
 
                     b.ToTable("Books");
                 });
@@ -66,6 +66,10 @@ namespace ABCDoubleE.API.Migrations
 
                     b.Property<int>("libraryId")
                         .HasColumnType("int");
+
+                    b.Property<string>("name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("bookshelfId");
 
@@ -108,7 +112,7 @@ namespace ABCDoubleE.API.Migrations
                     b.ToTable("Libraries");
                 });
 
-            modelBuilder.Entity("ABCDoubleE.Models.Preferences", b =>
+            modelBuilder.Entity("ABCDoubleE.Models.Preference", b =>
                 {
                     b.Property<int>("preferenceId")
                         .ValueGeneratedOnAdd()
@@ -149,7 +153,7 @@ namespace ABCDoubleE.API.Migrations
                     b.Property<int>("rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("review")
+                    b.Property<string>("reviewText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -180,7 +184,11 @@ namespace ABCDoubleE.API.Migrations
                     b.Property<int>("libraryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("password")
+                    b.Property<string>("passwordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("passwordSalt")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -198,13 +206,13 @@ namespace ABCDoubleE.API.Migrations
 
             modelBuilder.Entity("ABCDoubleE.Models.Book", b =>
                 {
-                    b.HasOne("ABCDoubleE.Models.Preferences", null)
-                        .WithMany("favBooks")
-                        .HasForeignKey("PreferencespreferenceId");
-
                     b.HasOne("ABCDoubleE.Models.Bookshelf", null)
                         .WithMany("listOfBooks")
                         .HasForeignKey("bookshelfId");
+
+                    b.HasOne("ABCDoubleE.Models.Preference", null)
+                        .WithMany("favBooks")
+                        .HasForeignKey("preferenceId");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>
@@ -248,11 +256,11 @@ namespace ABCDoubleE.API.Migrations
                     b.Navigation("user");
                 });
 
-            modelBuilder.Entity("ABCDoubleE.Models.Preferences", b =>
+            modelBuilder.Entity("ABCDoubleE.Models.Preference", b =>
                 {
                     b.HasOne("ABCDoubleE.Models.User", "user")
-                        .WithOne("preferences")
-                        .HasForeignKey("ABCDoubleE.Models.Preferences", "userId")
+                        .WithOne("preference")
+                        .HasForeignKey("ABCDoubleE.Models.Preference", "userId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -297,7 +305,7 @@ namespace ABCDoubleE.API.Migrations
                     b.Navigation("bookshelfList");
                 });
 
-            modelBuilder.Entity("ABCDoubleE.Models.Preferences", b =>
+            modelBuilder.Entity("ABCDoubleE.Models.Preference", b =>
                 {
                     b.Navigation("favBooks");
                 });
@@ -307,7 +315,7 @@ namespace ABCDoubleE.API.Migrations
                     b.Navigation("library")
                         .IsRequired();
 
-                    b.Navigation("preferences")
+                    b.Navigation("preference")
                         .IsRequired();
 
                     b.Navigation("reviewList");

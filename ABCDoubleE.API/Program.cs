@@ -20,6 +20,18 @@ builder.Services.AddDbContext<ABCDoubleEContext>(options => options.UseSqlServer
 builder.Services.AddScoped<IBookRepo, BookRepo>();
 builder.Services.AddScoped<IBookService, BookService>();
 
+builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
+builder.Services.AddScoped<ILibraryService, LibraryService>();
+
+builder.Services.AddScoped<IPreferenceRepository, PreferenceRepository>();
+builder.Services.AddScoped<IPreferenceService, PreferenceService>();
+
+builder.Services.AddScoped<IReviewRepository, ReviewRepository>();
+builder.Services.AddScoped<IReviewService, ReviewService>();
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();

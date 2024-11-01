@@ -10,6 +10,6 @@ public class User
     public Library library {get;set;}
     public int libraryId {get;set;}
     public ICollection<Review> reviewList {get;set;}
-    public Preferences preferences {get;set;}
+    public Preference preference {get;set;}
     public int preferenceId {get;set;}
 }

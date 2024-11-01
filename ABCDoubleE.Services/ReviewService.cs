@@ -41,6 +41,8 @@ public class ReviewService : IReviewService
             Review review = new Review();
             review.rating = reviewCreateDTO.rating;
             review.review = reviewCreateDTO.review;
+            review.bookId = reviewCreateDTO.bookId;
+            review.userId = reviewCreateDTO.userId;
             
             await _reviewRepository.AddReviewAsync(review);
         }

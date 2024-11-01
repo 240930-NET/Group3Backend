@@ -17,7 +17,8 @@ namespace ABCDoubleE.API.Migrations
                     userId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     userName = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    password = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    passwordHash = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    passwordSalt = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     fullName = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     libraryId = table.Column<int>(type: "int", nullable: false),
                     preferenceId = table.Column<int>(type: "int", nullable: false)
@@ -73,6 +74,7 @@ namespace ABCDoubleE.API.Migrations
                 {
                     bookshelfId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     libraryId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -94,8 +96,8 @@ namespace ABCDoubleE.API.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     isbn = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     description = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    PreferencespreferenceId = table.Column<int>(type: "int", nullable: true),
-                    bookshelfId = table.Column<int>(type: "int", nullable: true)
+                    bookshelfId = table.Column<int>(type: "int", nullable: true),
+                    preferenceId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -106,8 +108,8 @@ namespace ABCDoubleE.API.Migrations
                         principalTable: "Bookshelves",
                         principalColumn: "bookshelfId");
                     table.ForeignKey(
-                        name: "FK_Books_Preferences_PreferencespreferenceId",
-                        column: x => x.PreferencespreferenceId,
+                        name: "FK_Books_Preferences_preferenceId",
+                        column: x => x.preferenceId,
                         principalTable: "Preferences",
                         principalColumn: "preferenceId");
                 });
@@ -143,7 +145,7 @@ namespace ABCDoubleE.API.Migrations
                     reviewId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     rating = table.Column<int>(type: "int", nullable: false),
-                    review = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    reviewText = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     userId = table.Column<int>(type: "int", nullable: false),
                     bookId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -170,9 +172,9 @@ namespace ABCDoubleE.API.Migrations
                 column: "bookshelfId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Books_PreferencespreferenceId",
+                name: "IX_Books_preferenceId",
                 table: "Books",
-                column: "PreferencespreferenceId");
+                column: "preferenceId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BookshelfBooks_bookId",

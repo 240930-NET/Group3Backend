@@ -150,7 +150,7 @@ namespace ABCDoubleE.API.Migrations
                     b.Property<int>("rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("review")
+                    b.Property<string>("reviewText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

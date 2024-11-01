@@ -20,6 +20,10 @@ builder.Services.AddDbContext<ABCDoubleEContext>(options => options.UseSqlServer
 builder.Services.AddScoped<IBookRepo, BookRepo>();
 builder.Services.AddScoped<IBookService, BookService>();
 
+builder.Services.AddScoped<IBookshelfRepo, BookshelfRepo>();
+builder.Services.AddScoped<IBookshelfService, BookshelfService>();
+
+
 builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
 builder.Services.AddScoped<ILibraryService, LibraryService>();
 

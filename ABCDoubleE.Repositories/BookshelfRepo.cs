@@ -27,9 +27,9 @@ public class BookshelfRepo : IBookshelfRepo
 
     }
 
-    public void DeleteBookshelf(Bookshelf bookshelf)
+    public void DeleteBookshelf(Bookshelf Bookshelf)
     {
-        _context.Bookshelves.Remove(bookshelf);
+        _context.Bookshelves.Remove(Bookshelf);
         _context.SaveChanges();
     }
 

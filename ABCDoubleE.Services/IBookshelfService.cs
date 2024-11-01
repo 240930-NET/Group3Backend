@@ -9,7 +9,8 @@ public interface IBookshelfService
 
     public Bookshelf GetBookshelfByID(int BookshelfId);
 
-    public  string AddBookshelf(Bookshelf bookshelf);
+    
+    public  string AddBookshelf(newBookshelfDTO newbookshelfDTO);
 
     public string DeleteBookshelf(int BookshelfId);
 

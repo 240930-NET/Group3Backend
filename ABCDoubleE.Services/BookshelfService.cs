@@ -41,9 +41,13 @@ public class BookshelfService : IBookshelfService
 
     }
 
-    public  string AddBookshelf(Bookshelf bookshelf)
+    public  string AddBookshelf(newBookshelfDTO newbookshelfDTO)
     {
-        if(bookshelf.name != null)
+        Bookshelf bookshelf = new(){
+            name = newbookshelfDTO.name
+
+        };
+        if(newbookshelfDTO.name != null)
         {
             _bookshelfrepo.AddBookshelf(bookshelf);
             return $"Bookshelf {bookshelf.name} added successfully!";
@@ -54,17 +58,17 @@ public class BookshelfService : IBookshelfService
         }
     }
 
-    public string DeleteBookshelf(int BookshelfID)
+    public string DeleteBookshelf(int BookshelfId)
     {
-        Bookshelf searchedBookshelf = _bookshelfrepo.GetBookshelfByID(BookshelfID);
-        if(searchedBookshelf != null)
+        Bookshelf SearchedBookshelf = _bookshelfrepo.GetBookshelfByID(BookshelfId);
+        if(SearchedBookshelf != null)
         {
-            _bookshelfrepo.DeleteBookshelf(searchedBookshelf);
-            return $"Bookshelf with id {BookshelfID} deleted successfully!";
+            _bookshelfrepo.DeleteBookshelf(SearchedBookshelf);
+            return $"Bookshelf with id {BookshelfId} deleted successfully!";
         }
         else
         {
-            throw new Exception($"This bookshelf with id {BookshelfID} does not exist"); 
+            throw new Exception($"This bookshelf with id {BookshelfId} does not exist"); 
         }
     }
 

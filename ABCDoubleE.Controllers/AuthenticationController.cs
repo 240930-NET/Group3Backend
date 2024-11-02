@@ -17,33 +17,31 @@ namespace ABCDoubleE.Controllers
             _authService = authService;
         }
 
-[HttpPost("register")]
-public async Task<IActionResult> Register([FromBody] UserRegisterDTO request)
-{
-    if (!ModelState.IsValid)
-        return BadRequest("Invalid data.");
+        [HttpPost("register")]
+        public async Task<IActionResult> Register([FromBody] UserRegisterDTO request)
+        {
+            if (!ModelState.IsValid)
+                return BadRequest("Invalid data.");
 
-    try
-    {
-        var user = await _authService.RegisterUserAsync(request.userName, request.password, request.fullName);
-        return Ok(new { Message = "User registered successfully." });
-    }
-    catch (ArgumentException ex)
-    {
-        return BadRequest(ex.Message);
-    }
-    catch (InvalidOperationException ex)
-    {
-        return Conflict(ex.Message);
-    }
-    catch (Exception ex)
-    {
-        // Log the exception here to get more insights
-        Console.WriteLine($"Error during registration: {ex.Message}");
-        return StatusCode(500, $"An error occurred while registering the user: {ex.Message}");
-    }
-}
-
+            try
+            {
+                var user = await _authService.RegisterUserAsync(request.userName, request.password, request.fullName);
+                return Ok(new { Message = "User registered successfully." });
+            }
+            catch (ArgumentException ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            catch (InvalidOperationException ex)
+            {
+                return Conflict(ex.Message);
+            }
+            catch (Exception ex)
+            {
+                //Console.WriteLine($"Error during registration: {ex.Message}");
+                return StatusCode(500, $"An error occurred while registering the user: {ex.Message}");
+            }
+        }
 
 
         [HttpPost("login")]
@@ -54,7 +52,7 @@ public async Task<IActionResult> Register([FromBody] UserRegisterDTO request)
 
             try
             {
-                var token = _authService.Login(request.userName, request.password);
+                var token = _authService.LoginAsync(request.userName, request.password);
                 return Ok(new { Token = token });
             }
             catch (UnauthorizedAccessException ex)
@@ -68,3 +66,5 @@ public async Task<IActionResult> Register([FromBody] UserRegisterDTO request)
         }
     }
 }
+
+

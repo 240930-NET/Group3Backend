@@ -54,43 +54,36 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
     }
 }
 
-    public string Login(string userName, string password)
-{
-    try
+    public async Task<string> LoginAsync(string userName, string password)
     {
-        Console.WriteLine("Attempting to retrieve user from the database...");
-        var user = _userService.GetUserByUserNameAsync(userName).Result;
-
-
-        if (user == null)
+        try
         {
-            Console.WriteLine("User not found.");
-            throw new UnauthorizedAccessException("User not found.");
+            var user = await _userService.GetUserByUserNameAsync(userName);
+            if (user == null)
+            {
+                throw new UnauthorizedAccessException("User not found.");
+            }
+
+            if (!VerifyPassword(user, password))
+            {
+                throw new UnauthorizedAccessException("Invalid password.");
+            }
+
+            var token = GenerateJwtToken(user);
+            return token;
         }
-        
-        Console.WriteLine("User found. Verifying password...");
-
-
-        if (!VerifyPassword(user, password))
+        catch (UnauthorizedAccessException ex)
         {
-            Console.WriteLine("Invalid password.");
-            throw new UnauthorizedAccessException("Invalid password.");
+            //Console.WriteLine($"Authentication failed: {ex.Message}");
+            throw;
         }
-
-        Console.WriteLine("Password verified. Generating JWT token...");
-
-
-        var token = GenerateJwtToken(user);
-        Console.WriteLine("Token generated successfully.");
-        
-        return token;
+        catch (Exception ex)
+        {
+            //Console.WriteLine($"Error in AuthenticationService.LoginAsync: {ex.Message}");
+            throw new InvalidOperationException("An unexpected error occurred while logging in.");
+        }
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error in AuthenticationService.Login: {ex.Message}");
-        throw;
-    }
-}
+
 
 
 

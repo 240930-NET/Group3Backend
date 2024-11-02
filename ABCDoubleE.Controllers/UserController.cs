@@ -2,6 +2,7 @@ using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace ABCDoubleE.Controllers;
 
@@ -18,20 +19,22 @@ public class UserController : Controller{
     [HttpGet("profile")]
     public async Task<IActionResult> GetUserProfile()
     {
-        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
 
-        if (userId == null)
+        if (userIdString == null || !int.TryParse(userIdString, out int userId))
         {
-            return Unauthorized("User ID not found in token.");
+            return Unauthorized("User ID not found in token or invalid format.");
         }
 
-        var user = await _userService.GetUserByIdAsync(userId);
+        var user = await _userService.GetUserById(userId);
         if (user == null)
         {
             return NotFound("User not found.");
         }
-        return Ok(new { fullName = user.FullName, userName = user.UserName });
+
+        return Ok(new { fullName = user.fullName, userName = user.userName });
     }
+
 
 
     [HttpGet]

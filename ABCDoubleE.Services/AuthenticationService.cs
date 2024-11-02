@@ -54,45 +54,14 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
     }
 }
 
-/*
-    public string Login(string userName, string password)
-    {
-        try
-        {
-            // Attempt to retrieve the user from the database
-            var user = _userService.GetUserByUserNameAsync(userName).Result;
-
-            // Check if user exists
-            if (user == null)
-            {
-                throw new UnauthorizedAccessException("User not found.");
-            }
-
-            // Verify the password
-            if (!VerifyPassword(user, password))
-            {
-                throw new UnauthorizedAccessException("Invalid password.");
-            }
-
-            // Generate the JWT token
-            return GenerateJwtToken(user);
-        }
-        catch (Exception ex)
-        {
-            Console.WriteLine($"Error in AuthenticationService.Login: {ex.Message}");
-            throw;
-        }
-    }*/
-
     public string Login(string userName, string password)
 {
     try
     {
-        // Attempt to retrieve the user from the database
         Console.WriteLine("Attempting to retrieve user from the database...");
         var user = _userService.GetUserByUserNameAsync(userName).Result;
 
-        // Check if user exists
+
         if (user == null)
         {
             Console.WriteLine("User not found.");
@@ -101,7 +70,7 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
         
         Console.WriteLine("User found. Verifying password...");
 
-        // Verify the password
+
         if (!VerifyPassword(user, password))
         {
             Console.WriteLine("Invalid password.");
@@ -110,7 +79,7 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
 
         Console.WriteLine("Password verified. Generating JWT token...");
 
-        // Generate the JWT token
+
         var token = GenerateJwtToken(user);
         Console.WriteLine("Token generated successfully.");
         

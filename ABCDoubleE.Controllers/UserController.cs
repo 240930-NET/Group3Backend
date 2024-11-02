@@ -14,6 +14,24 @@ public class UserController : Controller{
     public UserController(IUserService userService) {
         _userService = userService;
     }
+    //temporary controller for testing. Need to update later for user page.
+    [HttpGet("profile")]
+    public async Task<IActionResult> GetUserProfile()
+    {
+        var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+
+        if (userId == null)
+        {
+            return Unauthorized("User ID not found in token.");
+        }
+
+        var user = await _userService.GetUserByIdAsync(userId);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+        return Ok(new { fullName = user.FullName, userName = user.UserName });
+    }
 
 
     [HttpGet]

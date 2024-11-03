@@ -17,23 +17,22 @@ public class UserController : Controller{
     }
     //temporary controller for testing. Need to update later for user page.
     [HttpGet("profile")]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
     public async Task<IActionResult> GetUserProfile()
     {
         var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
         if (userIdString == null || !int.TryParse(userIdString, out int userId))
         {
             return Unauthorized("User ID not found in token or invalid format.");
         }
-
         var user = await _userService.GetUserById(userId);
         if (user == null)
         {
             return NotFound("User not found.");
         }
-
         return Ok(new { fullName = user.fullName, userName = user.userName });
     }
+
 
 
 
@@ -51,8 +50,12 @@ public class UserController : Controller{
      
     [HttpGet("GetUserById/{id}")]
     public async Task<IActionResult> GetUserById(int id) {
-
         try {
+            var user = await _userService.GetUserById(id);
+            if (user == null)
+            {
+                return NotFound("User not found.");
+            }
             return Ok(await _userService.GetUserById(id));
         }
         catch(Exception e) {
@@ -63,7 +66,6 @@ public class UserController : Controller{
 
     [HttpPost]
     public async Task<IActionResult> AddUser([FromBody] UserDTO userDTO) {
-
         try {
             User user = new(){
                 fullName = userDTO.fullName,
@@ -102,7 +104,5 @@ public class UserController : Controller{
         catch(Exception e) {
             return BadRequest(e.Message);
         }
-
     }
-
 }

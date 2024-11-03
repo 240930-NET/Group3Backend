@@ -85,8 +85,6 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
     }
 
 
-
-
     private (string salt, string hash) HashPassword(string password)
     {
         using (var hmac = new HMACSHA512())

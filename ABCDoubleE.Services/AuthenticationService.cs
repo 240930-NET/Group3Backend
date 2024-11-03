@@ -54,74 +54,36 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
     }
 }
 
-/*
-    public string Login(string userName, string password)
+    public async Task<string> LoginAsync(string userName, string password)
     {
         try
         {
-            // Attempt to retrieve the user from the database
-            var user = _userService.GetUserByUserNameAsync(userName).Result;
-
-            // Check if user exists
+            var user = await _userService.GetUserByUserNameAsync(userName);
             if (user == null)
             {
                 throw new UnauthorizedAccessException("User not found.");
             }
 
-            // Verify the password
             if (!VerifyPassword(user, password))
             {
                 throw new UnauthorizedAccessException("Invalid password.");
             }
 
-            // Generate the JWT token
-            return GenerateJwtToken(user);
+            var token = GenerateJwtToken(user);
+            return token;
+        }
+        catch (UnauthorizedAccessException ex)
+        {
+            //Console.WriteLine($"Authentication failed: {ex.Message}");
+            throw;
         }
         catch (Exception ex)
         {
-            Console.WriteLine($"Error in AuthenticationService.Login: {ex.Message}");
-            throw;
+            //Console.WriteLine($"Error in AuthenticationService.LoginAsync: {ex.Message}");
+            throw new InvalidOperationException("An unexpected error occurred while logging in.");
         }
-    }*/
-
-    public string Login(string userName, string password)
-{
-    try
-    {
-        // Attempt to retrieve the user from the database
-        Console.WriteLine("Attempting to retrieve user from the database...");
-        var user = _userService.GetUserByUserNameAsync(userName).Result;
-
-        // Check if user exists
-        if (user == null)
-        {
-            Console.WriteLine("User not found.");
-            throw new UnauthorizedAccessException("User not found.");
-        }
-        
-        Console.WriteLine("User found. Verifying password...");
-
-        // Verify the password
-        if (!VerifyPassword(user, password))
-        {
-            Console.WriteLine("Invalid password.");
-            throw new UnauthorizedAccessException("Invalid password.");
-        }
-
-        Console.WriteLine("Password verified. Generating JWT token...");
-
-        // Generate the JWT token
-        var token = GenerateJwtToken(user);
-        Console.WriteLine("Token generated successfully.");
-        
-        return token;
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error in AuthenticationService.Login: {ex.Message}");
-        throw;
-    }
-}
+
 
 
 

@@ -17,15 +17,20 @@ public class UserService : IUserService {
         return await _userRepo.GetAllUsers();
     }
 
+    //reason for change. When user is not found in stead of throwing exception which cause => 500 interal server
+    // you want to handle it in controller to throw 404: user not Found. so you should return null and handle it
+    // in controller
     public async Task<User> GetUserById(int id) {
-        User searchedUser = await _userRepo.GetUserById(id);
-        if (searchedUser == null) {
-            throw new Exception($"No user found with id {id}");
-        }
-        else {
-            return searchedUser;
-        }
+        //User searchedUser = await _userRepo.GetUserById(id);
+       // if (searchedUser == null) {
+        //    throw new Exception($"No user found with id {id}");
+        //}
+        //return searchedUser;
+        return await _userRepo.GetUserById(id)!;
     }
+
+    
+
 
 
         public async Task<User> AddUser(User user) {

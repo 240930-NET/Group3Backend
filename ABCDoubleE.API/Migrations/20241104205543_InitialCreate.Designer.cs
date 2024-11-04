@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABCDoubleE.API.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    [Migration("20241104170309_InitialCreate")]
+    [Migration("20241104205543_InitialCreate")]
     partial class InitialCreate
     {
         /// <inheritdoc />

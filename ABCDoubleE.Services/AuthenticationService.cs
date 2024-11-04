@@ -42,7 +42,8 @@ public async Task<User> RegisterUserAsync(string userName, string password, stri
             userName = userName,
             fullName = fullName,
             passwordSalt = salt,
-            passwordHash = hash
+            passwordHash = hash,
+            library = new Library()
         };
 
         return await _userService.AddUser(user);

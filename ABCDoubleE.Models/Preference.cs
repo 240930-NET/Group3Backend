@@ -1,15 +1,12 @@
-using System.ComponentModel.DataAnnotations;
-
 namespace ABCDoubleE.Models;
-public class Preference{
+public class Preference
+{
+    public int preferenceId { get; set; }
+    public ICollection<PreferenceGenre> preferenceGenres { get; set; } = new List<PreferenceGenre>();
+    public ICollection<PreferenceAuthor> preferenceAuthors { get; set; } = new List<PreferenceAuthor>();
+    public ICollection<PreferenceBook> preferenceBooks { get; set; } = new List<PreferenceBook>();
 
-    [Key]
-    public int preferenceId {get; set; }
-    public ICollection<string> favGenres {get; set; }= [];
-    public ICollection<Book> favBooks {get; set; }= [];
-    public ICollection<string> favAuthors {get; set; }= [];
-
-    //Foreign key
-    public int userId{get; set; }
-    public User user{get; set; }
+    // Foreign key
+    public int userId { get; set; }
+    public User user { get; set; }
 }

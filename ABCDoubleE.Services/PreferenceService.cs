@@ -1,96 +1,38 @@
-namespace ABCDoubleE.Services;
-
-using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
+using ABCDoubleE.Repositories;
+using System.Threading.Tasks;
 
-public class PreferenceService : IPreferenceService
+namespace ABCDoubleE.Services
 {
-    private readonly IPreferenceRepository _preferenceRepository;
-
-    public PreferenceService(IPreferenceRepository preferenceRepository)
+    public class PreferenceService : IPreferenceService
     {
-        _preferenceRepository = preferenceRepository;
-    }
+        private readonly IPreferenceRepository _preferenceRepository;
 
-    // Get Preference by User ID
-    public async Task<PreferenceDTO?> GetPreferenceByUserIdAsync(int userId)
-    {
-        var preference = await _preferenceRepository.GetPreferenceByUserIdAsync(userId);
-        if (preference == null)
+        public PreferenceService(IPreferenceRepository preferenceRepository)
         {
-            return null;
+            _preferenceRepository = preferenceRepository;
         }
 
-        return new PreferenceDTO
+        public async Task<Preference> GetPreferenceByUserIdAsync(int userId)
         {
-            preferenceId = preference.preferenceId,
-            favGenres = preference.favGenres,
-            favBookIds = preference.favBooks.Select(b => b.bookId).ToList(),
-            favAuthors = preference.favAuthors
-        };
-    }
-
-    // Get Preference by Preference ID
-    public async Task<PreferenceDTO?> GetPreferenceByIdAsync(int preferenceId)
-    {
-        var preference = await _preferenceRepository.GetPreferenceByIdAsync(preferenceId);
-        if (preference == null)
-        {
-            return null;
+            return await _preferenceRepository.GetPreferenceByUserIdAsync(userId);
         }
 
-        return new PreferenceDTO
+        public async Task<Preference> CreatePreferenceAsync(int userId)
         {
-            preferenceId = preference.preferenceId,
-            favGenres = preference.favGenres,
-            favBookIds = preference.favBooks.Select(b => b.bookId).ToList(),
-            favAuthors = preference.favAuthors
-        };
-    }
-
-    // Create new Preference for a User
-    public async Task<PreferenceDTO> CreatePreferenceAsync(int userId, PreferenceCreateDTO preferenceCreateDto)
-    {
-        var preference = new Preference
-        {
-            userId = userId,
-            favGenres = preferenceCreateDto.favGenres,
-            favAuthors = preferenceCreateDto.favAuthors,
-            favBooks = preferenceCreateDto.favBookIds.Select(bookId => new Book { bookId = bookId }).ToList()
-        };
-
-        await _preferenceRepository.AddPreferenceAsync(preference);
-
-        return new PreferenceDTO
-        {
-            preferenceId = preference.preferenceId,
-            favGenres = preference.favGenres,
-            favBookIds = preference.favBooks.Select(b => b.bookId).ToList(),
-            favAuthors = preference.favAuthors
-        };
-    }
-
-    // Update existing Preference
-    public async Task<PreferenceDTO?> UpdatePreferenceAsync(int userId, PreferenceUpdateDTO preferenceUpdateDto)
-    {
-        var preference = await _preferenceRepository.GetPreferenceByUserIdAsync(userId);
-        if (preference == null)
-        {
-            return null;
+            var preference = new Preference { userId = userId };
+            return await _preferenceRepository.CreatePreferenceAsync(preference);
         }
 
-        preference.favGenres = preferenceUpdateDto.favGenres;
-        preference.favAuthors = preferenceUpdateDto.favAuthors;
-        preference.favBooks = preferenceUpdateDto.favBookIds.Select(bookId => new Book { bookId = bookId }).ToList();
-
-        await _preferenceRepository.UpdatePreferenceAsync(preference);
-
-        return new PreferenceDTO
+        public async Task UpdatePreferenceAsync(Preference preference)
         {
-            preferenceId = preference.preferenceId,
-            favGenres = preference.favGenres,
-            favBookIds = preference.favBooks.Select(b => b.bookId).ToList(),
-            favAuthors = preference.favAuthors
-        };
+            await _preferenceRepository.UpdatePreferenceAsync(preference);
+        }
+
+        public async Task DeletePreferenceByUserIdAsync(int userId)
+        {
+            await _preferenceRepository.DeletePreferenceByUserIdAsync(userId);
+        }
+
     }
 }

@@ -85,5 +85,41 @@ namespace ABCDoubleE.Repositories
             await _context.SaveChangesAsync();
         }
 
+        // Methods for removing from collections
+        public async Task RemoveGenreFromPreferenceAsync(int preferenceId, int genreId)
+        {
+            var preferenceGenre = await _context.Set<PreferenceGenre>()
+                .FirstOrDefaultAsync(pg => pg.preferenceId == preferenceId && pg.genreId == genreId);
+
+            if (preferenceGenre != null)
+            {
+                _context.Set<PreferenceGenre>().Remove(preferenceGenre);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveAuthorFromPreferenceAsync(int preferenceId, int authorId)
+        {
+            var preferenceAuthor = await _context.Set<PreferenceAuthor>()
+                .FirstOrDefaultAsync(pa => pa.preferenceId == preferenceId && pa.authorId == authorId);
+
+            if (preferenceAuthor != null)
+            {
+                _context.Set<PreferenceAuthor>().Remove(preferenceAuthor);
+                await _context.SaveChangesAsync();
+            }
+        }
+
+        public async Task RemoveBookFromPreferenceAsync(int preferenceId, int bookId)
+        {
+            var preferenceBook = await _context.Set<PreferenceBook>()
+                .FirstOrDefaultAsync(pb => pb.preferenceId == preferenceId && pb.bookId == bookId);
+
+            if (preferenceBook != null)
+            {
+                _context.Set<PreferenceBook>().Remove(preferenceBook);
+                await _context.SaveChangesAsync();
+            }
+        }
     }
 }

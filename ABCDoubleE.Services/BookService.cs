@@ -18,7 +18,7 @@ public class BookService : IBookService{
         List<Book> result = _bookrepo.GetAllBooks();
 
         if(result.Count ==0)
-            return new List<Book>();
+            throw new Exception("No books in the database.");
 
         else 
             return result;
@@ -29,7 +29,7 @@ public class BookService : IBookService{
 
         Book book = _bookrepo.GetBookByISBN(isbn);
         if(book==null)
-            return new Book();
+            throw new Exception($"Can't find book by ISBN: {isbn}!");
         else
             return book;
     }

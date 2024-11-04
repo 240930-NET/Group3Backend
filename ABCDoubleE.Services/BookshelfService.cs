@@ -54,7 +54,7 @@ public class BookshelfService : IBookshelfService
         }
         else 
         {
-            throw new Exception("Invalid Bookshelf. Please check the list if empty or not!");
+            throw new Exception("Invalid Bookshelf. Must include a name!");
         }
     }
 
@@ -83,7 +83,7 @@ public class BookshelfService : IBookshelfService
         }
         else
         {
-            throw new Exception("Invalid Bookshelf. Please check if the bookshelf list is empty or not!");
+            throw new Exception("Bookshelf does not exist!");
         }
         
 

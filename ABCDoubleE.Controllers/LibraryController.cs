@@ -3,9 +3,11 @@ using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Services;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Authorization;
 
 [ApiController]
 [Route("api/[controller]")]
+[Authorize]
 public class LibraryController : ControllerBase
 {
     private readonly ILibraryService _libraryService;

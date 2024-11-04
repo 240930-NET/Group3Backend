@@ -12,6 +12,16 @@ public class LibraryService : ILibraryService
         _libraryRepository = libraryRepository;
     }
 
+    public async Task<Library> CreateLibraryAsync(int userId)
+    {
+        var library = new Library
+        {
+            userId = userId
+        };
+
+        return await _libraryRepository.AddLibraryAsync(library);
+    }
+
     // Get a library by ID from user
     public async Task<LibraryDTO?> GetLibraryAsync(int libraryId)
     {

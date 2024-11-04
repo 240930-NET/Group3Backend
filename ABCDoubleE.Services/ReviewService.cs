@@ -37,8 +37,13 @@ public class ReviewService : IReviewService
         else if(reviewCreateDTO.reviewText == "" || reviewCreateDTO.reviewText == null){
             throw new Exception("Missing review.");
         }
-        if (reviewCreateDTO.bookId != null && reviewCreateDTO.bookId > 0) {
-            throw new Exception("bookId is invalid.");
+        else if (reviewCreateDTO.bookId < 0) {
+            //Check that a book by that ID exists?
+            throw new Exception("BookId is invalid.");
+        }
+        else if(reviewCreateDTO.userId < 0){
+            //Check that a user by that ID exists?
+            throw new Exception("UserId is invalid.");
         }
 
         else{

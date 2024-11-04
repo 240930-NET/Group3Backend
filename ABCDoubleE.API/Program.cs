@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using System.Text;
 using System.Text.Json;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authentication;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -54,6 +55,10 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 //load services
 builder.Services.AddScoped<IBookRepo, BookRepo>();
 builder.Services.AddScoped<IBookService, BookService>();
+
+builder.Services.AddScoped<IBookshelfRepo, BookshelfRepo>();
+builder.Services.AddScoped<IBookshelfService, BookshelfService>();
+
 
 builder.Services.AddScoped<ILibraryRepository, LibraryRepository>();
 builder.Services.AddScoped<ILibraryService, LibraryService>();

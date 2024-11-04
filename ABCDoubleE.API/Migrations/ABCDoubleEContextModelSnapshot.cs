@@ -150,7 +150,7 @@ namespace ABCDoubleE.API.Migrations
                     b.Property<int>("rating")
                         .HasColumnType("int");
 
-                    b.Property<string>("review")
+                    b.Property<string>("reviewText")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -181,7 +181,11 @@ namespace ABCDoubleE.API.Migrations
                     b.Property<int>("libraryId")
                         .HasColumnType("int");
 
-                    b.Property<string>("password")
+                    b.Property<string>("passwordHash")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("passwordSalt")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

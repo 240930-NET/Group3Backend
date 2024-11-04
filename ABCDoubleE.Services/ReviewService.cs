@@ -34,13 +34,21 @@ public class ReviewService : IReviewService
         if(reviewCreateDTO.rating < 0){
             throw new Exception("A valid rating is required.");
         }
-        else if(reviewCreateDTO.review == "" || reviewCreateDTO.review == null){
+        else if(reviewCreateDTO.reviewText == "" || reviewCreateDTO.reviewText == null){
             throw new Exception("Missing review.");
         }
+        if (reviewCreateDTO.bookId != null && reviewCreateDTO.bookId > 0) {
+            throw new Exception("bookId is invalid.");
+        }
+
         else{
-            Review review = new Review();
-            review.rating = reviewCreateDTO.rating;
-            review.review = reviewCreateDTO.review;
+            var review = new Review
+                {
+                rating = reviewCreateDTO.rating,
+                reviewText = reviewCreateDTO.reviewText,
+                bookId = reviewCreateDTO.bookId,
+                userId = reviewCreateDTO.userId
+                };
             
             await _reviewRepository.AddReviewAsync(review);
         }
@@ -53,7 +61,7 @@ public class ReviewService : IReviewService
         else if(review.rating < 0){
             throw new Exception("A valid rating is required.");
         }
-        else if(review.review == "" || review.review == null){
+        else if(review.reviewText == null || review.reviewText == ""){
             throw new Exception("Missing review.");
         }
         else{

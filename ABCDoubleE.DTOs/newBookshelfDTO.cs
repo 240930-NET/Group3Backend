@@ -1,8 +1,7 @@
 namespace ABCDoubleE.DTOs;
 
-public class BookshelfDTO
+public class newBookshelfDTO
 {
-    public int bookshelfId{ get; set;}
 
     public string name { get; set; } 
 }

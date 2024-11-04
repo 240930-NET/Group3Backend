@@ -1,6 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
-namespace ABCDoubleE.Data;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using  ABCDoubleE.Models;
+
+namespace ABCDoubleE.Data;
 public partial class ABCDoubleEContext : DbContext{
     public ABCDoubleEContext(){}
     public ABCDoubleEContext(DbContextOptions<ABCDoubleEContext> options) : base(options){}
@@ -12,6 +14,8 @@ public partial class ABCDoubleEContext : DbContext{
     public virtual DbSet<Review> Reviews {get; set; }
     public virtual DbSet<User> Users {get; set; }
     public virtual DbSet<BookshelfBook> BookshelfBooks {get; set; }
+    public virtual DbSet<Genre> Genres { get; set; }
+    public virtual DbSet<Author> Authors { get; set; }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
 
@@ -32,7 +36,8 @@ public partial class ABCDoubleEContext : DbContext{
         modelBuilder.Entity<User>()
             .HasOne(user => user.preference)
             .WithOne(preference => preference.user)
-            .HasForeignKey<Preference>(preference => preference.userId);
+            .HasForeignKey<Preference>(preference => preference.userId)
+            .OnDelete(DeleteBehavior.Cascade);
 
         //One Libray to many Bookshelves
         modelBuilder.Entity<Library>()
@@ -59,6 +64,49 @@ public partial class ABCDoubleEContext : DbContext{
             .HasOne(review => review.book)
             .WithMany(book => book.reviewList)
             .HasForeignKey(review => review.bookId);
+
+        //=======
+        //Many Many Relationship between Preference and Author,Bool,Genre
+        //Preference to Author
+
+        modelBuilder.Entity<PreferenceGenre>()
+            .HasKey(pg => new { pg.preferenceId, pg.genreId });
+
+        modelBuilder.Entity<PreferenceGenre>()
+            .HasOne(pg => pg.preference)
+            .WithMany(preference => preference.preferenceGenres)
+            .HasForeignKey(pg => pg.preferenceId);
+
+        modelBuilder.Entity<PreferenceGenre>()
+            .HasOne(pg => pg.genre)
+            .WithMany()
+            .HasForeignKey(pg => pg.genreId);
+
+        modelBuilder.Entity<PreferenceAuthor>()
+            .HasKey(pa => new { pa.preferenceId, pa.authorId });
+
+        modelBuilder.Entity<PreferenceAuthor>()
+            .HasOne(pa => pa.preference)
+            .WithMany(preference => preference.preferenceAuthors)
+            .HasForeignKey(pa => pa.preferenceId);
+
+        modelBuilder.Entity<PreferenceAuthor>()
+            .HasOne(pa => pa.author)
+            .WithMany()
+            .HasForeignKey(pa => pa.authorId);
+
+        modelBuilder.Entity<PreferenceBook>()
+            .HasKey(pb => new { pb.preferenceId, pb.bookId });
+
+        modelBuilder.Entity<PreferenceBook>()
+            .HasOne(pb => pb.preference)
+            .WithMany(preference => preference.preferenceBooks)
+            .HasForeignKey(pb => pb.preferenceId);
+
+        modelBuilder.Entity<PreferenceBook>()
+            .HasOne(pb => pb.book)
+            .WithMany()
+            .HasForeignKey(pb => pb.bookId);
 
     }
 }

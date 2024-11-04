@@ -2,6 +2,7 @@ using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 public interface ILibraryService
 {
+    Task<Library> CreateLibraryAsync(int userId);
     Task<LibraryDTO?> GetLibraryAsync(int libraryId);                    
     Task<IEnumerable<BookshelfDTO>> GetAllBookshelvesAsync(int libraryId); 
     Task<BookshelfDTO?> GetBookshelfByIdAsync(int libraryId, int bookshelfId); 

@@ -1,10 +1,22 @@
-namespace ABCDoubleE.Services;
-using ABCDoubleE.DTOs;
+using ABCDoubleE.Models;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-public interface IPreferenceService
+namespace ABCDoubleE.Services
 {
-    Task<PreferenceDTO?> GetPreferenceByUserIdAsync(int userId);              
-    Task<PreferenceDTO?> GetPreferenceByIdAsync(int preferenceId);          
-    Task<PreferenceDTO> CreatePreferenceAsync(int userId, PreferenceCreateDTO preferenceCreateDto); 
-    Task<PreferenceDTO?> UpdatePreferenceAsync(int userId, PreferenceUpdateDTO preferenceUpdateDto); 
+    public interface IPreferenceService
+    {
+        Task<Preference> GetPreferenceByUserIdAsync(int userId);
+        Task<Preference> CreatePreferenceAsync(int userId);
+        Task UpdatePreferenceAsync(Preference preference);
+        Task DeletePreferenceByUserIdAsync(int userId);
+        //add in later for efficient update
+        //Task AddGenreToPreferenceAsync(int userId, Genre genre);
+        //Task AddAuthorToPreferenceAsync(int userId, Author author);
+        //Task AddBookToPreferenceAsync(int userId, Book book);
+
+        //Task RemoveGenreFromPreferenceAsync(int userId, int genreId);
+        //Task RemoveAuthorFromPreferenceAsync(int userId, int authorId);
+        //Task RemoveBookFromPreferenceAsync(int userId, int bookId);
+    }
 }

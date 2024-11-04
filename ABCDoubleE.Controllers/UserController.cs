@@ -70,7 +70,8 @@ public class UserController : Controller{
             User user = new(){
                 fullName = userDTO.fullName,
                 userName = userDTO.userName,
-                passwordHash = userDTO.passwordHash
+                passwordHash = userDTO.passwordHash,
+                library = new Library()
              };
             await _userService.AddUser(user);
             return Ok(userDTO);

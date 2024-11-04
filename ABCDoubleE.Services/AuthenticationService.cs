@@ -12,47 +12,67 @@ namespace ABCDoubleE.Services;
 public class AuthenticationService
 {
     private readonly IUserService _userService;
+    private readonly IPreferenceService _preferenceService;
+    private readonly ILibraryService _libraryService;
     private readonly string _jwtSecretKey;
 
-    public AuthenticationService(IUserService userService, IConfiguration configuration)
+    public AuthenticationService(
+        IUserService userService, 
+        IPreferenceService preferenceService, 
+        ILibraryService libraryService, 
+        IConfiguration configuration)
     {
         _userService = userService;
+        _preferenceService = preferenceService;
+        _libraryService = libraryService;
         _jwtSecretKey = configuration["JwtSecretKey"];
     }
 
-public async Task<User> RegisterUserAsync(string userName, string password, string fullName)
-{
-    if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(fullName))
+    public async Task<User> RegisterUserAsync(string userName, string password, string fullName)
     {
-        throw new ArgumentException("Username, password, and full name cannot be empty.");
-    }
-
-    var existingUser = await _userService.GetUserByUserNameAsync(userName);
-    if (existingUser != null)
-    {
-        throw new InvalidOperationException("User name exist");
-    }
-
-    try
-    {
-        var (salt, hash) = HashPassword(password);
-
-        var user = new User
+        if (string.IsNullOrWhiteSpace(userName) || string.IsNullOrWhiteSpace(password) || string.IsNullOrWhiteSpace(fullName))
         {
-            userName = userName,
-            fullName = fullName,
-            passwordSalt = salt,
-            passwordHash = hash
-        };
+            throw new ArgumentException("Username, password, and full name cannot be empty.");
+        }
 
-        return await _userService.AddUser(user);
+        var existingUser = await _userService.GetUserByUserNameAsync(userName);
+        if (existingUser != null)
+        {
+            throw new InvalidOperationException("User name exist");
+        }
+
+        try
+        {
+            var (salt, hash) = HashPassword(password);
+
+            var user = new User
+            {
+                userName = userName,
+                fullName = fullName,
+                passwordSalt = salt,
+                passwordHash = hash,
+                library = new Library(),
+            };
+
+            user = await _userService.AddUser(user);
+
+            var library = await _libraryService.CreateLibraryAsync(user.userId);
+            user.library = library;
+            user.libraryId = library.libraryId;
+            var preference = await _preferenceService.CreatePreferenceAsync(user.userId);
+            user.preference = preference;
+            user.preferenceId = preference.preferenceId;
+
+
+            await _userService.UpdateUserAsync(user);
+            return user;
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error in RegisterUserAsync: {ex.Message}");
+            throw;
+        }
     }
-    catch (Exception ex)
-    {
-        Console.WriteLine($"Error in RegisterUserAsync: {ex.Message}");
-        throw;
-    }
-}
 
     public async Task<string> LoginAsync(string userName, string password)
     {

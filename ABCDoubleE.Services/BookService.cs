@@ -28,7 +28,7 @@ public class BookService : IBookService{
     public Book GetBookByISBN(string isbn){
 
         Book book = _bookrepo.GetBookByISBN(isbn);
-        if(book.isbn==null)
+        if(book==null)
             throw new Exception($"Can't find book by ISBN: {isbn}!");
         else
             return book;

@@ -1,5 +1,6 @@
 namespace ABCDoubleE.Services;
 using ABCDoubleE.DTOs;
+
 public interface IPreferenceService
 {
     Task<PreferenceDTO?> GetPreferenceByUserIdAsync(int userId);              

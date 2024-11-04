@@ -59,5 +59,6 @@ public partial class ABCDoubleEContext : DbContext{
             .HasOne(review => review.book)
             .WithMany(book => book.reviewList)
             .HasForeignKey(review => review.bookId);
+
     }
 }

@@ -66,8 +66,48 @@ public class UserService : IUserService {
             return await _userRepo.GetUserByUserNameAsync(userName); //make sure that this can return null to work with authentication. Don;t throw exception here!
         }
 
+        public async Task<User> UpdateUserAsync(User user)
+        {
+            if (user == null || user.userId == 0)
+            {
+                throw new ArgumentException("Invalid user data.");
+            }
 
+            try
+            {
+                var existingUser = await _userRepo.GetUserById(user.userId);
+                if (existingUser == null)
+                {
+                    throw new KeyNotFoundException("User not found.");
+                }
+                // Update properties
+                existingUser.userName = user.userName;
+                existingUser.fullName = user.fullName;
+                existingUser.passwordHash = user.passwordHash;
+                existingUser.passwordSalt = user.passwordSalt;
+                if(string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.passwordHash) || string.IsNullOrEmpty(user.fullName)) 
+                {
+                     throw new Exception("Cannot have empty name, username, or password");
+                }
+                // not sure if i remove the null check since library and preference are always created when user is created
+                if (user.library != null)
+                {
+                    existingUser.library = user.library;
+                }
+                if (user.preference != null)
+                {
+                    existingUser.preference = user.preference;
+                }
+                await _userRepo.UpdateUser(existingUser);
 
+                return existingUser;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in UpdateUserAsync: {ex.Message}");
+                throw;
+            }
+        }
 
 
     public async Task<User> UpdateUser(UserDTO userDTO, int id) {

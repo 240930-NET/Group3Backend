@@ -20,7 +20,10 @@ namespace ABCDoubleE.Services
 
         public async Task<Preference> CreatePreferenceAsync(int userId)
         {
-            var preference = new Preference { userId = userId };
+            var preference = new Preference 
+                { 
+                    userId = userId,
+                };
             return await _preferenceRepository.CreatePreferenceAsync(preference);
         }
 

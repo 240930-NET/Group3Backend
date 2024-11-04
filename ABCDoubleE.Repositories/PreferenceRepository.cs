@@ -51,39 +51,5 @@ namespace ABCDoubleE.Repositories
             }
         }
 
-        // Methods for adding to collections
-        public async Task AddGenreToPreferenceAsync(int preferenceId, Genre genre)
-        {
-            var preferenceGenre = new PreferenceGenre
-            {
-                preferenceId = preferenceId,
-                genreId = genre.genreId
-            };
-            _context.Set<PreferenceGenre>().Add(preferenceGenre);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task AddAuthorToPreferenceAsync(int preferenceId, Author author)
-        {
-            var preferenceAuthor = new PreferenceAuthor
-            {
-                preferenceId = preferenceId,
-                authorId = author.authorId
-            };
-            _context.Set<PreferenceAuthor>().Add(preferenceAuthor);
-            await _context.SaveChangesAsync();
-        }
-
-        public async Task AddBookToPreferenceAsync(int preferenceId, Book book)
-        {
-            var preferenceBook = new PreferenceBook
-            {
-                preferenceId = preferenceId,
-                bookId = book.bookId
-            };
-            _context.Set<PreferenceBook>().Add(preferenceBook);
-            await _context.SaveChangesAsync();
-        }
-
     }
 }

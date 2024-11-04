@@ -5,7 +5,7 @@ public interface ILibraryRepository
 {
     Task<Library?> GetLibraryByIdAsync(int libraryId);        
     Task<IEnumerable<Library>> GetAllLibrariesAsync();        
-    Task AddLibraryAsync(Library library);                    
+    Task<Library> AddLibraryAsync(Library library);                    
     Task UpdateLibraryAsync(Library library);                 
     Task DeleteLibraryAsync(int libraryId);                  
 

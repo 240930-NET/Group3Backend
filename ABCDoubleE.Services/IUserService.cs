@@ -12,6 +12,7 @@ public interface IUserService {
 
     public Task<User> AddUser(User user);
 
+    public Task<User> UpdateUserAsync(User user);
     public Task<User> UpdateUser(UserDTO userDTO, int id);
 
     public Task DeleteUser(int id);

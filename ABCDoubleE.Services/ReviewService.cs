@@ -20,6 +20,14 @@ public class ReviewService : IReviewService
         return allReviews;
     }
 
+    public async Task<IEnumerable<Review>> GetAllReviewsByBookIdAsync(int bookId){
+        var bookReviews = await _reviewRepository.GetAllReviewsByBookIdAsync(bookId);
+        if(bookReviews.Count() == 0){
+            throw new Exception("No reviews found for this book.");
+        }
+        return bookReviews;
+    }
+
     public async Task<Review?> GetReviewByIdAsync(int reviewId){
         var review =  await _reviewRepository.GetReviewByIdAsync(reviewId);
         if( review == null){
@@ -37,8 +45,13 @@ public class ReviewService : IReviewService
         else if(reviewCreateDTO.reviewText == "" || reviewCreateDTO.reviewText == null){
             throw new Exception("Missing review.");
         }
-        if (reviewCreateDTO.bookId != null && reviewCreateDTO.bookId > 0) {
-            throw new Exception("bookId is invalid.");
+        else if (reviewCreateDTO.bookId < 0) {
+            //Check that a book by that ID exists?
+            throw new Exception("BookId is invalid.");
+        }
+        else if(reviewCreateDTO.userId < 0){
+            //Check that a user by that ID exists?
+            throw new Exception("UserId is invalid.");
         }
 
         else{

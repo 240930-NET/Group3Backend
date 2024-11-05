@@ -15,5 +15,7 @@ public interface IBookRepo{
     //DELETE
     public void DeleteBook(Book book);
 
+    Task<List<Book>> SearchBooksAsync(string search);
+
 
 }

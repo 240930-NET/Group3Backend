@@ -110,6 +110,32 @@ public partial class ABCDoubleEContext : DbContext{
             .HasOne(pb => pb.book)
             .WithMany()
             .HasForeignKey(pb => pb.bookId);
+        //book and genre
+        modelBuilder.Entity<BookGenre>()
+            .HasKey(bg => new { bg.BookId, bg.GenreId });
+
+        modelBuilder.Entity<BookGenre>()
+            .HasOne(bg => bg.Book)
+            .WithMany(b => b.BookGenres)
+            .HasForeignKey(bg => bg.BookId);
+
+        modelBuilder.Entity<BookGenre>()
+            .HasOne(bg => bg.Genre)
+            .WithMany(g => g.BookGenres)
+            .HasForeignKey(bg => bg.GenreId);
+        //book and author
+        modelBuilder.Entity<BookAuthor>()
+            .HasKey(ba => new { ba.BookId, ba.AuthorId });
+
+        modelBuilder.Entity<BookAuthor>()
+            .HasOne(ba => ba.Book)
+            .WithMany(b => b.BookAuthors)
+            .HasForeignKey(ba => ba.BookId);
+
+        modelBuilder.Entity<BookAuthor>()
+            .HasOne(ba => ba.Author)
+            .WithMany(a => a.BookAuthors)
+            .HasForeignKey(ba => ba.AuthorId);
 
     }
 }

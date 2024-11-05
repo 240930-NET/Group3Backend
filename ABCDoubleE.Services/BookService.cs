@@ -39,6 +39,7 @@ public class BookService : IBookService{
 
         Book newbook = new(){
             isbn = book.isbn,
+            title = book.title,
             description = book.description,
             bookshelfBooks = [],
             reviewList = []

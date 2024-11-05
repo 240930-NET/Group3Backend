@@ -20,6 +20,14 @@ public class ReviewService : IReviewService
         return allReviews;
     }
 
+    public async Task<IEnumerable<Review>> GetAllReviewsByBookIdAsync(int bookId){
+        var bookReviews = await _reviewRepository.GetAllReviewsByBookIdAsync(bookId);
+        if(bookReviews.Count() == 0){
+            throw new Exception("No reviews found for this book.");
+        }
+        return bookReviews;
+    }
+
     public async Task<Review?> GetReviewByIdAsync(int reviewId){
         var review =  await _reviewRepository.GetReviewByIdAsync(reviewId);
         if( review == null){

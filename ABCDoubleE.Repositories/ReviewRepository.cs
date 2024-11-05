@@ -18,6 +18,14 @@ public class ReviewRepository : IReviewRepository
             .ToListAsync();
     }
 
+    public async Task<IEnumerable<Review>> GetAllReviewsByBookIdAsync(int bookId){
+        return await _context.Reviews
+            .Where(r => r.bookId == bookId)
+            .Include(r => r.user)
+            .Include(r => r.book)
+            .ToListAsync();
+    }
+
     public async Task<Review?> GetReviewByIdAsync(int reviewId){
         return await _context.Reviews
             .Include(r => r.user)

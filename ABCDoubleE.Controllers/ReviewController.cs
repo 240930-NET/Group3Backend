@@ -37,20 +37,18 @@ public class ReviewController: Controller{
         }
         
     }
-    /*
-
-    [HttpPost]
-    public async Task<IActionResult> AddNewReview([FromBody] ReviewCreateDTO reviewCreateDTO){
+    
+    [HttpGet("GetReviewsByBookId/{bookId}")]
+    public async Task<IActionResult> getReviewsByBookId(int bookId){
         
         try{
-            await _reviewService.AddReviewAsync(reviewCreateDTO);
-            return Ok("Added review.");
+            return Ok(await _reviewService.GetAllReviewsByBookIdAsync(bookId));
         }
         catch(Exception e){
-            return BadRequest("Could not add review: " + e.Message);
+            return BadRequest("Could not get reviews for this book: " + e.Message);
         }
+        
     }
-    */
 
     [HttpPost]
     public async Task<IActionResult> AddNewReview([FromBody] ReviewCreateDTO reviewCreateDTO)

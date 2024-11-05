@@ -67,5 +67,10 @@ public class BookService : IBookService{
             throw new Exception($"This Book with ISBN: {isbn} doesn't exist");
     }
 
+    public async Task<List<Book>> SearchBooksAsync(string search)
+    {
+        return await _bookrepo.SearchBooksAsync(search);
+    }
+
 }
 

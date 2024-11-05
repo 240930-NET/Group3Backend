@@ -1,13 +1,13 @@
 namespace ABCDoubleE.Models;
 public class BookAuthor
 {
-    public int BookId { get; set; }
-    public Book Book { get; set; }
+    public int bookId { get; set; }
+    public Book book { get; set; }
 
-    public int AuthorId { get; set; }
-    public Author Author { get; set; }
+    public int authorId { get; set; }
+    public Author author { get; set; }
 
 
-    public string Role { get; set; } = "";
+    //public string role { get; set; } = "";
 
 }

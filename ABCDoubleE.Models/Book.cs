@@ -6,7 +6,7 @@ public class Book{
     public string description {get; set; } = "";
     public string image = "";
     public ICollection<BookshelfBook> bookshelfBooks { get; set; } = [];
-    public ICollection<BookGenre> BookGenres { get; set; } = new List<BookGenre>();
-    public ICollection<BookAuthor> BookAuthors { get; set; } = new List<BookAuthor>();
+    public ICollection<BookGenre> bookGenres { get; set; } = new List<BookGenre>();
+    public ICollection<BookAuthor> bookAuthors { get; set; } = new List<BookAuthor>();
     public ICollection<Review> reviewList {get;set;} = [];
 }

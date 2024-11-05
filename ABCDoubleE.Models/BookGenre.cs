@@ -1,9 +1,9 @@
 namespace ABCDoubleE.Models;
 public class BookGenre
 {
-    public int BookId { get; set; }
-    public Book Book { get; set; }
+    public int bookId { get; set; }
+    public Book book { get; set; }
 
-    public int GenreId { get; set; }
-    public Genre Genre { get; set; }
+    public int genreId { get; set; }
+    public Genre genre { get; set; }
 }

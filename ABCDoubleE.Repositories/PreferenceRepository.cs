@@ -51,5 +51,44 @@ namespace ABCDoubleE.Repositories
             }
         }
 
+        public async Task<Preference> GetPreferenceWithGenresByUserIdAsync(int preferenceId)
+        {
+            return await _context.Preferences
+                .Include(p => p.preferenceGenres)
+                .FirstOrDefaultAsync(p => p.preferenceId == preferenceId);
+        }
+
+        public async Task<Preference> GetPreferenceWithAuthorsByUserIdAsync(int preferenceId)
+        {
+            return await _context.Preferences
+                .Include(p => p.preferenceAuthors)
+                .FirstOrDefaultAsync(p => p.preferenceId == preferenceId);
+        }
+
+        public async Task<Preference> GetPreferenceWithBooksByUserIdAsync(int preferenceId)
+        {
+            return await _context.Preferences
+                .Include(p => p.preferenceBooks)
+                .FirstOrDefaultAsync(p => p.preferenceId == preferenceId);
+        }
+
+        public async Task RemoveGenreFromPreferenceAsync(PreferenceGenre genre)
+        {
+            _context.PreferenceGenres.Remove(genre);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveAuthorFromPreferenceAsync(PreferenceAuthor author)
+        {
+            _context.PreferenceAuthors.Remove(author);
+            await _context.SaveChangesAsync();
+        }
+
+        public async Task RemoveBookFromPreferenceAsync(PreferenceBook book)
+        {
+            _context.PreferenceBooks.Remove(book);
+            await _context.SaveChangesAsync();
+        }
+
     }
 }

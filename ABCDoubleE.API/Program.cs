@@ -74,6 +74,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IPreferenceRepository, PreferenceRepository>();
 builder.Services.AddScoped<IPreferenceService, PreferenceService>();
 
+builder.Services.AddScoped<IGenreService, GenreService>();
+builder.Services.AddScoped<IGenreRepository, GenreRepository>();
+
 builder.Services.AddScoped<AuthenticationService>();
 
 builder.Services.AddControllers();

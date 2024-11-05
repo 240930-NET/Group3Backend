@@ -16,6 +16,9 @@ public partial class ABCDoubleEContext : DbContext{
     public virtual DbSet<BookshelfBook> BookshelfBooks {get; set; }
     public virtual DbSet<Genre> Genres { get; set; }
     public virtual DbSet<Author> Authors { get; set; }
+    public DbSet<PreferenceGenre> PreferenceGenres { get; set; } 
+    public DbSet<PreferenceAuthor> PreferenceAuthors { get; set; } 
+    public DbSet<PreferenceBook> PreferenceBooks { get; set; } 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder){
 

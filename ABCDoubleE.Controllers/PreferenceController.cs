@@ -61,4 +61,25 @@ public class PreferenceController : ControllerBase
         await _preferenceService.DeletePreferenceByUserIdAsync(userId);
         return NoContent();
     }
+
+    [HttpDelete("genre/{preferenceId}/{genreId}")]
+    public async Task<IActionResult> RemoveGenre(int preferenceId, int genreId)
+    {
+        var result = await _preferenceService.RemoveGenreFromPreferenceAsync(preferenceId, genreId);
+        return result ? NoContent() : NotFound("Genre not found or not associated with preference.");
+    }
+
+    [HttpDelete("author/{preferenceId}/{authorId}")]
+    public async Task<IActionResult> RemoveAuthor(int preferenceId, int authorId)
+    {
+        var result = await _preferenceService.RemoveAuthorFromPreferenceAsync(preferenceId, authorId);
+        return result ? NoContent() : NotFound("Author not found or not associated with preference.");
+    }
+
+    [HttpDelete("book/{preferenceId}/{bookId}")]
+    public async Task<IActionResult> RemoveBook(int preferenceId, int bookId)
+    {
+        var result = await _preferenceService.RemoveBookFromPreferenceAsync(preferenceId, bookId);
+        return result ? NoContent() : NotFound("Book not found or not associated with preference.");
+    }
 }

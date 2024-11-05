@@ -84,6 +84,12 @@ builder.Services.AddScoped<IGenreRepository, GenreRepository>();
 
 builder.Services.AddScoped<AuthenticationService>();
 
+builder.Services.AddHttpClient<GoogleBooksService>();
+builder.Services.AddScoped<GoogleBooksService>();
+
+
+builder.Services.AddScoped<DatabaseLookupService>();
+
 builder.Services.AddControllers();
 
 builder.Services.AddControllers().AddJsonOptions(options =>

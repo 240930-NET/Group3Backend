@@ -10,6 +10,8 @@ using System.Collections.Generic;
 public class AuthenticationServiceTests
 {
     private readonly Mock<IUserService> _mockUserService;
+    private readonly Mock<IPreferenceService> _mockPreferenceService;
+    private readonly Mock<ILibraryService> _mockLibraryService;
     private readonly IConfiguration _configuration;
     private readonly AuthenticationService _authService;
 
@@ -21,8 +23,18 @@ public class AuthenticationServiceTests
         _configuration = new ConfigurationBuilder()
             .AddInMemoryCollection(inMemorySettings)
             .Build();
+
         _mockUserService = new Mock<IUserService>();
-        _authService = new AuthenticationService(_mockUserService.Object, _configuration);
+        _mockPreferenceService = new Mock<IPreferenceService>(); // Mock IPreferenceService
+        _mockLibraryService = new Mock<ILibraryService>();       // Mock ILibraryService
+
+        // Pass all mocks and configuration to AuthenticationService
+        _authService = new AuthenticationService(
+            _mockUserService.Object, 
+            _mockPreferenceService.Object, 
+            _mockLibraryService.Object, 
+            _configuration
+        );
     }
 
     [Fact]
@@ -50,52 +62,3 @@ public class AuthenticationServiceTests
         _mockUserService.Verify(x => x.AddUser(It.IsAny<User>()), Times.Once);
     }
 }
-/*
-    [Fact]
-    public async Task LoginAsync_ValidCredentials_ReturnsJwtToken()
-    {
-
-        // Arrange
-        var userName = "testUser";
-        var password = "Password123!";
-        var salt = "SampleSalt";
-        var hash = _authService.HashPassword(password).hash;
-
-        var user = new User
-        {
-            userId = 1,
-            userName = userName,
-            passwordSalt = salt,
-            passwordHash = hash
-        };
-
-        _mockUserService.Setup(x => x.GetUserByUserNameAsync(userName))
-            .ReturnsAsync(user);
-
-        // Act
-        var token = await _authService.LoginAsync(userName, password);
-
-        // Assert
-        Assert.False(string.IsNullOrEmpty(token));
-    }
-
-    [Fact]
-    public async Task LoginAsync_InvalidPassword_ThrowsUnauthorizedAccessException()
-    {
-        // Arrange
-        var userName = "testUser";
-        var password = "WrongPassword";
-        var user = new User
-        {
-            userName = userName,
-            passwordSalt = "SampleSalt",
-            passwordHash = "SomeHash"
-        };
-
-        _mockUserService.Setup(x => x.GetUserByUserNameAsync(userName))
-            .ReturnsAsync(user);
-        // Act & Assert
-        await Assert.ThrowsAsync<UnauthorizedAccessException>(() => _authService.LoginAsync(userName, password));
-    }
-}
-*/

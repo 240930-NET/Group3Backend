@@ -37,7 +37,6 @@ public class BookRepo : IBookRepo{
     {
         if (string.IsNullOrWhiteSpace(search))
         {
-            // Return a default list of 10 authors if no search term is provided
             return await _context.Books
                 .OrderBy(book => book.title)
                 .Take(10)

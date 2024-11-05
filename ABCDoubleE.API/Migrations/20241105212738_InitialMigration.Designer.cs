@@ -11,8 +11,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABCDoubleE.API.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    [Migration("20241105162350_AddPreferenceTables")]
-    partial class AddPreferenceTables
+    [Migration("20241105212738_InitialMigration")]
+    partial class InitialMigration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,40 @@ namespace ABCDoubleE.API.Migrations
                     b.HasKey("bookId");
 
                     b.ToTable("Books");
+                });
+
+            modelBuilder.Entity("ABCDoubleE.Models.BookAuthor", b =>
+                {
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("AuthorId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Role")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("BookId", "AuthorId");
+
+                    b.HasIndex("AuthorId");
+
+                    b.ToTable("BookAuthor");
+                });
+
+            modelBuilder.Entity("ABCDoubleE.Models.BookGenre", b =>
+                {
+                    b.Property<int>("BookId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GenreId")
+                        .HasColumnType("int");
+
+                    b.HasKey("BookId", "GenreId");
+
+                    b.HasIndex("GenreId");
+
+                    b.ToTable("BookGenre");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>
@@ -268,6 +302,44 @@ namespace ABCDoubleE.API.Migrations
                     b.ToTable("Users");
                 });
 
+            modelBuilder.Entity("ABCDoubleE.Models.BookAuthor", b =>
+                {
+                    b.HasOne("ABCDoubleE.Models.Author", "Author")
+                        .WithMany("BookAuthors")
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ABCDoubleE.Models.Book", "Book")
+                        .WithMany("BookAuthors")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Author");
+
+                    b.Navigation("Book");
+                });
+
+            modelBuilder.Entity("ABCDoubleE.Models.BookGenre", b =>
+                {
+                    b.HasOne("ABCDoubleE.Models.Book", "Book")
+                        .WithMany("BookGenres")
+                        .HasForeignKey("BookId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ABCDoubleE.Models.Genre", "Genre")
+                        .WithMany("BookGenres")
+                        .HasForeignKey("GenreId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Book");
+
+                    b.Navigation("Genre");
+                });
+
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>
                 {
                     b.HasOne("ABCDoubleE.Models.Library", "library")
@@ -396,8 +468,17 @@ namespace ABCDoubleE.API.Migrations
                     b.Navigation("user");
                 });
 
+            modelBuilder.Entity("ABCDoubleE.Models.Author", b =>
+                {
+                    b.Navigation("BookAuthors");
+                });
+
             modelBuilder.Entity("ABCDoubleE.Models.Book", b =>
                 {
+                    b.Navigation("BookAuthors");
+
+                    b.Navigation("BookGenres");
+
                     b.Navigation("bookshelfBooks");
 
                     b.Navigation("reviewList");
@@ -406,6 +487,11 @@ namespace ABCDoubleE.API.Migrations
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>
                 {
                     b.Navigation("bookshelfBooks");
+                });
+
+            modelBuilder.Entity("ABCDoubleE.Models.Genre", b =>
+                {
+                    b.Navigation("BookGenres");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Library", b =>

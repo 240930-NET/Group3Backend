@@ -54,6 +54,10 @@ namespace ABCDoubleE.API.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
                     b.HasKey("bookId");
 
                     b.ToTable("Books");

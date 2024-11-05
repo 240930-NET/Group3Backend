@@ -95,11 +95,16 @@ public class UserController : Controller{
     }
 
 
-    [HttpDelete("DeleteUser/{id}")]
-    public async Task<IActionResult> DeleteUser(int id) {
+    [HttpDelete("DeleteUser")]
+    public async Task<IActionResult> DeleteUser() {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userIdString == null || !int.TryParse(userIdString, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
 
         try {
-            await _userService.DeleteUser(id);
+            await _userService.DeleteUser(userId);
             return Ok();
         }
         catch(Exception e) {

@@ -96,12 +96,17 @@ public class UserController : Controller{
     }
 
 
-    [HttpPut("UpdateUser/{id}")]
-    public async Task<IActionResult> UpdateUser([FromBody] UserDTO userDTO, int id) {
+    [HttpPut("UpdateUser")]
+    public async Task<IActionResult> UpdateUser([FromBody] UserRegisterDTO userRegisterDTO) {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userIdString == null || !int.TryParse(userIdString, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
 
         try {
-            await _userService.UpdateUser(userDTO, id);
-            return Ok(userDTO);
+            await _userService.UpdateUser(userRegisterDTO, userId);
+            return Ok(userRegisterDTO);
         }
         catch(Exception e) {
             return BadRequest(e.Message);

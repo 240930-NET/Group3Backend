@@ -38,14 +38,24 @@ public class BookRepo : IBookRepo{
         if (string.IsNullOrWhiteSpace(search))
         {
             return await _context.Books
+                .Include(b => b.bookAuthors)
+                    .ThenInclude(ba => ba.author)
+                .Include(b => b.bookGenres)
+                    .ThenInclude(bg => bg.genre)
                 .OrderBy(book => book.title)
                 .Take(10)
                 .ToListAsync();
         }
 
         return await _context.Books
-            .Where(book=> book.title.Contains(search))
+            .Where(book => book.title.Contains(search))
+            .Include(b => b.bookAuthors)
+                .ThenInclude(ba => ba.author)
+            .Include(b => b.bookGenres)
+                .ThenInclude(bg => bg.genre)
             .ToListAsync();
     }
+
+
 
 }

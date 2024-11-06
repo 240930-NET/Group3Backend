@@ -51,16 +51,47 @@ public class GoogleServiceController : ControllerBase
     [HttpGet("search")]
     public async Task<IActionResult> SearchBooks([FromQuery] string query)
     {
+        // Fetch books from the database
         var booksFromDatabase = await _bookService.SearchBooksAsync(query);
 
+        // Transform database book authors and genres to lists of names
+        var transformedBooksFromDatabase = booksFromDatabase.Select(book => new
+        {
+            book.bookId,
+            book.isbn,
+            book.title,
+            book.description,
+            book.image,
+            authors = book.bookAuthors.Select(ba => ba.author.name).ToList(), // Transform authors to list of names
+            genres = book.bookGenres.Select(bg => bg.genre.name).ToList(), // Transform genres to list of names
+            book.bookshelfBooks,
+            book.reviewList
+        }).ToList();
+
+        // Fetch books from Google API
         var booksFromGoogle = await _googleBooksService.SearchBooksByTitleAsync(query);
+
+        // Transform Google API books to match the same structure
+        var transformedBooksFromGoogle = booksFromGoogle.Select(book => new
+        {
+            book.bookId,
+            book.isbn,
+            book.title,
+            book.description,
+            book.image,
+            authors = book.bookAuthors.Select(ba => ba.author.name).ToList(), // Assuming Google books authors are in a similar structure
+            genres = book.bookGenres.Select(bg => bg.genre.name).ToList(), // Transform genres similarly
+            book.bookshelfBooks,
+            book.reviewList
+        }).ToList();
 
         var combinedResults = new
         {
-            booksFromDatabase,
-            booksFromGoogle
+            booksFromDatabase = transformedBooksFromDatabase,
+            booksFromGoogle = transformedBooksFromGoogle
         };
 
         return Ok(combinedResults);
     }
+
 }

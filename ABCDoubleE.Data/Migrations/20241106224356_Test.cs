@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace ABCDoubleE.API.Migrations
+namespace ABCDoubleE.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class initialCreate : Migration
+    public partial class Test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -71,7 +71,7 @@ namespace ABCDoubleE.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookAuthor",
+                name: "BookAuthors",
                 columns: table => new
                 {
                     bookId = table.Column<int>(type: "int", nullable: false),
@@ -79,15 +79,15 @@ namespace ABCDoubleE.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookAuthor", x => new { x.bookId, x.authorId });
+                    table.PrimaryKey("PK_BookAuthors", x => new { x.bookId, x.authorId });
                     table.ForeignKey(
-                        name: "FK_BookAuthor_Authors_authorId",
+                        name: "FK_BookAuthors_Authors_authorId",
                         column: x => x.authorId,
                         principalTable: "Authors",
                         principalColumn: "authorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookAuthor_Books_bookId",
+                        name: "FK_BookAuthors_Books_bookId",
                         column: x => x.bookId,
                         principalTable: "Books",
                         principalColumn: "bookId",
@@ -95,7 +95,7 @@ namespace ABCDoubleE.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "BookGenre",
+                name: "BookGenres",
                 columns: table => new
                 {
                     bookId = table.Column<int>(type: "int", nullable: false),
@@ -103,15 +103,15 @@ namespace ABCDoubleE.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_BookGenre", x => new { x.bookId, x.genreId });
+                    table.PrimaryKey("PK_BookGenres", x => new { x.bookId, x.genreId });
                     table.ForeignKey(
-                        name: "FK_BookGenre_Books_bookId",
+                        name: "FK_BookGenres_Books_bookId",
                         column: x => x.bookId,
                         principalTable: "Books",
                         principalColumn: "bookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_BookGenre_Genres_genreId",
+                        name: "FK_BookGenres_Genres_genreId",
                         column: x => x.genreId,
                         principalTable: "Genres",
                         principalColumn: "genreId",
@@ -301,13 +301,13 @@ namespace ABCDoubleE.API.Migrations
                 });
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookAuthor_authorId",
-                table: "BookAuthor",
+                name: "IX_BookAuthors_authorId",
+                table: "BookAuthors",
                 column: "authorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_BookGenre_genreId",
-                table: "BookGenre",
+                name: "IX_BookGenres_genreId",
+                table: "BookGenres",
                 column: "genreId");
 
             migrationBuilder.CreateIndex(
@@ -362,10 +362,10 @@ namespace ABCDoubleE.API.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
-                name: "BookAuthor");
+                name: "BookAuthors");
 
             migrationBuilder.DropTable(
-                name: "BookGenre");
+                name: "BookGenres");
 
             migrationBuilder.DropTable(
                 name: "BookshelfBooks");

@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.Json;
 using Microsoft.OpenApi.Models;
 
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -17,8 +16,8 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 //retrive connectionstring
-string connectionString = builder.Configuration["ConnectionString:project2"];
-builder.Services.AddDbContext<ABCDoubleEContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("project2")));
+//string connectionString = builder.Configuration["ConnectionString:project2"];
+builder.Services.AddDbContext<ABCDoubleEContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("azure")));
 
 // load JWT key
 #if DEBUG

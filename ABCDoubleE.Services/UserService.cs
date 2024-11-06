@@ -1,3 +1,5 @@
+using System.Security.Cryptography;
+using System.Text;
 using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Repositories;
@@ -87,7 +89,7 @@ public class UserService : IUserService {
                 existingUser.passwordSalt = user.passwordSalt;
                 if(string.IsNullOrEmpty(user.userName) || string.IsNullOrEmpty(user.passwordHash) || string.IsNullOrEmpty(user.fullName)) 
                 {
-                     throw new Exception("Cannot have empty name, username, or password");
+                     throw new Exception("Cannot have empty name, username, or password.");
                 }
                 // not sure if i remove the null check since library and preference are always created when user is created
                 if (user.library != null)
@@ -110,18 +112,26 @@ public class UserService : IUserService {
         }
 
 
-    public async Task<User> UpdateUser(UserDTO userDTO, int id) {
+    public async Task<User> UpdateUser(UserRegisterDTO userRegisterDTO, int id) {
         User searchedUser = await _userRepo.GetUserById(id);
         if (searchedUser == null) {
             throw new Exception($"No user with id {id}");
         }
-        else if(string.IsNullOrEmpty(userDTO.userName) || string.IsNullOrEmpty(userDTO.passwordHash) || string.IsNullOrEmpty(userDTO.fullName)) {
+        else if(string.IsNullOrEmpty(userRegisterDTO.userName) || string.IsNullOrEmpty(userRegisterDTO.password) || string.IsNullOrEmpty(userRegisterDTO.fullName)) {
+
             throw new Exception("Cannot have empty name, username, or password");
         }
         else {
-            searchedUser.fullName = userDTO.fullName;
-            searchedUser.userName = userDTO.userName;
-            searchedUser.passwordHash = userDTO.passwordHash;
+            searchedUser.fullName = userRegisterDTO.fullName;
+            searchedUser.userName = userRegisterDTO.userName;
+            //change useRegsisterDTO.password TO Hash
+            var hash = "";
+            using (var hmac = new HMACSHA512(Convert.FromBase64String(searchedUser.passwordSalt))) {
+                hash = Convert.ToBase64String(hmac.ComputeHash(Encoding.UTF8.GetBytes(userRegisterDTO.password)));
+            }
+
+            searchedUser.passwordHash = hash;
+
             return await _userRepo.UpdateUser(searchedUser);
         }
     }

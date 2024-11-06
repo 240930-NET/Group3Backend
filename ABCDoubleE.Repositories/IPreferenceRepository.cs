@@ -19,9 +19,9 @@ namespace ABCDoubleE.Repositories
         Task RemoveBookFromPreferenceAsync(PreferenceBook book);
         
         // Additional methods associated collections May implement later for efficient add and delete
-        //Task AddGenreToPreferenceAsync(int preferenceId, Genre genre);
-        //Task AddAuthorToPreferenceAsync(int preferenceId, Author author);
-        //Task AddBookToPreferenceAsync(int preferenceId, Book book);
+        Task<bool> AddGenreToPreferenceAsync(Preference preference, int genreId);
+        Task<bool> AddAuthorToPreferenceAsync(Preference preference, int authorId);
+        Task<bool> AddBookToPreferenceAsync(Preference preference, int bookId);
     }
 
 }

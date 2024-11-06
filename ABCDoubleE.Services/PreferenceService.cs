@@ -66,5 +66,34 @@ namespace ABCDoubleE.Services
             await _preferenceRepository.RemoveBookFromPreferenceAsync(book);
             return true;
         }
+        public async Task<bool> AddGenreToPreferenceAsync(int userId, int genreId)
+        {
+            var preference = await _preferenceRepository.GetPreferenceByUserIdAsync(userId);
+            if (preference == null || preference.preferenceGenres.Any(g => g.genreId == genreId))
+                return false;
+
+            var success = await _preferenceRepository.AddGenreToPreferenceAsync(preference, genreId);
+            return success;
+        }
+
+        public async Task<bool> AddAuthorToPreferenceAsync(int userId, int authorId)
+        {
+            var preference = await _preferenceRepository.GetPreferenceByUserIdAsync(userId);
+            if (preference == null || preference.preferenceAuthors.Any(a => a.authorId == authorId))
+                return false;
+
+            var success = await _preferenceRepository.AddAuthorToPreferenceAsync(preference, authorId);
+            return success;
+        }
+
+        public async Task<bool> AddBookToPreferenceAsync(int userId, int bookId)
+        {
+            var preference = await _preferenceRepository.GetPreferenceByUserIdAsync(userId);
+            if (preference == null || preference.preferenceBooks.Any(b => b.bookId == bookId))
+                return false;
+
+            var success = await _preferenceRepository.AddBookToPreferenceAsync(preference, bookId);
+            return success;
+        }
     }
 }

@@ -10,10 +10,9 @@ namespace ABCDoubleE.Services
         Task<Preference> CreatePreferenceAsync(int userId);
         Task UpdatePreferenceAsync(Preference preference);
         Task DeletePreferenceByUserIdAsync(int userId);
-        //add in later for efficient update
-        //Task AddGenreToPreferenceAsync(int userId, Genre genre);
-        //Task AddAuthorToPreferenceAsync(int userId, Author author);
-        //Task AddBookToPreferenceAsync(int userId, Book book);
+        Task<bool> AddGenreToPreferenceAsync(int userId, int genreId);
+        Task<bool> AddAuthorToPreferenceAsync(int userId, int authorId);
+        Task<bool> AddBookToPreferenceAsync(int userId, int bookId);
 
         Task<bool> RemoveGenreFromPreferenceAsync(int userId, int genreId);
         Task<bool> RemoveAuthorFromPreferenceAsync(int userId, int authorId);

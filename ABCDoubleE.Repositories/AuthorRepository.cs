@@ -25,18 +25,26 @@ namespace ABCDoubleE.Repositories
 
         public async Task<List<Author>> SearchAuthorsAsync(string search)
         {
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                // Return a default list of 10 authors if no search term is provided
+            try 
+                {
+                if (string.IsNullOrWhiteSpace(search))
+                {
+                    // Return a default list of 10 authors if no search term is provided
+                    return await _context.Authors
+                        .OrderBy(a => a.name)
+                        .Take(10)
+                        .ToListAsync();
+                }
+        
                 return await _context.Authors
-                    .OrderBy(a => a.name)
-                    .Take(10)
+                    .Where(a => a.name.Contains(search))
                     .ToListAsync();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error in SearchAuthorsAsync: {ex.Message}");
+                    throw;
+                }
             }
-    
-            return await _context.Authors
-                .Where(a => a.name.Contains(search))
-                .ToListAsync();
-        }
     }
 }

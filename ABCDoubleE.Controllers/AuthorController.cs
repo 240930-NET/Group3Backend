@@ -35,11 +35,6 @@ namespace ABCDoubleE.Controllers
         [ProducesResponseType(typeof(List<Author>), 200)]
         public async Task<IActionResult> SearchAuthors([FromQuery] string search = "")
         {
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                return BadRequest("Search term cannot be empty.");
-            }
-
             var authors = await _authorService.SearchAuthorsAsync(search);
             return Ok(authors);
         }

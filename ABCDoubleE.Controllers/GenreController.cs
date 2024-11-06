@@ -33,7 +33,7 @@ namespace ABCDoubleE.Controllers
         [HttpGet]
         [Route("search")]
         [ProducesResponseType(typeof(List<Genre>), 200)]
-        public async Task<IActionResult> SearchGenres([FromQuery] string search)
+        public async Task<IActionResult> SearchGenres([FromQuery] string search = "")
         {
             if (string.IsNullOrWhiteSpace(search))
             {

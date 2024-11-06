@@ -94,13 +94,20 @@ public class GoogleBooksService
     }
 
 
-    public async Task<List<Book>> SearchBooksByTitleAsync(string title)
+   public async Task<List<Book>> SearchBooksByTitleAsync(string title)
+{
+    var books = new List<Book>();
+    
+    // Fetch existing books from the database first
+    var existingBooks = await _context.Books.ToListAsync(); // Assuming you're fetching all books here
+
+    try
     {
-        var books = new List<Book>();
-        try
+        var response = await _httpClient.GetStringAsync(GoogleBooksApiUrl + title);
+        var json = JObject.Parse(response);
+        
+        if (json["items"] != null)
         {
-            var response = await _httpClient.GetStringAsync(GoogleBooksApiUrl + title);
-            var json = JObject.Parse(response);
             foreach (var item in json["items"])
             {
                 var volumeInfo = item["volumeInfo"];
@@ -110,19 +117,62 @@ public class GoogleBooksService
                     isbn = volumeInfo["industryIdentifiers"]?.FirstOrDefault(i => i["type"]?.ToString() == "ISBN_13")?["identifier"]?.ToString() ?? "",
                     description = volumeInfo["description"]?.ToString() ?? "",
                     image = volumeInfo["imageLinks"]?["thumbnail"]?.ToString() ?? "",
-                    bookAuthors = volumeInfo["authors"]?.ToObject<List<BookAuthor>>() ?? new List<BookAuthor>(),
-                    bookGenres = volumeInfo["categories"]?.ToObject<List<BookGenre>>() ?? new List<BookGenre>()
+                    bookAuthors = new List<BookAuthor>(),
+                    bookGenres = new List<BookGenre>() // Initialize the genres list
                 };
 
-                books.Add(book);
+                // Collect author names directly
+                if (volumeInfo["authors"] != null)
+                {
+                    foreach (var authorName in volumeInfo["authors"])
+                    {
+                        var bookAuthor = new BookAuthor
+                        {
+                            book = book, // Associate the current book
+                            author = new Author
+                            {
+                                name = authorName.ToString() // Store the author's name
+                            }
+                        };
+
+                        book.bookAuthors.Add(bookAuthor); // Add BookAuthor to the book's authors list
+                    }
+                }
+
+                // Collect genre names directly
+                if (volumeInfo["categories"] != null)
+                {
+                    foreach (var categoryName in volumeInfo["categories"])
+                    {
+                        var bookGenre = new BookGenre
+                        {
+                            book = book, // Associate the current book
+                            genre = new Genre // Create a temporary Genre object for this context
+                            {
+                                name = categoryName.ToString() // Store the genre's name
+                            }
+                        };
+
+                        book.bookGenres.Add(bookGenre); // Add BookGenre to the book's genres list
+                    }
+                }
+
+                // Check for duplicate ISBN
+                if (!existingBooks.Any(b => b.isbn == book.isbn))
+                {
+                    books.Add(book); // Only add if not a duplicate
+                }
             }
         }
-        catch (Exception ex)
+        else
         {
-            Console.WriteLine($"Error fetching books: {ex.Message}");
+            Console.WriteLine("No items found in the response.");
         }
-
-        return books;
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"Error fetching books: {ex.Message}");
     }
 
+    return books;
 }

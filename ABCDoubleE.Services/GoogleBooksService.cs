@@ -11,7 +11,8 @@ public class GoogleBooksService
     private readonly HttpClient _httpClient;
     private readonly DatabaseLookupService _lookupService;
     private const string GoogleBooksApiUrl = "https://www.googleapis.com/books/v1/volumes?q=";
-
+    //note:
+    // AuthorId and Genid need to be saved first then book, as bookgenre and bookauthor relied on them.
     public GoogleBooksService(HttpClient httpClient, DatabaseLookupService lookupService)
     {
         _httpClient = httpClient;
@@ -26,6 +27,11 @@ public class GoogleBooksService
 
         var books = new List<Book>();
 
+        // HashSets to cache unique genres and authors during this session
+        var genreCache = new HashSet<string>();
+        var authorCache = new HashSet<string>();
+        var bookCache = new HashSet<string>();
+
         foreach (var item in json["items"])
         {
             var volumeInfo = item["volumeInfo"];
@@ -36,14 +42,13 @@ public class GoogleBooksService
             var authors = volumeInfo["authors"]?.ToObject<List<string>>() ?? new List<string>();
             var categories = volumeInfo["categories"]?.ToObject<List<string>>() ?? new List<string>();
 
-            var existingBook = await _lookupService.GetExistingBookAsync(isbn, title);
-            if (existingBook != null)
+            // Check if book already exists in the cache or database
+            if (bookCache.Contains(isbn) || (await _lookupService.GetExistingBookAsync(isbn, title)) != null)
             {
-                books.Add(existingBook);
-                continue; 
+                continue;
             }
 
-
+            // Create a new book if not found in cache or database
             var book = new Book
             {
                 title = title,
@@ -53,37 +58,41 @@ public class GoogleBooksService
                 bookAuthors = new List<BookAuthor>(),
                 bookGenres = new List<BookGenre>()
             };
+            bookCache.Add(isbn);
 
-            foreach (var anAuthor in authors) 
+            // Add authors to the book
+            foreach (var anAuthor in authors)
             {
-                var existingAuthor = await _lookupService.GetExistingAuthorAsync(anAuthor);
-                var authorEntity = existingAuthor ?? new Author { name = anAuthor };
-                book.bookAuthors.Add(new BookAuthor { book = book, author = authorEntity });
+                if (!authorCache.Contains(anAuthor))
+                {
+                    var authorEntity = await _lookupService.GetOrAddAuthorAsync(anAuthor); // Save if new
+                    authorCache.Add(anAuthor);
+                }
+                book.bookAuthors.Add(new BookAuthor { book = book, author = await _lookupService.GetExistingAuthorAsync(anAuthor) });
             }
 
-
-              foreach (var category in categories)
+            // Add genres to the book
+            foreach (var category in categories)
+            {
+                if (!genreCache.Contains(category))
                 {
-                    Genre genreEntity;
-                    try
-                    {
-                        genreEntity = await _lookupService.GetOrCreateGenreAsync(category);
-                    }
-                    catch (DbUpdateException)
-                    {
-                        genreEntity = await _lookupService.GetExistingGenreAsync(category);
-                    }
-
-                    if (!book.bookGenres.Any(bg => bg.genre.name == genreEntity.name))
-                    {
-                        book.bookGenres.Add(new BookGenre { book = book, genre = genreEntity });
-                    }
+                    var genreEntity = await _lookupService.GetOrAddGenreAsync(category); // Save if new
+                    genreCache.Add(category);
                 }
+                book.bookGenres.Add(new BookGenre { book = book, genre = await _lookupService.GetExistingGenreAsync(category) });
+            }
 
-
+            // Track the new book without saving immediately
+            _lookupService.TrackNewBook(book);
             books.Add(book);
         }
 
+        // Save all changes in one transaction at the end
+        await _lookupService.SaveChangesAsync();
+
         return books;
     }
+
+
+
 }

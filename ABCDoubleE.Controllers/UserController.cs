@@ -33,6 +33,23 @@ public class UserController : Controller{
         return Ok(new { fullName = user.fullName, userName = user.userName });
     }
 
+    [HttpGet("userId")]
+    [ResponseCache(NoStore = true, Location = ResponseCacheLocation.None)]
+    public async Task<IActionResult> GetUserId()
+    {
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userIdString == null || !int.TryParse(userIdString, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+        var user = await _userService.GetUserById(userId);
+        if (user == null)
+        {
+            return NotFound("User not found.");
+        }
+        return Ok(userId);
+    }
+
     [HttpGet]
     public async Task<IActionResult> GetAllUsers() {
 

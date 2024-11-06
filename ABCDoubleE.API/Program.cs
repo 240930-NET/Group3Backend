@@ -81,7 +81,8 @@ builder.Services.AddScoped<IPreferenceService, PreferenceService>();
 
 builder.Services.AddScoped<IGenreService, GenreService>();
 builder.Services.AddScoped<IGenreRepository, GenreRepository>();
-
+builder.Services.AddScoped<IAuthorService, AuthorService>();
+builder.Services.AddScoped<IAuthorRepository, AuthorRepository>();
 builder.Services.AddScoped<AuthenticationService>();
 
 builder.Services.AddHttpClient<GoogleBooksService>();

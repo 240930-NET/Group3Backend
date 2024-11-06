@@ -62,24 +62,78 @@ public class PreferenceController : ControllerBase
         return NoContent();
     }
 
-    [HttpDelete("genre/{preferenceId}/{genreId}")]
-    public async Task<IActionResult> RemoveGenre(int preferenceId, int genreId)
+    [HttpPost("genre")]
+    public async Task<IActionResult> AddGenreToPreference([FromBody] int genreId)
     {
-        var result = await _preferenceService.RemoveGenreFromPreferenceAsync(preferenceId, genreId);
-        return result ? NoContent() : NotFound("Genre not found or not associated with preference.");
+        if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        bool success = await _preferenceService.AddGenreToPreferenceAsync(userId, genreId);
+        return success ? Ok("Genre added to preferences") : BadRequest("Failed to add genre");
     }
 
-    [HttpDelete("author/{preferenceId}/{authorId}")]
-    public async Task<IActionResult> RemoveAuthor(int preferenceId, int authorId)
+    [HttpPost("author")]
+    public async Task<IActionResult> AddAuthorToPreference([FromBody] int authorId)
     {
-        var result = await _preferenceService.RemoveAuthorFromPreferenceAsync(preferenceId, authorId);
-        return result ? NoContent() : NotFound("Author not found or not associated with preference.");
+        if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        bool success = await _preferenceService.AddAuthorToPreferenceAsync(userId, authorId);
+        return success ? Ok("Author added to preferences") : BadRequest("Failed to add author");
     }
 
-    [HttpDelete("book/{preferenceId}/{bookId}")]
-    public async Task<IActionResult> RemoveBook(int preferenceId, int bookId)
+    
+    [HttpPost("book")]
+    public async Task<IActionResult> AddBookToPreference([FromBody] int bookId)
     {
-        var result = await _preferenceService.RemoveBookFromPreferenceAsync(preferenceId, bookId);
-        return result ? NoContent() : NotFound("Book not found or not associated with preference.");
+        if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        bool success = await _preferenceService.AddBookToPreferenceAsync(userId, bookId);
+        return success ? Ok("Book added to preferences") : BadRequest("Failed to add book");
+    }
+
+[HttpDelete("genre/{genreId}")]
+public async Task<IActionResult> RemoveGenreFromPreference(int genreId)
+{
+    if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId))
+    {
+        return Unauthorized("User ID not found in token or invalid format.");
+    }
+
+    bool success = await _preferenceService.RemoveGenreFromPreferenceAsync(userId, genreId);
+    return success ? NoContent() : NotFound("Genre not found or not associated with preference.");
+}
+
+
+
+    [HttpDelete("author")]
+    public async Task<IActionResult> RemoveAuthorFromPreference([FromBody] int authorId)
+    {
+        if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        bool success = await _preferenceService.RemoveAuthorFromPreferenceAsync(userId, authorId);
+        return success ? NoContent() : NotFound("Author not found or not associated with preference.");
+    }
+
+    [HttpDelete("book")]
+    public async Task<IActionResult> RemoveBookFromPreference([FromBody] int bookId)
+    {
+        if (!int.TryParse(User.FindFirst(ClaimTypes.NameIdentifier)?.Value, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        bool success = await _preferenceService.RemoveBookFromPreferenceAsync(userId, bookId);
+        return success ? NoContent() : NotFound("Book not found or not associated with preference.");
     }
 }

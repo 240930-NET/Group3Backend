@@ -90,5 +90,26 @@ namespace ABCDoubleE.Repositories
             await _context.SaveChangesAsync();
         }
 
+        public async Task<bool> AddGenreToPreferenceAsync(Preference preference, int genreId)
+        {
+            preference.preferenceGenres.Add(new PreferenceGenre { genreId = genreId, preferenceId = preference.preferenceId });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> AddAuthorToPreferenceAsync(Preference preference, int authorId)
+        {
+            preference.preferenceAuthors.Add(new PreferenceAuthor { authorId = authorId, preferenceId = preference.preferenceId });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> AddBookToPreferenceAsync(Preference preference, int bookId)
+        {
+            preference.preferenceBooks.Add(new PreferenceBook { bookId = bookId, preferenceId = preference.preferenceId });
+            await _context.SaveChangesAsync();
+            return true;
+        }
+
     }
 }

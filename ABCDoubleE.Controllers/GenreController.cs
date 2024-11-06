@@ -35,11 +35,6 @@ namespace ABCDoubleE.Controllers
         [ProducesResponseType(typeof(List<Genre>), 200)]
         public async Task<IActionResult> SearchGenres([FromQuery] string search = "")
         {
-            if (string.IsNullOrWhiteSpace(search))
-            {
-                return BadRequest("Search term cannot be empty.");
-            }
-
             var genres = await _genreService.SearchGenresAsync(search);
             return Ok(genres);
         }

@@ -33,9 +33,6 @@ public class UserController : Controller{
         return Ok(new { fullName = user.fullName, userName = user.userName });
     }
 
-
-
-
     [HttpGet]
     public async Task<IActionResult> GetAllUsers() {
 

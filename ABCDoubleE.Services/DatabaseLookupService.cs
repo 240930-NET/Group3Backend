@@ -29,4 +29,22 @@ public class DatabaseLookupService
     {
         return await _context.Genres.FirstOrDefaultAsync(g => g.name == name);
     }
+
+    public async Task<Genre> GetOrCreateGenreAsync(string genreName)
+    {
+        var existingGenre = await _context.Genres
+            .AsNoTracking() 
+            .FirstOrDefaultAsync(g => g.name == genreName);
+
+        if (existingGenre != null)
+        {
+            _context.Attach(existingGenre);
+            return existingGenre;
+        }
+
+        var newGenre = new Genre { name = genreName };
+        _context.Genres.Attach(newGenre);
+
+        return newGenre;
+    }
 }

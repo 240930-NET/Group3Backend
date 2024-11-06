@@ -92,4 +92,37 @@ public class GoogleBooksService
 
         return books;
     }
+
+
+    public async Task<List<Book>> SearchBooksByTitleAsync(string title)
+    {
+        var books = new List<Book>();
+        try
+        {
+            var response = await _httpClient.GetStringAsync(GoogleBooksApiUrl + title);
+            var json = JObject.Parse(response);
+            foreach (var item in json["items"])
+            {
+                var volumeInfo = item["volumeInfo"];
+                var book = new Book
+                {
+                    title = volumeInfo["title"]?.ToString() ?? "",
+                    isbn = volumeInfo["industryIdentifiers"]?.FirstOrDefault(i => i["type"]?.ToString() == "ISBN_13")?["identifier"]?.ToString() ?? "",
+                    description = volumeInfo["description"]?.ToString() ?? "",
+                    image = volumeInfo["imageLinks"]?["thumbnail"]?.ToString() ?? "",
+                    bookAuthors = volumeInfo["authors"]?.ToObject<List<BookAuthor>>() ?? new List<BookAuthor>(),
+                    bookGenres = volumeInfo["categories"]?.ToObject<List<BookGenre>>() ?? new List<BookGenre>()
+                };
+
+                books.Add(book);
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine($"Error fetching books: {ex.Message}");
+        }
+
+        return books;
+    }
+
 }

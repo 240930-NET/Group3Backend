@@ -6,18 +6,19 @@ using ABCDoubleE.Data;
 
 
 [ApiController]
-[Route("api/[controller]")]
+[Route("api/google")]
 public class GoogleServiceController : ControllerBase
 {
     private readonly GoogleBooksService _googleBooksService;
+    private readonly IBookService _bookService;
     private readonly ABCDoubleEContext _context;
 
-    public GoogleServiceController(GoogleBooksService googleBooksService, ABCDoubleEContext context)
+    public GoogleServiceController(GoogleBooksService googleBooksService, IBookService bookService, ABCDoubleEContext context)
     {
         _googleBooksService = googleBooksService;
+        _bookService = bookService; 
         _context = context;
     }
-
     // Populate books by a specific author
     [HttpPost("populate/books/by-author")]
     public async Task<IActionResult> PopulateBooksByAuthor([FromQuery] string authorName)
@@ -47,6 +48,19 @@ public class GoogleServiceController : ControllerBase
         return Ok($"Database populated with books by {authorName} from Google Books API.");
     }
 
-    // Future: Populate genres or authors independently, if needed
-    // e.g., [HttpPost("populate/genres")]
+    [HttpGet("search")]
+    public async Task<IActionResult> SearchBooks([FromQuery] string query)
+    {
+        var booksFromDatabase = await _bookService.SearchBooksAsync(query);
+
+        var booksFromGoogle = await _googleBooksService.SearchBooksByTitleAsync(query);
+
+        var combinedResults = new
+        {
+            booksFromDatabase,
+            booksFromGoogle
+        };
+
+        return Ok(combinedResults);
+    }
 }

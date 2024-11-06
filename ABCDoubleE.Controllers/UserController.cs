@@ -50,7 +50,6 @@ public class UserController : Controller{
         return Ok(userId);
     }
 
-
     [HttpGet]
     public async Task<IActionResult> GetAllUsers() {
 

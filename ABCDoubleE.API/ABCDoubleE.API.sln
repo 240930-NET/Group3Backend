@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.002.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ABCDoubleE.API", "ABCDoubleE.API.csproj", "{5B9703EC-0439-43BF-93D8-A89FCB53EB57}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5B9703EC-0439-43BF-93D8-A89FCB53EB57}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B9703EC-0439-43BF-93D8-A89FCB53EB57}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B9703EC-0439-43BF-93D8-A89FCB53EB57}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B9703EC-0439-43BF-93D8-A89FCB53EB57}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {00E44265-82CA-4CB3-9299-F350D3C3B364}
+	EndGlobalSection
+EndGlobal

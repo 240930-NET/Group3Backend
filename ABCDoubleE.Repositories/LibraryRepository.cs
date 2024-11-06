@@ -29,12 +29,12 @@ public class LibraryRepository : ILibraryRepository
     }
 
     // Add a new library
-    public async Task AddLibraryAsync(Library library)
+    public async Task<Library> AddLibraryAsync(Library library)
     {
-        await _context.Libraries.AddAsync(library);
-        await _context.SaveChangesAsync();
+    _context.Libraries.Add(library);
+    await _context.SaveChangesAsync();
+    return library;
     }
-
     // Update an existing library
     public async Task UpdateLibraryAsync(Library library)
     {

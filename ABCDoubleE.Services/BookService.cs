@@ -18,7 +18,7 @@ public class BookService : IBookService{
         List<Book> result = _bookrepo.GetAllBooks();
 
         if(result.Count ==0)
-            return new List<Book>();
+            throw new Exception("No books in the database.");
 
         else 
             return result;
@@ -29,7 +29,7 @@ public class BookService : IBookService{
 
         Book book = _bookrepo.GetBookByISBN(isbn);
         if(book==null)
-            return new Book();
+            throw new Exception($"Can't find book by ISBN: {isbn}!");
         else
             return book;
     }
@@ -39,18 +39,24 @@ public class BookService : IBookService{
 
         Book newbook = new(){
             isbn = book.isbn,
+            title = book.title,
             description = book.description,
             bookshelfBooks = [],
             reviewList = []
 
         };
 
-        if(book.isbn!=null){
+        Book searchedBook = _bookrepo.GetBookByISBN(newbook.isbn);
+
+        if(book.isbn!=""&&searchedBook==null){
             _bookrepo.AddBook(newbook);
             return $"Book added";
         }
+        if(searchedBook!=null){
+            throw new Exception("Duplicate ISBN");
+        }
         else{
-            throw new Exception("Invalid ISBN");
+            throw new Exception("Invalid empty ISBN");
         }
 
     }
@@ -64,6 +70,11 @@ public class BookService : IBookService{
         }
         else
             throw new Exception($"This Book with ISBN: {isbn} doesn't exist");
+    }
+
+    public async Task<List<Book>> SearchBooksAsync(string search)
+    {
+        return await _bookrepo.SearchBooksAsync(search);
     }
 
 }

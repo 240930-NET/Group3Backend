@@ -20,7 +20,7 @@ public class GoogleBooksService
     }
 
     // Method to search for books by a specific author and check for existing records
-    public async Task<List<Book>> SearchBooksByAuthorAsync(string authorName)
+    public async Task<List<Book>> PopulateDatabaseWithAuthorAsync(string authorName)
     {
         var response = await _httpClient.GetStringAsync(GoogleBooksApiUrl + $"inauthor:{authorName}");
         var json = JObject.Parse(response);
@@ -92,6 +92,73 @@ public class GoogleBooksService
 
         return books;
     }
+
+    public async Task<List<Book>> PopulateDatabaseWithTitleAsync(string title)
+    {
+        var response = await _httpClient.GetStringAsync(GoogleBooksApiUrl + $"intitle:{title}");
+        var json = JObject.Parse(response);
+
+        var books = new List<Book>();
+
+        var genreCache = new HashSet<string>();
+        var authorCache = new HashSet<string>();
+        var bookCache = new HashSet<string>();
+
+        foreach (var item in json["items"])
+        {
+            var volumeInfo = item["volumeInfo"];
+            var bookTitle = volumeInfo["title"]?.ToString() ?? "";
+            var isbn = volumeInfo["industryIdentifiers"]?.FirstOrDefault(i => i["type"]?.ToString() == "ISBN_13")?["identifier"]?.ToString() ?? "";
+            var description = volumeInfo["description"]?.ToString() ?? "";
+            var imageLink = volumeInfo["imageLinks"]?["thumbnail"]?.ToString() ?? "";
+            var authors = volumeInfo["authors"]?.ToObject<List<string>>() ?? new List<string>();
+            var categories = volumeInfo["categories"]?.ToObject<List<string>>() ?? new List<string>();
+
+            if (bookCache.Contains(isbn) || (await _lookupService.GetExistingBookAsync(isbn, bookTitle)) != null)
+            {
+                continue;
+            }
+
+            var book = new Book
+            {
+                title = bookTitle,
+                isbn = isbn,
+                description = description,
+                image = imageLink,
+                bookAuthors = new List<BookAuthor>(),
+                bookGenres = new List<BookGenre>()
+            };
+            bookCache.Add(isbn);
+
+            foreach (var anAuthor in authors)
+            {
+                if (!authorCache.Contains(anAuthor))
+                {
+                    var authorEntity = await _lookupService.GetOrAddAuthorAsync(anAuthor); //
+                    authorCache.Add(anAuthor);
+                }
+                book.bookAuthors.Add(new BookAuthor { book = book, author = await _lookupService.GetExistingAuthorAsync(anAuthor) });
+            }
+
+            foreach (var category in categories)
+            {
+                if (!genreCache.Contains(category))
+                {
+                    var genreEntity = await _lookupService.GetOrAddGenreAsync(category); 
+                }
+                book.bookGenres.Add(new BookGenre { book = book, genre = await _lookupService.GetExistingGenreAsync(category) });
+            }
+
+
+            _lookupService.TrackNewBook(book);
+            books.Add(book);
+        }
+
+        await _lookupService.SaveChangesAsync();
+
+        return books;
+    }
+
 
 
     public async Task<List<Book>> SearchBooksByTitleAsync(string title)

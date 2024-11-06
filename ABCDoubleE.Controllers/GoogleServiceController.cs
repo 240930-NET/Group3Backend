@@ -23,7 +23,7 @@ public class GoogleServiceController : ControllerBase
     [HttpPost("populate/books/by-author")]
     public async Task<IActionResult> PopulateBooksByAuthor([FromQuery] string authorName)
     {
-        var booksFromGoogle = await _googleBooksService.SearchBooksByAuthorAsync(authorName);
+        var booksFromGoogle = await _googleBooksService.PopulateDatabaseWithAuthorAsync(authorName);
 
         foreach (var book in booksFromGoogle)
         {
@@ -46,6 +46,34 @@ public class GoogleServiceController : ControllerBase
 
         await _context.SaveChangesAsync();
         return Ok($"Database populated with books by {authorName} from Google Books API.");
+    }
+
+    [HttpPost("populate/books/by-name")]
+    public async Task<IActionResult> PopulateBooksByName([FromQuery] string bookTitle)
+    {
+        var booksFromGoogle = await _googleBooksService.PopulateDatabaseWithTitleAsync(bookTitle);
+
+        foreach (var book in booksFromGoogle)
+        {
+            var existingBook = _context.Books.FirstOrDefault(b => b.isbn == book.isbn || b.title == book.title);
+
+            if (existingBook == null)
+            {
+                foreach (var bookAuthor in book.bookAuthors)
+                {
+                    var existingAuthor = _context.Authors.FirstOrDefault(a => a.name == bookAuthor.author.name);
+                    if (existingAuthor != null)
+                    {
+                        bookAuthor.author = existingAuthor;
+                    }
+                }
+
+                _context.Books.Add(book);
+            }
+        }
+
+        await _context.SaveChangesAsync();
+        return Ok($"Database populated with books with {bookTitle} from Google Books API.");
     }
 
     [HttpGet("search")]

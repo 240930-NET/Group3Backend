@@ -3,6 +3,7 @@ using ABCDoubleE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -10,9 +11,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABCDoubleE.API.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    partial class ABCDoubleEContextModelSnapshot : ModelSnapshot
+    [Migration("20241106001456_initialCreate")]
+    partial class initialCreate
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -79,7 +82,7 @@ namespace ABCDoubleE.API.Migrations
 
                     b.HasIndex("authorId");
 
-                    b.ToTable("BookAuthors");
+                    b.ToTable("BookAuthor");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.BookGenre", b =>
@@ -94,8 +97,7 @@ namespace ABCDoubleE.API.Migrations
 
                     b.HasIndex("genreId");
 
-                    b.ToTable("BookGenres");
-
+                    b.ToTable("BookGenre");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>

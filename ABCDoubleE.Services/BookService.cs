@@ -46,12 +46,17 @@ public class BookService : IBookService{
 
         };
 
-        if(book.isbn!=null){
+        Book searchedBook = _bookrepo.GetBookByISBN(newbook.isbn);
+
+        if(book.isbn!=""&&searchedBook==null){
             _bookrepo.AddBook(newbook);
             return $"Book added";
         }
+        if(searchedBook!=null){
+            throw new Exception("Duplicate ISBN");
+        }
         else{
-            throw new Exception("Invalid ISBN");
+            throw new Exception("Invalid empty ISBN");
         }
 
     }

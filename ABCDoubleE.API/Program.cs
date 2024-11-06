@@ -18,7 +18,7 @@ builder.Services.AddSwaggerGen();
 
 //retrive connectionstring
 string connectionString = builder.Configuration["ConnectionString:project2"];
-builder.Services.AddDbContext<ABCDoubleEContext>(options => options.UseSqlServer(connectionString, b => b.MigrationsAssembly("ABCDoubleE.API")));
+builder.Services.AddDbContext<ABCDoubleEContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("project2")));
 
 // load JWT key
 #if DEBUG

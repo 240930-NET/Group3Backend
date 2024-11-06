@@ -4,6 +4,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json.Linq;
 using ABCDoubleE.Models;
+using Microsoft.EntityFrameworkCore;
 namespace ABCDoubleE.Services;
 public class GoogleBooksService
 {
@@ -60,12 +61,25 @@ public class GoogleBooksService
                 book.bookAuthors.Add(new BookAuthor { book = book, author = authorEntity });
             }
 
-            foreach (var category in categories)
-            {
-                var existingGenre = await _lookupService.GetExistingGenreAsync(category);
-                var genreEntity = existingGenre ?? new Genre { name = category };
-                book.bookGenres.Add(new BookGenre { book = book, genre = genreEntity });
-            }
+
+              foreach (var category in categories)
+                {
+                    Genre genreEntity;
+                    try
+                    {
+                        genreEntity = await _lookupService.GetOrCreateGenreAsync(category);
+                    }
+                    catch (DbUpdateException)
+                    {
+                        genreEntity = await _lookupService.GetExistingGenreAsync(category);
+                    }
+
+                    if (!book.bookGenres.Any(bg => bg.genre.name == genreEntity.name))
+                    {
+                        book.bookGenres.Add(new BookGenre { book = book, genre = genreEntity });
+                    }
+                }
+
 
             books.Add(book);
         }

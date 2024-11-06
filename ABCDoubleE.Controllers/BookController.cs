@@ -59,5 +59,13 @@ public class BookController : Controller{
         }
     }
 
+    [HttpGet]
+    [Route("search")]
+    public async Task<IActionResult> SearchBooks([FromQuery] string search = "")
+    {
+        var books = await _bookservice.SearchBooksAsync(search);
+        return Ok(books);
+    }
+
 }
 

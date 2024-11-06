@@ -15,5 +15,7 @@ public interface IBookService{
 
     //DELETE METHODS
     public string DeleteBook(string isbn);
+
+    Task<List<Book>> SearchBooksAsync(string search);
 }
 

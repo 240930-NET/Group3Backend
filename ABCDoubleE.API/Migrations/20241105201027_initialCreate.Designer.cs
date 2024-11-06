@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ABCDoubleE.API.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    [Migration("20241105193210_initialCreate")]
+    [Migration("20241105201027_initialCreate")]
     partial class initialCreate
     {
         /// <inheritdoc />
@@ -170,7 +170,7 @@ namespace ABCDoubleE.API.Migrations
 
                     b.HasIndex("authorId");
 
-                    b.ToTable("PreferenceAuthor");
+                    b.ToTable("PreferenceAuthors");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.PreferenceBook", b =>
@@ -185,7 +185,7 @@ namespace ABCDoubleE.API.Migrations
 
                     b.HasIndex("bookId");
 
-                    b.ToTable("PreferenceBook");
+                    b.ToTable("PreferenceBooks");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.PreferenceGenre", b =>
@@ -200,7 +200,7 @@ namespace ABCDoubleE.API.Migrations
 
                     b.HasIndex("genreId");
 
-                    b.ToTable("PreferenceGenre");
+                    b.ToTable("PreferenceGenres");
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Review", b =>

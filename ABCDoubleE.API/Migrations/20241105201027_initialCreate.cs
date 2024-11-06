@@ -156,7 +156,7 @@ namespace ABCDoubleE.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PreferenceAuthor",
+                name: "PreferenceAuthors",
                 columns: table => new
                 {
                     preferenceId = table.Column<int>(type: "int", nullable: false),
@@ -164,15 +164,15 @@ namespace ABCDoubleE.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PreferenceAuthor", x => new { x.preferenceId, x.authorId });
+                    table.PrimaryKey("PK_PreferenceAuthors", x => new { x.preferenceId, x.authorId });
                     table.ForeignKey(
-                        name: "FK_PreferenceAuthor_Authors_authorId",
+                        name: "FK_PreferenceAuthors_Authors_authorId",
                         column: x => x.authorId,
                         principalTable: "Authors",
                         principalColumn: "authorId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PreferenceAuthor_Preferences_preferenceId",
+                        name: "FK_PreferenceAuthors_Preferences_preferenceId",
                         column: x => x.preferenceId,
                         principalTable: "Preferences",
                         principalColumn: "preferenceId",
@@ -180,7 +180,7 @@ namespace ABCDoubleE.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PreferenceBook",
+                name: "PreferenceBooks",
                 columns: table => new
                 {
                     preferenceId = table.Column<int>(type: "int", nullable: false),
@@ -188,15 +188,15 @@ namespace ABCDoubleE.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PreferenceBook", x => new { x.preferenceId, x.bookId });
+                    table.PrimaryKey("PK_PreferenceBooks", x => new { x.preferenceId, x.bookId });
                     table.ForeignKey(
-                        name: "FK_PreferenceBook_Books_bookId",
+                        name: "FK_PreferenceBooks_Books_bookId",
                         column: x => x.bookId,
                         principalTable: "Books",
                         principalColumn: "bookId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PreferenceBook_Preferences_preferenceId",
+                        name: "FK_PreferenceBooks_Preferences_preferenceId",
                         column: x => x.preferenceId,
                         principalTable: "Preferences",
                         principalColumn: "preferenceId",
@@ -204,7 +204,7 @@ namespace ABCDoubleE.API.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "PreferenceGenre",
+                name: "PreferenceGenres",
                 columns: table => new
                 {
                     preferenceId = table.Column<int>(type: "int", nullable: false),
@@ -212,15 +212,15 @@ namespace ABCDoubleE.API.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_PreferenceGenre", x => new { x.preferenceId, x.genreId });
+                    table.PrimaryKey("PK_PreferenceGenres", x => new { x.preferenceId, x.genreId });
                     table.ForeignKey(
-                        name: "FK_PreferenceGenre_Genres_genreId",
+                        name: "FK_PreferenceGenres_Genres_genreId",
                         column: x => x.genreId,
                         principalTable: "Genres",
                         principalColumn: "genreId",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PreferenceGenre_Preferences_preferenceId",
+                        name: "FK_PreferenceGenres_Preferences_preferenceId",
                         column: x => x.preferenceId,
                         principalTable: "Preferences",
                         principalColumn: "preferenceId",
@@ -268,18 +268,18 @@ namespace ABCDoubleE.API.Migrations
                 unique: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_PreferenceAuthor_authorId",
-                table: "PreferenceAuthor",
+                name: "IX_PreferenceAuthors_authorId",
+                table: "PreferenceAuthors",
                 column: "authorId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PreferenceBook_bookId",
-                table: "PreferenceBook",
+                name: "IX_PreferenceBooks_bookId",
+                table: "PreferenceBooks",
                 column: "bookId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PreferenceGenre_genreId",
-                table: "PreferenceGenre",
+                name: "IX_PreferenceGenres_genreId",
+                table: "PreferenceGenres",
                 column: "genreId");
 
             migrationBuilder.CreateIndex(
@@ -306,13 +306,13 @@ namespace ABCDoubleE.API.Migrations
                 name: "BookshelfBooks");
 
             migrationBuilder.DropTable(
-                name: "PreferenceAuthor");
+                name: "PreferenceAuthors");
 
             migrationBuilder.DropTable(
-                name: "PreferenceBook");
+                name: "PreferenceBooks");
 
             migrationBuilder.DropTable(
-                name: "PreferenceGenre");
+                name: "PreferenceGenres");
 
             migrationBuilder.DropTable(
                 name: "Reviews");

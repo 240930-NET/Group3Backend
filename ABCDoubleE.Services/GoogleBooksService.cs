@@ -35,15 +35,14 @@ public class GoogleBooksService
             var authors = volumeInfo["authors"]?.ToObject<List<string>>() ?? new List<string>();
             var categories = volumeInfo["categories"]?.ToObject<List<string>>() ?? new List<string>();
 
-            // Check if the book already exists
             var existingBook = await _lookupService.GetExistingBookAsync(isbn, title);
             if (existingBook != null)
             {
                 books.Add(existingBook);
-                continue; // Skip to next book if it already exists
+                continue; 
             }
 
-            // Create a new Book entity
+
             var book = new Book
             {
                 title = title,
@@ -54,15 +53,13 @@ public class GoogleBooksService
                 bookGenres = new List<BookGenre>()
             };
 
-            // Add authors, checking for existing records
-            foreach (var anAuthor in authors) // Renamed to 'author' instead of 'authorName'
+            foreach (var anAuthor in authors) 
             {
                 var existingAuthor = await _lookupService.GetExistingAuthorAsync(anAuthor);
                 var authorEntity = existingAuthor ?? new Author { name = anAuthor };
                 book.bookAuthors.Add(new BookAuthor { book = book, author = authorEntity });
             }
 
-            // Add categories as genres, checking for existing records
             foreach (var category in categories)
             {
                 var existingGenre = await _lookupService.GetExistingGenreAsync(category);

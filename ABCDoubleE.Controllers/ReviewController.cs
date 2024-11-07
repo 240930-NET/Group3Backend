@@ -68,6 +68,7 @@ public class ReviewController: Controller{
     }
 
 
+    /**
     [HttpPut]
     public async Task<IActionResult> EditReview([FromBody] Review review){
         try{
@@ -91,4 +92,5 @@ public class ReviewController: Controller{
             return BadRequest("Could not delete review: " + e.Message);
         }
     }
+    */
 }

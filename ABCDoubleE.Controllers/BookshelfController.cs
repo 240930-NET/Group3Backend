@@ -80,6 +80,46 @@ public class BookshelfController : Controller
 
         }
      }
+
+    [HttpGet("{bookshelfId}/books")]
+    public async Task<IActionResult> GetBooksByBookshelfId(int bookshelfId)
+    {
+        var books = await _bookshelfservice.GetBooksByBookshelfIdAsync(bookshelfId);
+        if (books == null)
+        {
+            return NotFound($"No books found for bookshelf with ID {bookshelfId}");
+        }
+
+        // Transform database book authors and genres to lists of names
+        var transformedBooksFromDatabase = books.Select(book => new
+        {
+            book.bookId,
+            book.isbn,
+            book.title,
+            book.description,
+            book.image,
+            authors = book.bookAuthors.Select(ba => ba.author.name).ToList(), // Transform authors to list of names
+            genres = book.bookGenres.Select(bg => bg.genre.name).ToList(), // Transform genres to list of names
+            book.bookshelfBooks,
+            book.reviewList
+        }).ToList();
+
+        return Ok(transformedBooksFromDatabase);
+    }
+
+    [HttpPost("{bookshelfId}/addBook")]
+    public async Task<IActionResult> AddBookToBookshelf(int bookshelfId, [FromBody] BookExternalDTO bookExternalDTO)
+    {
+        var result = await _bookshelfservice.AddBookToBookshelfAsync(bookshelfId, bookExternalDTO);
+
+        if (!result)
+        {
+            return BadRequest("Failed to add the book to the bookshelf.");
+        }
+
+        return Ok("Book successfully added to the bookshelf.");
+    }
+
    
 
 }

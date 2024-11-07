@@ -3,6 +3,7 @@
   <ItemGroup>
     <ProjectReference Include="..\ABCDoubleE.Models\ABCDoubleE.Models.csproj" />
     <ProjectReference Include="..\ABCDoubleE.Data\ABCDoubleE.Data.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.DTOs\ABCDoubleE.DTOs.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

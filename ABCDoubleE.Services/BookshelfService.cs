@@ -84,9 +84,17 @@ public class BookshelfService : IBookshelfService
         else
         {
             throw new Exception("Bookshelf does not exist!");
-        }
-        
+        }  
+    }
 
+    public async Task<IEnumerable<Book>> GetBooksByBookshelfIdAsync(int bookshelfId)
+    {
+        return await _bookshelfrepo.GetBooksByBookshelfIdAsync(bookshelfId);
+    }
+
+    public async Task<bool> AddBookToBookshelfAsync(int bookshelfId, BookExternalDTO bookExternalDTO)
+    {
+        return await _bookshelfrepo.AddBookToBookshelfAsync(bookshelfId, bookExternalDTO);
     }
 
 }

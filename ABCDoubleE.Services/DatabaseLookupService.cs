@@ -81,5 +81,13 @@ public class DatabaseLookupService
         return author;
     }
 
+    public async Task<List<string>> GetExistingISBNsAsync()
+    {
+        return await _context.Books
+            .Where(b => !string.IsNullOrEmpty(b.isbn))
+            .Select(b => b.isbn)
+            .ToListAsync();
+    }
+
 
 }

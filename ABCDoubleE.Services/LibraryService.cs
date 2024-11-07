@@ -6,10 +6,12 @@ namespace ABCDoubleE.Services;
 public class LibraryService : ILibraryService
 {
     private readonly ILibraryRepository _libraryRepository;
+    private readonly IUserRepository _userRepository;
 
-    public LibraryService(ILibraryRepository libraryRepository)
+    public LibraryService(ILibraryRepository libraryRepository,IUserRepository userRepository)
     {
         _libraryRepository = libraryRepository;
+        _userRepository = userRepository;
     }
 
     public async Task<Library> CreateLibraryAsync(int userId)
@@ -129,5 +131,15 @@ public class LibraryService : ILibraryService
 
         await _libraryRepository.DeleteLibraryAsync(libraryId);
         return true;
+    }
+
+    public async Task<IEnumerable<Bookshelf>> GetBookshelvesByLibraryIdAsync(int libraryId)
+    {
+        return await _libraryRepository.GetBookshelvesByLibraryIdAsync(libraryId);
+    }
+
+    public async Task<int?> GetLibraryIdByUserIdAsync(int userId)
+    {
+        return await _libraryRepository.GetLibraryIdByUserIdAsync(userId);
     }
 }

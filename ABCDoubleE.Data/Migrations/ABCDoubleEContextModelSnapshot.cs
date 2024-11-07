@@ -7,7 +7,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ABCDoubleE.API.Migrations
+namespace ABCDoubleE.Data.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
     partial class ABCDoubleEContextModelSnapshot : ModelSnapshot
@@ -95,7 +95,6 @@ namespace ABCDoubleE.API.Migrations
                     b.HasIndex("genreId");
 
                     b.ToTable("BookGenres");
-
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>

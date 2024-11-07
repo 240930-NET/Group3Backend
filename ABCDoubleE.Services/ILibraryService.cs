@@ -8,5 +8,8 @@ public interface ILibraryService
     Task<BookshelfDTO?> GetBookshelfByIdAsync(int libraryId, int bookshelfId); 
     Task<BookshelfDTO?> AddBookshelfAsync(int libraryId, BookshelfCreateDTO bookshelfCreateDto); 
     Task<bool> DeleteBookshelfAsync(int libraryId, int bookshelfId);  
-    Task<bool> DeleteLibraryAsync(int libraryId);                   
+    Task<bool> DeleteLibraryAsync(int libraryId);       
+    Task<IEnumerable<Bookshelf>> GetBookshelvesByLibraryIdAsync(int libraryId);
+    Task<int?> GetLibraryIdByUserIdAsync(int userId);
+
 }

@@ -2,10 +2,10 @@
 
 #nullable disable
 
-namespace ABCDoubleE.API.Migrations
+namespace ABCDoubleE.Data.Migrations
 {
     /// <inheritdoc />
-    public partial class AddBookGenreAndBookAuthor : Migration
+    public partial class Test : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

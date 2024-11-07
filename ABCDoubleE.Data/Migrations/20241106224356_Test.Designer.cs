@@ -8,11 +8,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ABCDoubleE.API.Migrations
+namespace ABCDoubleE.Data.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    [Migration("20241106003720_AddBookGenreAndBookAuthor")]
-    partial class AddBookGenreAndBookAuthor
+    [Migration("20241106224356_Test")]
+    partial class Test
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

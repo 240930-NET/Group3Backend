@@ -3,6 +3,7 @@ using ABCDoubleE.DTOs;
 using ABCDoubleE.Models;
 using ABCDoubleE.Repositories;
 using ABCDoubleE.Services;
+using Azure.Identity;
 using Microsoft.EntityFrameworkCore.Internal;
 using Microsoft.Extensions.Configuration.UserSecrets;
 using Moq;
@@ -73,6 +74,20 @@ public class UserServiceTests {
     }
 
     [Fact]
+    public async Task AddUserThrowsExceptionWhenUsernameAlreadyExists() {
+        //Arrange
+        UserService userService = new(mockUserRepo.Object);
+
+        User user = new User{userName = "username"};
+
+        mockUserRepo.Setup(Repo => Repo.GetUserByUserNameAsync("username"))
+            .ReturnsAsync(user);
+
+        //Act & Assert
+        await Assert.ThrowsAsync<InvalidOperationException>(() => userService.AddUser(user));
+    }
+
+    [Fact]
     public async Task GetUserByUserNameAsyncThrowsExceptionWhenNoUserName() {
         //Arrange
         UserService userService = new(mockUserRepo.Object);
@@ -128,6 +143,19 @@ public class UserServiceTests {
 
         //Assert
         Assert.Equal(updatedUser, result);
+    }
+
+    [Fact]
+    public async Task UpdateUserThrowsExceptionIfUserDoesNotExist() {
+        //Arrange
+        UserService userService = new(mockUserRepo.Object);
+        UserRegisterDTO user = new UserRegisterDTO{fullName = "updated1", userName = "updated2", password = "updated3"};
+
+        mockUserRepo.Setup(repo => repo.GetUserById(5))
+            .ReturnsAsync((User?)null);
+        
+        //Act & Assert
+        await Assert.ThrowsAsync<Exception>(() => userService.UpdateUser(user, 5));
     }
 
     [Fact]

@@ -52,7 +52,7 @@ public class BookService : IBookService{
             _bookrepo.AddBook(newbook);
             return $"Book added";
         }
-        if(searchedBook!=null){
+        if(searchedBook!=null&&searchedBook.isbn==newbook.isbn){
             throw new Exception("Duplicate ISBN");
         }
         else{

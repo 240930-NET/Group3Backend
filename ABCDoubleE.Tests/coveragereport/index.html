@@ -25,15 +25,15 @@
 </tr>
 <tr>
 <th>Classes:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="65">65</td>
 </tr>
 <tr>
 <th>Files:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="66">66</td>
 </tr>
 <tr>
 <th>Coverage date:</th>
-<td class="limit-width " title="11/7/2024 - 11:47:10 AM">11/7/2024 - 11:47:10 AM</td>
+<td class="limit-width " title="11/7/2024 - 1:32:07 PM">11/7/2024 - 1:32:07 PM</td>
 </tr>
 </table>
 </div>
@@ -42,28 +42,28 @@
 <div class="card">
 <div class="card-header">Line coverage</div>
 <div class="card-body">
-<div class="large">N/A</div>
+<div class="large cardpercentagebar cardpercentagebar82">18%</div>
 <div class="table">
 <table>
 <tr>
 <th>Covered lines:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="576">576</td>
 </tr>
 <tr>
 <th>Uncovered lines:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="2584">2584</td>
 </tr>
 <tr>
 <th>Coverable lines:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="3160">3160</td>
 </tr>
 <tr>
 <th>Total lines:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="4834">4834</td>
 </tr>
 <tr>
 <th>Line coverage:</th>
-<td class="limit-width right" title="N/A">N/A</td>
+<td class="limit-width right" title="576 of 3160">18.2%</td>
 </tr>
 </table>
 </div>
@@ -72,20 +72,20 @@
 <div class="card">
 <div class="card-header">Branch coverage</div>
 <div class="card-body">
-<div class="large">N/A</div>
+<div class="large cardpercentagebar cardpercentagebar71">28%</div>
 <div class="table">
 <table>
 <tr>
 <th>Covered branches:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="112">112</td>
 </tr>
 <tr>
 <th>Total branches:</th>
-<td class="limit-width right" title="0">0</td>
+<td class="limit-width right" title="388">388</td>
 </tr>
 <tr>
 <th>Branch coverage:</th>
-<td class="limit-width right" title="N/A">N/A</td>
+<td class="limit-width right" title="112 of 388">28.8%</td>
 </tr>
 </table>
 </div>
@@ -101,7 +101,147 @@
 </div>
 </div>
 </div>
+<h1>Risk Hotspots</h1>
 <risk-hotspots>
+<div class="table-responsive">
+<table class="overview table-fixed stripped">
+<colgroup>
+<col class="column-min-200" />
+<col class="column-min-200" />
+<col class="column-min-200" />
+<col class="column105" />
+<col class="column105" />
+</colgroup>
+<thead><tr><th>Assembly</th>
+<th>Class</th>
+<th>Method</th>
+<th>Crap Score <a href="https://googletesting.blogspot.de/2011/02/this-code-is-crap.html" target="_blank"><i class="icon-info-circled"></i></a></th>
+<th>Cyclomatic complexity <a href="https://en.wikipedia.org/wiki/Cyclomatic_complexity" target="_blank"><i class="icon-info-circled"></i></a></th>
+</tr></thead>
+<tbody>
+<tr>
+<td>ABCDoubleE.Services</td>
+<td><a href="ABCDoubleE.Services_GoogleBooksService.html">ABCDoubleE.Services.GoogleBooksService</a></td>
+<td title="SearchBooksByTitleAsync()"><a href="ABCDoubleE.Services_GoogleBooksService.html#file0_line165">SearchBooksByTitleAsync()</a></td><td class="lightred right">1332</td>
+<td class="lightred right">36</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Services</td>
+<td><a href="ABCDoubleE.Services_UserService.html">ABCDoubleE.Services.UserService</a></td>
+<td title="UpdateUserAsync()"><a href="ABCDoubleE.Services_UserService.html#file0_line72">UpdateUserAsync()</a></td><td class="lightred right">272</td>
+<td class="lightred right">16</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Repositories</td>
+<td><a href="ABCDoubleE.Repositories_BookshelfRepo.html">ABCDoubleE.Repositories.BookshelfRepo</a></td>
+<td title="AddBookToBookshelfAsync()"><a href="ABCDoubleE.Repositories_BookshelfRepo.html#file0_line63">AddBookToBookshelfAsync()</a></td><td class="lightred right">156</td>
+<td class="lightgreen right">12</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_LibraryController.html">LibraryController</a></td>
+<td title="GetUserBookshelves()"><a href="ABCDoubleE.Controllers_LibraryController.html#file0_line85">GetUserBookshelves()</a></td><td class="lightred right">110</td>
+<td class="lightgreen right">10</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_GoogleServiceController.html">GoogleServiceController</a></td>
+<td title="PopulateBooksByAuthor()"><a href="ABCDoubleE.Controllers_GoogleServiceController.html#file0_line25">PopulateBooksByAuthor()</a></td><td class="lightred right">72</td>
+<td class="lightgreen right">8</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_GoogleServiceController.html">GoogleServiceController</a></td>
+<td title="PopulateBooksByName()"><a href="ABCDoubleE.Controllers_GoogleServiceController.html#file0_line53">PopulateBooksByName()</a></td><td class="lightred right">72</td>
+<td class="lightgreen right">8</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_LibraryController.html">LibraryController</a></td>
+<td title="DeleteBookshelf()"><a href="ABCDoubleE.Controllers_LibraryController.html#file0_line112">DeleteBookshelf()</a></td><td class="lightred right">72</td>
+<td class="lightgreen right">8</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="GetPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line22">GetPreference()</a></td><td class="lightred right">72</td>
+<td class="lightgreen right">8</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Services</td>
+<td><a href="ABCDoubleE.Services_UserService.html">ABCDoubleE.Services.UserService</a></td>
+<td title="AddUser()"><a href="ABCDoubleE.Services_UserService.html#file0_line38">AddUser()</a></td><td class="lightred right">72</td>
+<td class="lightgreen right">8</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Services</td>
+<td><a href="ABCDoubleE.Services_UserService.html">ABCDoubleE.Services.UserService</a></td>
+<td title="UpdateUser()"><a href="ABCDoubleE.Services_UserService.html#file0_line115">UpdateUser()</a></td><td class="lightred right">72</td>
+<td class="lightgreen right">8</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Services</td>
+<td><a href="ABCDoubleE.Services_GoogleBooksService.html">ABCDoubleE.Services.GoogleBooksService</a></td>
+<td title="PopulateDatabaseWithTitleAsync()"><a href="ABCDoubleE.Services_GoogleBooksService.html#file0_line97">PopulateDatabaseWithTitleAsync()</a></td><td class="lightred right">44.12</td>
+<td class="lightred right">44</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Services</td>
+<td><a href="ABCDoubleE.Services_GoogleBooksService.html">ABCDoubleE.Services.GoogleBooksService</a></td>
+<td title="PopulateDatabaseWithAuthorAsync()"><a href="ABCDoubleE.Services_GoogleBooksService.html#file0_line24">PopulateDatabaseWithAuthorAsync()</a></td><td class="lightred right">44.11</td>
+<td class="lightred right">44</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_UserController.html">ABCDoubleE.Controllers.UserController</a></td>
+<td title="GetUserId()"><a href="ABCDoubleE.Controllers_UserController.html#file0_line39">GetUserId()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_UserController.html">ABCDoubleE.Controllers.UserController</a></td>
+<td title="GetUserProfile()"><a href="ABCDoubleE.Controllers_UserController.html#file0_line22">GetUserProfile()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="AddAuthorToPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line79">AddAuthorToPreference()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="AddBookToPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line92">AddBookToPreference()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="AddGenreToPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line67">AddGenreToPreference()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="RemoveAuthorFromPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line118">RemoveAuthorFromPreference()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="RemoveBookFromPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line130">RemoveBookFromPreference()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+<tr>
+<td>ABCDoubleE.Controllers</td>
+<td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td>
+<td title="RemoveGenreFromPreference()"><a href="ABCDoubleE.Controllers_PreferenceController.html#file0_line104">RemoveGenreFromPreference()</a></td><td class="lightred right">42</td>
+<td class="lightgreen right">6</td>
+</tr>
+</tbody>
+</table>
+</div>
 </risk-hotspots>
 <h1>Coverage</h1>
 <coverage-info>
@@ -124,18 +264,83 @@
 <tr class="header"><th></th><th colspan="6" class="center">Line coverage</th><th colspan="4" class="center">Branch coverage</th></tr>
 <tr><th>Name</th><th class="right">Covered</th><th class="right">Uncovered</th><th class="right">Coverable</th><th class="right">Total</th><th class="center" colspan="2">Percentage</th><th class="right">Covered</th><th class="right">Total</th><th class="center" colspan="2">Percentage</th></tr></thead>
 <tbody>
-<tr><th>ABCDoubleE.API</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
-<tr><th>ABCDoubleE.Controllers</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
-<tr><th>ABCDoubleE.Data</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
-<tr><th>ABCDoubleE.DTOs</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
-<tr><th>ABCDoubleE.Models</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
-<tr><th>ABCDoubleE.Repositories</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
-<tr><th>ABCDoubleE.Services</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th class="right">0</th><th title="" class="right"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
+<tr><th>ABCDoubleE.API</th><th class="right">0</th><th class="right">102</th><th class="right">102</th><th class="right">153</th><th title="0/102" class="right">0%</th><th><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">2</th><th class="right" title="0/2">0%</th><th><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.API_Program.html">Program</a></td><td class="right">0</td><td class="right">102</td><td class="right">102</td><td class="right">153</td><td title="0/102" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">2</td><td class="right" title="0/2">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><th>ABCDoubleE.Controllers</th><th class="right">0</th><th class="right">493</th><th class="right">493</th><th class="right">983</th><th title="0/493" class="right">0%</th><th><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">134</th><th class="right" title="0/134">0%</th><th><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.Controllers_AuthenticationController.html">ABCDoubleE.Controllers.AuthenticationController</a></td><td class="right">0</td><td class="right">33</td><td class="right">33</td><td class="right">70</td><td title="0/33" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">4</td><td class="right" title="0/4">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_AuthorController.html">ABCDoubleE.Controllers.AuthorController</a></td><td class="right">0</td><td class="right">15</td><td class="right">15</td><td class="right">42</td><td title="0/15" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">4</td><td class="right" title="0/4">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_BookController.html">ABCDoubleE.Controllers.BookController</a></td><td class="right">0</td><td class="right">34</td><td class="right">34</td><td class="right">71</td><td title="0/34" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_BookshelfController.html">ABCDoubleE.Controllers.BookshelfController</a></td><td class="right">0</td><td class="right">64</td><td class="right">64</td><td class="right">126</td><td title="0/64" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">4</td><td class="right" title="0/4">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_GenreController.html">ABCDoubleE.Controllers.GenreController</a></td><td class="right">0</td><td class="right">15</td><td class="right">15</td><td class="right">42</td><td title="0/15" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">4</td><td class="right" title="0/4">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_ReviewController.html">ABCDoubleE.Controllers.ReviewController</a></td><td class="right">0</td><td class="right">31</td><td class="right">31</td><td class="right">96</td><td title="0/31" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">2</td><td class="right" title="0/2">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_UserController.html">ABCDoubleE.Controllers.UserController</a></td><td class="right">0</td><td class="right">76</td><td class="right">76</td><td class="right">134</td><td title="0/76" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">22</td><td class="right" title="0/22">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_GoogleServiceController.html">GoogleServiceController</a></td><td class="right">0</td><td class="right">82</td><td class="right">82</td><td class="right">125</td><td title="0/82" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">16</td><td class="right" title="0/16">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_LibraryController.html">LibraryController</a></td><td class="right">0</td><td class="right">68</td><td class="right">68</td><td class="right">138</td><td title="0/68" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">26</td><td class="right" title="0/26">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Controllers_PreferenceController.html">PreferenceController</a></td><td class="right">0</td><td class="right">75</td><td class="right">75</td><td class="right">139</td><td title="0/75" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">52</td><td class="right" title="0/52">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><th>ABCDoubleE.Data</th><th class="right">99</th><th class="right">1295</th><th class="right">1394</th><th class="right">1595</th><th title="99/1394" class="right">7.1%</th><th><table class="coverage"><tr><td class="green covered7">&nbsp;</td><td class="red covered93">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.Data_ABCDoubleEContext.html">ABCDoubleE.Data.ABCDoubleEContext</a></td><td class="right">99</td><td class="right">1</td><td class="right">100</td><td class="right">143</td><td title="99/100" class="right">99%</td><td><table class="coverage"><tr><td class="green covered99">&nbsp;</td><td class="red covered1">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Data_ABCDoubleEContextModelSnapshot.html">ABCDoubleE.Data.Migrations.ABCDoubleEContextModelSnapshot</a></td><td class="right">0</td><td class="right">470</td><td class="right">470</td><td class="right">521</td><td title="0/470" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Data_Test.html">ABCDoubleE.Data.Migrations.Test</a></td><td class="right">0</td><td class="right">824</td><td class="right">824</td><td class="right">931</td><td title="0/824" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><th>ABCDoubleE.DTOs</th><th class="right">12</th><th class="right">30</th><th class="right">42</th><th class="right">134</th><th title="12/42" class="right">28.5%</th><th><table class="coverage"><tr><td class="green covered28">&nbsp;</td><td class="red covered72">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.DTOs_AddAuthorDTO.html">ABCDoubleE.DTOs.AddAuthorDTO</a></td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right">7</td><td title="0/1" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_AddGenreDTO.html">ABCDoubleE.DTOs.AddGenreDTO</a></td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right">7</td><td title="0/1" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_BookDTO.html">ABCDoubleE.DTOs.BookDTO</a></td><td class="right">3</td><td class="right">0</td><td class="right">3</td><td class="right">7</td><td title="3/3" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_BookExternalDTO.html">ABCDoubleE.DTOs.BookExternalDTO</a></td><td class="right">0</td><td class="right">6</td><td class="right">6</td><td class="right">12</td><td title="0/6" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_BookshelfCreateDTO.html">ABCDoubleE.DTOs.BookshelfCreateDTO</a></td><td class="right">1</td><td class="right">0</td><td class="right">1</td><td class="right">6</td><td title="1/1" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_BookshelfDTO.html">ABCDoubleE.DTOs.BookshelfDTO</a></td><td class="right">2</td><td class="right">0</td><td class="right">2</td><td class="right">8</td><td title="2/2" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_BookshelfUpdateDTO.html">ABCDoubleE.DTOs.BookshelfUpdateDTO</a></td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right">5</td><td title="0/1" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_LibraryCreateDTO.html">ABCDoubleE.DTOs.LibraryCreateDTO</a></td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right">6</td><td title="0/1" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_LibraryDTO.html">ABCDoubleE.DTOs.LibraryDTO</a></td><td class="right">2</td><td class="right">0</td><td class="right">2</td><td class="right">8</td><td title="2/2" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_LibraryUpdateDTO.html">ABCDoubleE.DTOS.LibraryUpdateDTO</a></td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right">5</td><td title="0/1" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_newBookshelfDTO.html">ABCDoubleE.DTOs.newBookshelfDTO</a></td><td class="right">0</td><td class="right">1</td><td class="right">1</td><td class="right">7</td><td title="0/1" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_PreferenceCreateDTO.html">ABCDoubleE.DTOs.PreferenceCreateDTO</a></td><td class="right">0</td><td class="right">3</td><td class="right">3</td><td class="right">8</td><td title="0/3" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_PreferenceDTO.html">ABCDoubleE.DTOs.PreferenceDTO</a></td><td class="right">0</td><td class="right">4</td><td class="right">4</td><td class="right">9</td><td title="0/4" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_PreferenceUpdateDTO.html">ABCDoubleE.DTOs.PreferenceUpdateDTO</a></td><td class="right">0</td><td class="right">3</td><td class="right">3</td><td class="right">8</td><td title="0/3" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_ReviewCreateDTO.html">ABCDoubleE.DTOs.ReviewCreateDTO</a></td><td class="right">4</td><td class="right">0</td><td class="right">4</td><td class="right">9</td><td title="4/4" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_UserDTO.html">ABCDoubleE.DTOs.UserDTO</a></td><td class="right">0</td><td class="right">3</td><td class="right">3</td><td class="right">9</td><td title="0/3" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_UserLoginDTO.html">ABCDoubleE.DTOs.UserLoginDTO</a></td><td class="right">0</td><td class="right">2</td><td class="right">2</td><td class="right">6</td><td title="0/2" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.DTOs_UserRegisterDTO.html">ABCDoubleE.DTOs.UserRegisterDTO</a></td><td class="right">0</td><td class="right">3</td><td class="right">3</td><td class="right">7</td><td title="0/3" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><th>ABCDoubleE.Models</th><th class="right">48</th><th class="right">23</th><th class="right">71</th><th class="right">150</th><th title="48/71" class="right">67.6%</th><th><table class="coverage"><tr><td class="green covered68">&nbsp;</td><td class="red covered32">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">0</th><th class="right" title="-"></th><th><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.Models_Author.html">ABCDoubleE.Models.Author</a></td><td class="right">3</td><td class="right">0</td><td class="right">3</td><td class="right">7</td><td title="3/3" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_Book.html">ABCDoubleE.Models.Book</a></td><td class="right">8</td><td class="right">1</td><td class="right">9</td><td class="right">12</td><td title="8/9" class="right">88.8%</td><td><table class="coverage"><tr><td class="green covered89">&nbsp;</td><td class="red covered11">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_BookAuthor.html">ABCDoubleE.Models.BookAuthor</a></td><td class="right">2</td><td class="right">2</td><td class="right">4</td><td class="right">13</td><td title="2/4" class="right">50%</td><td><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_BookGenre.html">ABCDoubleE.Models.BookGenre</a></td><td class="right">2</td><td class="right">2</td><td class="right">4</td><td class="right">9</td><td title="2/4" class="right">50%</td><td><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_Bookshelf.html">ABCDoubleE.Models.Bookshelf</a></td><td class="right">2</td><td class="right">3</td><td class="right">5</td><td class="right">12</td><td title="2/5" class="right">40%</td><td><table class="coverage"><tr><td class="green covered40">&nbsp;</td><td class="red covered60">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_BookshelfBook.html">ABCDoubleE.Models.BookshelfBook</a></td><td class="right">0</td><td class="right">4</td><td class="right">4</td><td class="right">8</td><td title="0/4" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_Genre.html">ABCDoubleE.Models.Genre</a></td><td class="right">3</td><td class="right">0</td><td class="right">3</td><td class="right">7</td><td title="3/3" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_Library.html">ABCDoubleE.Models.Library</a></td><td class="right">3</td><td class="right">1</td><td class="right">4</td><td class="right">13</td><td title="3/4" class="right">75%</td><td><table class="coverage"><tr><td class="green covered75">&nbsp;</td><td class="red covered25">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_Preference.html">ABCDoubleE.Models.Preference</a></td><td class="right">5</td><td class="right">1</td><td class="right">6</td><td class="right">12</td><td title="5/6" class="right">83.3%</td><td><table class="coverage"><tr><td class="green covered83">&nbsp;</td><td class="red covered17">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_PreferenceAuthor.html">ABCDoubleE.Models.PreferenceAuthor</a></td><td class="right">2</td><td class="right">2</td><td class="right">4</td><td class="right">9</td><td title="2/4" class="right">50%</td><td><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_PreferenceBook.html">ABCDoubleE.Models.PreferenceBook</a></td><td class="right">2</td><td class="right">2</td><td class="right">4</td><td class="right">10</td><td title="2/4" class="right">50%</td><td><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_PreferenceGenre.html">ABCDoubleE.Models.PreferenceGenre</a></td><td class="right">2</td><td class="right">2</td><td class="right">4</td><td class="right">9</td><td title="2/4" class="right">50%</td><td><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_Review.html">ABCDoubleE.Models.Review</a></td><td class="right">5</td><td class="right">2</td><td class="right">7</td><td class="right">13</td><td title="5/7" class="right">71.4%</td><td><table class="coverage"><tr><td class="green covered71">&nbsp;</td><td class="red covered29">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Models_User.html">ABCDoubleE.Models.User</a></td><td class="right">9</td><td class="right">1</td><td class="right">10</td><td class="right">16</td><td title="9/10" class="right">90%</td><td><table class="coverage"><tr><td class="green covered90">&nbsp;</td><td class="red covered10">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><th>ABCDoubleE.Repositories</th><th class="right">0</th><th class="right">357</th><th class="right">357</th><th class="right">616</th><th title="0/357" class="right">0%</th><th><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></th><th class="right">0</th><th class="right">28</th><th class="right" title="0/28">0%</th><th><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.Repositories_AuthorRepository.html">ABCDoubleE.Repositories.AuthorRepository</a></td><td class="right">0</td><td class="right">25</td><td class="right">25</td><td class="right">50</td><td title="0/25" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">2</td><td class="right" title="0/2">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_BookRepo.html">ABCDoubleE.Repositories.BookRepo</a></td><td class="right">0</td><td class="right">36</td><td class="right">36</td><td class="right">61</td><td title="0/36" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">2</td><td class="right" title="0/2">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_BookshelfRepo.html">ABCDoubleE.Repositories.BookshelfRepo</a></td><td class="right">0</td><td class="right">92</td><td class="right">92</td><td class="right">140</td><td title="0/92" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">12</td><td class="right" title="0/12">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_GenreRepository.html">ABCDoubleE.Repositories.GenreRepository</a></td><td class="right">0</td><td class="right">20</td><td class="right">20</td><td class="right">42</td><td title="0/20" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">2</td><td class="right" title="0/2">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_LibraryRepository.html">ABCDoubleE.Repositories.LibraryRepository</a></td><td class="right">0</td><td class="right">51</td><td class="right">51</td><td class="right">85</td><td title="0/51" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">8</td><td class="right" title="0/8">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_PreferenceRepository.html">ABCDoubleE.Repositories.PreferenceRepository</a></td><td class="right">0</td><td class="right">73</td><td class="right">73</td><td class="right">115</td><td title="0/73" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">2</td><td class="right" title="0/2">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_ReviewRepository.html">ABCDoubleE.Repositories.ReviewRepository</a></td><td class="right">0</td><td class="right">24</td><td class="right">24</td><td class="right">56</td><td title="0/24" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Repositories_UserRepository.html">ABCDoubleE.Repositories.UserRepository</a></td><td class="right">0</td><td class="right">36</td><td class="right">36</td><td class="right">67</td><td title="0/36" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><th>ABCDoubleE.Services</th><th class="right">417</th><th class="right">284</th><th class="right">701</th><th class="right">1203</th><th title="417/701" class="right">59.4%</th><th><table class="coverage"><tr><td class="green covered59">&nbsp;</td><td class="red covered41">&nbsp;</td></tr></table></th><th class="right">112</th><th class="right">224</th><th class="right" title="112/224">50%</th><th><table class="coverage"><tr><td class="green covered50">&nbsp;</td><td class="red covered50">&nbsp;</td></tr></table></th></tr>
+<tr><td><a href="ABCDoubleE.Services_AuthenticationService.html">ABCDoubleE.Services.AuthenticationService</a></td><td class="right">62</td><td class="right">28</td><td class="right">90</td><td class="right">146</td><td title="62/90" class="right">68.8%</td><td><table class="coverage"><tr><td class="green covered69">&nbsp;</td><td class="red covered31">&nbsp;</td></tr></table></td><td class="right">10</td><td class="right">14</td><td class="right" title="10/14">71.4%</td><td><table class="coverage"><tr><td class="green covered71">&nbsp;</td><td class="red covered29">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_AuthorService.html">ABCDoubleE.Services.AuthorService</a></td><td class="right">10</td><td class="right">0</td><td class="right">10</td><td class="right">26</td><td title="10/10" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_BookService.html">ABCDoubleE.Services.BookService</a></td><td class="right">40</td><td class="right">3</td><td class="right">43</td><td class="right">81</td><td title="40/43" class="right">93%</td><td><table class="coverage"><tr><td class="green covered93">&nbsp;</td><td class="red covered7">&nbsp;</td></tr></table></td><td class="right">14</td><td class="right">14</td><td class="right" title="14/14">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_BookshelfService.html">ABCDoubleE.Services.BookshelfService</a></td><td class="right">0</td><td class="right">57</td><td class="right">57</td><td class="right">100</td><td title="0/57" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">10</td><td class="right" title="0/10">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_DatabaseLookupService.html">ABCDoubleE.Services.DatabaseLookupService</a></td><td class="right">33</td><td class="right">20</td><td class="right">53</td><td class="right">93</td><td title="33/53" class="right">62.2%</td><td><table class="coverage"><tr><td class="green covered62">&nbsp;</td><td class="red covered38">&nbsp;</td></tr></table></td><td class="right">8</td><td class="right">10</td><td class="right" title="8/10">80%</td><td><table class="coverage"><tr><td class="green covered80">&nbsp;</td><td class="red covered20">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_GenreService.html">ABCDoubleE.Services.GenreService</a></td><td class="right">10</td><td class="right">0</td><td class="right">10</td><td class="right">26</td><td title="10/10" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">0</td><td class="right" title="-"></td><td><table class="coverage"><tr><td class="gray covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_GoogleBooksService.html">ABCDoubleE.Services.GoogleBooksService</a></td><td class="right">106</td><td class="right">61</td><td class="right">167</td><td class="right">238</td><td title="106/167" class="right">63.4%</td><td><table class="coverage"><tr><td class="green covered63">&nbsp;</td><td class="red covered37">&nbsp;</td></tr></table></td><td class="right">50</td><td class="right">106</td><td class="right" title="50/106">47.1%</td><td><table class="coverage"><tr><td class="green covered47">&nbsp;</td><td class="red covered53">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_LibraryService.html">ABCDoubleE.Services.LibraryService</a></td><td class="right">69</td><td class="right">13</td><td class="right">82</td><td class="right">146</td><td title="69/82" class="right">84.1%</td><td><table class="coverage"><tr><td class="green covered84">&nbsp;</td><td class="red covered16">&nbsp;</td></tr></table></td><td class="right">9</td><td class="right">12</td><td class="right" title="9/12">75%</td><td><table class="coverage"><tr><td class="green covered75">&nbsp;</td><td class="red covered25">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_PreferenceService.html">ABCDoubleE.Services.PreferenceService</a></td><td class="right">44</td><td class="right">18</td><td class="right">62</td><td class="right">99</td><td title="44/62" class="right">70.9%</td><td><table class="coverage"><tr><td class="green covered71">&nbsp;</td><td class="red covered29">&nbsp;</td></tr></table></td><td class="right">5</td><td class="right">6</td><td class="right" title="5/6">83.3%</td><td><table class="coverage"><tr><td class="green covered83">&nbsp;</td><td class="red covered17">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_ReviewService.html">ABCDoubleE.Services.ReviewService</a></td><td class="right">43</td><td class="right">0</td><td class="right">43</td><td class="right">97</td><td title="43/43" class="right">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td><td class="right">16</td><td class="right">16</td><td class="right" title="16/16">100%</td><td><table class="coverage"><tr><td class="green covered100">&nbsp;</td></tr></table></td></tr>
+<tr><td><a href="ABCDoubleE.Services_UserService.html">ABCDoubleE.Services.UserService</a></td><td class="right">0</td><td class="right">84</td><td class="right">84</td><td class="right">151</td><td title="0/84" class="right">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td><td class="right">0</td><td class="right">36</td><td class="right" title="0/36">0%</td><td><table class="coverage"><tr><td class="red covered100">&nbsp;</td></tr></table></td></tr>
 </tbody>
 </table>
 </div>
 </coverage-info>
-<div class="footer">Generated by: ReportGenerator 5.3.11.0<br />11/7/2024 - 11:52:42 AM<br /><a href="https://github.com/danielpalme/ReportGenerator">GitHub</a> | <a href="https://reportgenerator.io">reportgenerator.io</a></div></div></div>
+<div class="footer">Generated by: ReportGenerator 5.3.11.0<br />11/7/2024 - 1:32:40 PM<br /><a href="https://github.com/danielpalme/ReportGenerator">GitHub</a> | <a href="https://reportgenerator.io">reportgenerator.io</a></div></div></div>
 <script type="text/javascript">
 /* <![CDATA[ */
 (function() {

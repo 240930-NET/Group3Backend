@@ -221,41 +221,228 @@ var assemblies = [
   {
     "name": "ABCDoubleE.API",
     "classes": [
+      { "name": "Program", "rp": "ABCDoubleE.API_Program.html", "cl": 0, "ucl": 102, "cal": 102, "tl": 153, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.Controllers",
     "classes": [
+      { "name": "ABCDoubleE.Controllers.AuthenticationController", "rp": "ABCDoubleE.Controllers_AuthenticationController.html", "cl": 0, "ucl": 33, "cal": 33, "tl": 70, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Controllers.AuthorController", "rp": "ABCDoubleE.Controllers_AuthorController.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 42, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Controllers.BookController", "rp": "ABCDoubleE.Controllers_BookController.html", "cl": 0, "ucl": 34, "cal": 34, "tl": 71, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Controllers.BookshelfController", "rp": "ABCDoubleE.Controllers_BookshelfController.html", "cl": 0, "ucl": 64, "cal": 64, "tl": 126, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Controllers.GenreController", "rp": "ABCDoubleE.Controllers_GenreController.html", "cl": 0, "ucl": 15, "cal": 15, "tl": 42, "cb": 0, "tb": 4, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Controllers.ReviewController", "rp": "ABCDoubleE.Controllers_ReviewController.html", "cl": 0, "ucl": 31, "cal": 31, "tl": 96, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Controllers.UserController", "rp": "ABCDoubleE.Controllers_UserController.html", "cl": 0, "ucl": 76, "cal": 76, "tl": 134, "cb": 0, "tb": 22, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "GoogleServiceController", "rp": "ABCDoubleE.Controllers_GoogleServiceController.html", "cl": 0, "ucl": 82, "cal": 82, "tl": 125, "cb": 0, "tb": 16, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "LibraryController", "rp": "ABCDoubleE.Controllers_LibraryController.html", "cl": 0, "ucl": 68, "cal": 68, "tl": 138, "cb": 0, "tb": 26, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "PreferenceController", "rp": "ABCDoubleE.Controllers_PreferenceController.html", "cl": 0, "ucl": 75, "cal": 75, "tl": 139, "cb": 0, "tb": 52, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.Data",
     "classes": [
+      { "name": "ABCDoubleE.Data.ABCDoubleEContext", "rp": "ABCDoubleE.Data_ABCDoubleEContext.html", "cl": 99, "ucl": 1, "cal": 100, "tl": 143, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Data.Migrations.ABCDoubleEContextModelSnapshot", "rp": "ABCDoubleE.Data_ABCDoubleEContextModelSnapshot.html", "cl": 0, "ucl": 470, "cal": 470, "tl": 521, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Data.Migrations.Test", "rp": "ABCDoubleE.Data_Test.html", "cl": 0, "ucl": 824, "cal": 824, "tl": 931, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.DTOs",
     "classes": [
+      { "name": "ABCDoubleE.DTOs.AddAuthorDTO", "rp": "ABCDoubleE.DTOs_AddAuthorDTO.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.AddGenreDTO", "rp": "ABCDoubleE.DTOs_AddGenreDTO.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.BookDTO", "rp": "ABCDoubleE.DTOs_BookDTO.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.BookExternalDTO", "rp": "ABCDoubleE.DTOs_BookExternalDTO.html", "cl": 0, "ucl": 6, "cal": 6, "tl": 12, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.BookshelfCreateDTO", "rp": "ABCDoubleE.DTOs_BookshelfCreateDTO.html", "cl": 1, "ucl": 0, "cal": 1, "tl": 6, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.BookshelfDTO", "rp": "ABCDoubleE.DTOs_BookshelfDTO.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.BookshelfUpdateDTO", "rp": "ABCDoubleE.DTOs_BookshelfUpdateDTO.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 5, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.LibraryCreateDTO", "rp": "ABCDoubleE.DTOs_LibraryCreateDTO.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 6, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.LibraryDTO", "rp": "ABCDoubleE.DTOs_LibraryDTO.html", "cl": 2, "ucl": 0, "cal": 2, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOS.LibraryUpdateDTO", "rp": "ABCDoubleE.DTOs_LibraryUpdateDTO.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 5, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.newBookshelfDTO", "rp": "ABCDoubleE.DTOs_newBookshelfDTO.html", "cl": 0, "ucl": 1, "cal": 1, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.PreferenceCreateDTO", "rp": "ABCDoubleE.DTOs_PreferenceCreateDTO.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.PreferenceDTO", "rp": "ABCDoubleE.DTOs_PreferenceDTO.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.PreferenceUpdateDTO", "rp": "ABCDoubleE.DTOs_PreferenceUpdateDTO.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.ReviewCreateDTO", "rp": "ABCDoubleE.DTOs_ReviewCreateDTO.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.UserDTO", "rp": "ABCDoubleE.DTOs_UserDTO.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.UserLoginDTO", "rp": "ABCDoubleE.DTOs_UserLoginDTO.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 6, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.UserRegisterDTO", "rp": "ABCDoubleE.DTOs_UserRegisterDTO.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.Models",
     "classes": [
+      { "name": "ABCDoubleE.Models.Author", "rp": "ABCDoubleE.Models_Author.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.Book", "rp": "ABCDoubleE.Models_Book.html", "cl": 8, "ucl": 1, "cal": 9, "tl": 12, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.BookAuthor", "rp": "ABCDoubleE.Models_BookAuthor.html", "cl": 2, "ucl": 2, "cal": 4, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.BookGenre", "rp": "ABCDoubleE.Models_BookGenre.html", "cl": 2, "ucl": 2, "cal": 4, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.Bookshelf", "rp": "ABCDoubleE.Models_Bookshelf.html", "cl": 2, "ucl": 3, "cal": 5, "tl": 12, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.BookshelfBook", "rp": "ABCDoubleE.Models_BookshelfBook.html", "cl": 0, "ucl": 4, "cal": 4, "tl": 8, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.Genre", "rp": "ABCDoubleE.Models_Genre.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.Library", "rp": "ABCDoubleE.Models_Library.html", "cl": 3, "ucl": 1, "cal": 4, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.Preference", "rp": "ABCDoubleE.Models_Preference.html", "cl": 5, "ucl": 1, "cal": 6, "tl": 12, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.PreferenceAuthor", "rp": "ABCDoubleE.Models_PreferenceAuthor.html", "cl": 2, "ucl": 2, "cal": 4, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.PreferenceBook", "rp": "ABCDoubleE.Models_PreferenceBook.html", "cl": 2, "ucl": 2, "cal": 4, "tl": 10, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.PreferenceGenre", "rp": "ABCDoubleE.Models_PreferenceGenre.html", "cl": 2, "ucl": 2, "cal": 4, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.Review", "rp": "ABCDoubleE.Models_Review.html", "cl": 5, "ucl": 2, "cal": 7, "tl": 13, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Models.User", "rp": "ABCDoubleE.Models_User.html", "cl": 9, "ucl": 1, "cal": 10, "tl": 16, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.Repositories",
     "classes": [
+      { "name": "ABCDoubleE.Repositories.AuthorRepository", "rp": "ABCDoubleE.Repositories_AuthorRepository.html", "cl": 0, "ucl": 25, "cal": 25, "tl": 50, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.BookRepo", "rp": "ABCDoubleE.Repositories_BookRepo.html", "cl": 0, "ucl": 36, "cal": 36, "tl": 61, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.BookshelfRepo", "rp": "ABCDoubleE.Repositories_BookshelfRepo.html", "cl": 0, "ucl": 92, "cal": 92, "tl": 140, "cb": 0, "tb": 12, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.GenreRepository", "rp": "ABCDoubleE.Repositories_GenreRepository.html", "cl": 0, "ucl": 20, "cal": 20, "tl": 42, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.LibraryRepository", "rp": "ABCDoubleE.Repositories_LibraryRepository.html", "cl": 0, "ucl": 51, "cal": 51, "tl": 85, "cb": 0, "tb": 8, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.PreferenceRepository", "rp": "ABCDoubleE.Repositories_PreferenceRepository.html", "cl": 0, "ucl": 73, "cal": 73, "tl": 115, "cb": 0, "tb": 2, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.ReviewRepository", "rp": "ABCDoubleE.Repositories_ReviewRepository.html", "cl": 0, "ucl": 24, "cal": 24, "tl": 56, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Repositories.UserRepository", "rp": "ABCDoubleE.Repositories_UserRepository.html", "cl": 0, "ucl": 36, "cal": 36, "tl": 67, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.Services",
     "classes": [
+      { "name": "ABCDoubleE.Services.AuthenticationService", "rp": "ABCDoubleE.Services_AuthenticationService.html", "cl": 62, "ucl": 28, "cal": 90, "tl": 146, "cb": 10, "tb": 14, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.AuthorService", "rp": "ABCDoubleE.Services_AuthorService.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.BookService", "rp": "ABCDoubleE.Services_BookService.html", "cl": 40, "ucl": 3, "cal": 43, "tl": 81, "cb": 14, "tb": 14, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.BookshelfService", "rp": "ABCDoubleE.Services_BookshelfService.html", "cl": 0, "ucl": 57, "cal": 57, "tl": 100, "cb": 0, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.DatabaseLookupService", "rp": "ABCDoubleE.Services_DatabaseLookupService.html", "cl": 33, "ucl": 20, "cal": 53, "tl": 93, "cb": 8, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.GenreService", "rp": "ABCDoubleE.Services_GenreService.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.GoogleBooksService", "rp": "ABCDoubleE.Services_GoogleBooksService.html", "cl": 106, "ucl": 61, "cal": 167, "tl": 238, "cb": 50, "tb": 106, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.LibraryService", "rp": "ABCDoubleE.Services_LibraryService.html", "cl": 69, "ucl": 13, "cal": 82, "tl": 146, "cb": 9, "tb": 12, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.PreferenceService", "rp": "ABCDoubleE.Services_PreferenceService.html", "cl": 44, "ucl": 18, "cal": 62, "tl": 99, "cb": 5, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.ReviewService", "rp": "ABCDoubleE.Services_ReviewService.html", "cl": 43, "ucl": 0, "cal": 43, "tl": 97, "cb": 16, "tb": 16, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.UserService", "rp": "ABCDoubleE.Services_UserService.html", "cl": 0, "ucl": 84, "cal": 84, "tl": 151, "cb": 0, "tb": 36, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
-var metrics = [];
+var metrics = [{ "name": "Crap Score", "abbreviation": "crp", "explanationUrl": "https://googletesting.blogspot.de/2011/02/this-code-is-crap.html" }, { "name": "Cyclomatic complexity", "abbreviation": "cc", "explanationUrl": "https://en.wikipedia.org/wiki/Cyclomatic_complexity" }, { "name": "Line coverage", "abbreviation": "cov", "explanationUrl": "https://en.wikipedia.org/wiki/Code_coverage" }, { "name": "Branch coverage", "abbreviation": "bcov", "explanationUrl": "https://en.wikipedia.org/wiki/Code_coverage" }];
 
 var historicCoverageExecutionTimes = [];
 
 var riskHotspotMetrics = [
+      { "name": "Crap Score", "explanationUrl": "https://googletesting.blogspot.de/2011/02/this-code-is-crap.html" },
+      { "name": "Cyclomatic complexity", "explanationUrl": "https://en.wikipedia.org/wiki/Cyclomatic_complexity" },
 ];
 
 var riskHotspots = [
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.GoogleBooksService", "reportPath": "ABCDoubleE.Services_GoogleBooksService.html", "methodName": "SearchBooksByTitleAsync()", "methodShortName": "SearchBooksByTitleAsync()", "fileIndex": 0, "line": 165,
+    "metrics": [
+      { "value": 1332, "exceeded": true },
+      { "value": 36, "exceeded": true },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "UpdateUserAsync()", "methodShortName": "UpdateUserAsync()", "fileIndex": 0, "line": 72,
+    "metrics": [
+      { "value": 272, "exceeded": true },
+      { "value": 16, "exceeded": true },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Repositories", "class": "ABCDoubleE.Repositories.BookshelfRepo", "reportPath": "ABCDoubleE.Repositories_BookshelfRepo.html", "methodName": "AddBookToBookshelfAsync()", "methodShortName": "AddBookToBookshelfAsync()", "fileIndex": 0, "line": 63,
+    "metrics": [
+      { "value": 156, "exceeded": true },
+      { "value": 12, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "LibraryController", "reportPath": "ABCDoubleE.Controllers_LibraryController.html", "methodName": "GetUserBookshelves()", "methodShortName": "GetUserBookshelves()", "fileIndex": 0, "line": 85,
+    "metrics": [
+      { "value": 110, "exceeded": true },
+      { "value": 10, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "GoogleServiceController", "reportPath": "ABCDoubleE.Controllers_GoogleServiceController.html", "methodName": "PopulateBooksByAuthor()", "methodShortName": "PopulateBooksByAuthor()", "fileIndex": 0, "line": 25,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "GoogleServiceController", "reportPath": "ABCDoubleE.Controllers_GoogleServiceController.html", "methodName": "PopulateBooksByName()", "methodShortName": "PopulateBooksByName()", "fileIndex": 0, "line": 53,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "LibraryController", "reportPath": "ABCDoubleE.Controllers_LibraryController.html", "methodName": "DeleteBookshelf()", "methodShortName": "DeleteBookshelf()", "fileIndex": 0, "line": 112,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "GetPreference()", "methodShortName": "GetPreference()", "fileIndex": 0, "line": 22,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "AddUser()", "methodShortName": "AddUser()", "fileIndex": 0, "line": 38,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "UpdateUser()", "methodShortName": "UpdateUser()", "fileIndex": 0, "line": 115,
+    "metrics": [
+      { "value": 72, "exceeded": true },
+      { "value": 8, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.GoogleBooksService", "reportPath": "ABCDoubleE.Services_GoogleBooksService.html", "methodName": "PopulateDatabaseWithTitleAsync()", "methodShortName": "PopulateDatabaseWithTitleAsync()", "fileIndex": 0, "line": 97,
+    "metrics": [
+      { "value": 44.12, "exceeded": true },
+      { "value": 44, "exceeded": true },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.GoogleBooksService", "reportPath": "ABCDoubleE.Services_GoogleBooksService.html", "methodName": "PopulateDatabaseWithAuthorAsync()", "methodShortName": "PopulateDatabaseWithAuthorAsync()", "fileIndex": 0, "line": 24,
+    "metrics": [
+      { "value": 44.11, "exceeded": true },
+      { "value": 44, "exceeded": true },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "ABCDoubleE.Controllers.UserController", "reportPath": "ABCDoubleE.Controllers_UserController.html", "methodName": "GetUserId()", "methodShortName": "GetUserId()", "fileIndex": 0, "line": 39,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "ABCDoubleE.Controllers.UserController", "reportPath": "ABCDoubleE.Controllers_UserController.html", "methodName": "GetUserProfile()", "methodShortName": "GetUserProfile()", "fileIndex": 0, "line": 22,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "AddAuthorToPreference()", "methodShortName": "AddAuthorToPreference()", "fileIndex": 0, "line": 79,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "AddBookToPreference()", "methodShortName": "AddBookToPreference()", "fileIndex": 0, "line": 92,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "AddGenreToPreference()", "methodShortName": "AddGenreToPreference()", "fileIndex": 0, "line": 67,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "RemoveAuthorFromPreference()", "methodShortName": "RemoveAuthorFromPreference()", "fileIndex": 0, "line": 118,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "RemoveBookFromPreference()", "methodShortName": "RemoveBookFromPreference()", "fileIndex": 0, "line": 130,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Controllers", "class": "PreferenceController", "reportPath": "ABCDoubleE.Controllers_PreferenceController.html", "methodName": "RemoveGenreFromPreference()", "methodShortName": "RemoveGenreFromPreference()", "fileIndex": 0, "line": 104,
+    "metrics": [
+      { "value": 42, "exceeded": true },
+      { "value": 6, "exceeded": false },
+    ]},
 ];
 
 var branchCoverageAvailable = true;

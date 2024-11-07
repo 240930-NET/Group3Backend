@@ -55,5 +55,13 @@ public class UserRepository : IUserRepository {
         await _context.SaveChangesAsync();
     }
 
+    public async Task<User> GetUserWithLibraryAndBookshelvesAsync(int userId)
+    {
+        return await _context.Users
+            .Include(u => u.library)
+                .ThenInclude(l => l.bookshelfList) // Eager load bookshelves
+            .FirstOrDefaultAsync(u => u.userId == userId);
+    }
+
 
 }

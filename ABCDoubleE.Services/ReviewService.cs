@@ -67,6 +67,7 @@ public class ReviewService : IReviewService
         }
     }
 
+    /**
     public async Task UpdateReviewAsync(Review review){
         if(await _reviewRepository.GetReviewByIdAsync(review.reviewId) == null){
             throw new Exception($"Invalid. Must enter an id to update.");
@@ -81,6 +82,7 @@ public class ReviewService : IReviewService
             await _reviewRepository.UpdateReviewAsync(review);
         }
     }
+    
 
     public async Task DeleteReviewByIdAsync(int reviewId){
         var review = await _reviewRepository.GetReviewByIdAsync(reviewId);
@@ -91,4 +93,5 @@ public class ReviewService : IReviewService
             await _reviewRepository.DeleteReviewByIdAsync(reviewId);
         }
     }
+    */
 }

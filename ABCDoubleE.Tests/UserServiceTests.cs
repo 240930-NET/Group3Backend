@@ -78,7 +78,7 @@ public class UserServiceTests {
         //Arrange
         UserService userService = new(mockUserRepo.Object);
 
-        User user = new User{userName = "username"};
+        User user = new User{userName = "username", fullName = "fullname", passwordHash = "passwordHash"};
 
         mockUserRepo.Setup(Repo => Repo.GetUserByUserNameAsync("username"))
             .ReturnsAsync(user);

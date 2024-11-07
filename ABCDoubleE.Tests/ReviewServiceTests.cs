@@ -140,6 +140,123 @@ public class ReviewServiceTests
         Assert.ThrowsAsync<Exception>(() => reviewService.GetAllReviewsByBookIdAsync(500));
     }
 
+    [Fact]
+    public async Task AddReviewAsyncAddsToList(){
+        Mock<IReviewRepository> mockRepo = new();
+        ReviewService reviewService = new(mockRepo.Object);
+
+        List<Review> rList = [
+            new Review {rating = 4, reviewText = "Eh.", userId = 2, bookId = 4},
+            new Review {rating = 10, reviewText = "Wow!", userId = 1, bookId = 2}
+        ];
+
+        ReviewCreateDTO dto = new ReviewCreateDTO {rating = 10, reviewText = "Loved this book!", bookId = 2, userId = 1};
+        Review review = new Review {rating = dto.rating, reviewText = dto.reviewText, userId = dto.userId, bookId = dto.bookId};
+
+        mockRepo.Setup(repo => repo.AddReviewAsync(It.IsAny<Review>()))!
+            .Callback(() => rList.Add(review));
+
+        await reviewService.AddReviewAsync(dto);
+
+        Assert.Contains(rList, r => r.reviewText!.Equals("Loved this book!"));
+    }
+
+    [Fact]
+    public async Task AddReviewAsyncThrowsExceptionOnRatingUnderZero(){
+        Mock<IReviewRepository> mockRepo = new();
+        ReviewService reviewService = new(mockRepo.Object);
+
+        List<Review> rList = [
+            new Review {rating = 4, reviewText = "Eh.", userId = 2, bookId = 4},
+            new Review {rating = 10, reviewText = "Wow!", userId = 1, bookId = 2}
+        ];
+
+
+        ReviewCreateDTO dto = new ReviewCreateDTO {rating = -10, reviewText = "Hated this book!", bookId = 2, userId = 1};
+        Review review = new Review {rating = dto.rating, reviewText = dto.reviewText, userId = dto.userId, bookId = dto.bookId};
+
+        mockRepo.Setup(repo => repo.AddReviewAsync(It.IsAny<Review>()))!
+            .Callback(() => rList.Add(review));
+
+        Assert.ThrowsAsync<Exception>(() => reviewService.AddReviewAsync(dto));
+    }
+
+    [Fact]
+    public async Task AddReviewAsyncThrowsExceptionOnEmptyReview(){
+        Mock<IReviewRepository> mockRepo = new();
+        ReviewService reviewService = new(mockRepo.Object);
+
+        List<Review> rList = [
+            new Review {rating = 4, reviewText = "Eh.", userId = 2, bookId = 4},
+            new Review {rating = 10, reviewText = "Wow!", userId = 1, bookId = 2}
+        ];
+
+        ReviewCreateDTO dto = new ReviewCreateDTO {rating = 6, reviewText = "", bookId = 2, userId = 1};
+        Review review = new Review {rating = dto.rating, reviewText = dto.reviewText, userId = dto.userId, bookId = dto.bookId};
+
+        mockRepo.Setup(repo => repo.AddReviewAsync(It.IsAny<Review>()))!
+            .Callback(() => rList.Add(review));
+
+        Assert.ThrowsAsync<Exception>(() => reviewService.AddReviewAsync(dto));
+    }
+
+    [Fact]
+    public async Task AddReviewAsyncThrowsExceptionOnNullReview(){
+        Mock<IReviewRepository> mockRepo = new();
+        ReviewService reviewService = new(mockRepo.Object);
+
+        List<Review> rList = [
+            new Review {rating = 4, reviewText = "Eh.", userId = 2, bookId = 4},
+            new Review {rating = 10, reviewText = "Wow!", userId = 1, bookId = 2}
+        ];
+
+        ReviewCreateDTO dto = new ReviewCreateDTO {rating = 6, reviewText = null, bookId = 2, userId = 1};
+        Review review = new Review {rating = dto.rating, reviewText = dto.reviewText, userId = dto.userId, bookId = dto.bookId};
+
+        mockRepo.Setup(repo => repo.AddReviewAsync(It.IsAny<Review>()))!
+            .Callback(() => rList.Add(review));
+
+        Assert.ThrowsAsync<Exception>(() => reviewService.AddReviewAsync(dto));
+    }
+
+    [Fact]
+    public async Task AddReviewAsyncThrowsExceptionOnBookIdUnderZero(){
+        Mock<IReviewRepository> mockRepo = new();
+        ReviewService reviewService = new(mockRepo.Object);
+
+        List<Review> rList = [
+            new Review {rating = 4, reviewText = "Eh.", userId = 2, bookId = 4},
+            new Review {rating = 10, reviewText = "Wow!", userId = 1, bookId = 2}
+        ];
+
+        ReviewCreateDTO dto = new ReviewCreateDTO {rating = 6, reviewText = "Wow", bookId = -1, userId = 1};
+        Review review = new Review {rating = dto.rating, reviewText = dto.reviewText, userId = dto.userId, bookId = dto.bookId};
+
+        mockRepo.Setup(repo => repo.AddReviewAsync(It.IsAny<Review>()))!
+            .Callback(() => rList.Add(review));
+
+        Assert.ThrowsAsync<Exception>(() => reviewService.AddReviewAsync(dto));
+    }
+
+    [Fact]
+    public async Task AddReviewAsyncThrowsExceptionOnUserIdUnderZero(){
+        Mock<IReviewRepository> mockRepo = new();
+        ReviewService reviewService = new(mockRepo.Object);
+
+        List<Review> rList = [
+            new Review {rating = 4, reviewText = "Eh.", userId = 2, bookId = 4},
+            new Review {rating = 10, reviewText = "Wow!", userId = 1, bookId = 2}
+        ];
+
+        ReviewCreateDTO dto = new ReviewCreateDTO {rating = 6, reviewText = "Wow", bookId = 2, userId = -1};
+        Review review = new Review {rating = dto.rating, reviewText = dto.reviewText, userId = dto.userId, bookId = dto.bookId};
+
+        mockRepo.Setup(repo => repo.AddReviewAsync(It.IsAny<Review>()))!
+            .Callback(() => rList.Add(review));
+
+        Assert.ThrowsAsync<Exception>(() => reviewService.AddReviewAsync(dto));
+    }
+
     /**
     [Theory]
     [InlineData(1)]

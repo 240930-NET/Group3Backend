@@ -8,10 +8,6 @@ namespace ABCDoubleE.Tests;
 
 public class ReviewServiceTests
 {
-
-    //GetAllReviewsByBookIdAsync
-    //AddReviewAsync(ReviewCreateDTO reviewCreateDTO)
-
     [Fact]
     public async Task GetAllReviewsAsyncReturnsProperList(){
         Mock<IReviewRepository> mockRepo = new();

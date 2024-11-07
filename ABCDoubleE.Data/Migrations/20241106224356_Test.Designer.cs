@@ -3,16 +3,19 @@ using ABCDoubleE.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace ABCDoubleE.API.Migrations
+namespace ABCDoubleE.Data.Migrations
 {
     [DbContext(typeof(ABCDoubleEContext))]
-    partial class ABCDoubleEContextModelSnapshot : ModelSnapshot
+    [Migration("20241106224356_Test")]
+    partial class Test
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -95,7 +98,6 @@ namespace ABCDoubleE.API.Migrations
                     b.HasIndex("genreId");
 
                     b.ToTable("BookGenres");
-
                 });
 
             modelBuilder.Entity("ABCDoubleE.Models.Bookshelf", b =>

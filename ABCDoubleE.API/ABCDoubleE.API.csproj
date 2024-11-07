@@ -27,6 +27,8 @@
     <ProjectReference Include="..\ABCDoubleE.Models\ABCDoubleE.Models.csproj" />
     <ProjectReference Include="..\ABCDoubleE.Repositories\ABCDoubleE.Repositories.csproj" />
     <ProjectReference Include="..\ABCDoubleE.Controllers\ABCDoubleE.Controllers.csproj" />
+    <ProjectReference Include="..\ABCDoubleE.Data\ABCDoubleE.Data.csproj" />
+
   </ItemGroup>
 
 </Project>

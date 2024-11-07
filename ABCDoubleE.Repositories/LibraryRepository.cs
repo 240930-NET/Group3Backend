@@ -53,6 +53,16 @@ public class LibraryRepository : ILibraryRepository
         }
     }
 
+    public async Task<int?> GetLibraryIdByUserIdAsync(int userId)
+    {
+        var library = await _context.Libraries
+            .Where(l => l.userId == userId)
+            .Select(l => l.libraryId) 
+            .FirstOrDefaultAsync();
+
+        return library == 0 ? (int?)null : library;
+    }
+
     // Get a  bookshelf by ID in a library
     public async Task<Bookshelf?> GetBookshelfByIdAsync(int libraryId, int bookshelfId)
     {
@@ -61,5 +71,15 @@ public class LibraryRepository : ILibraryRepository
             .FirstOrDefaultAsync(l => l.libraryId == libraryId);
         
         return library?.bookshelfList.FirstOrDefault(b => b.bookshelfId == bookshelfId);
+    }
+
+        public async Task<IEnumerable<Bookshelf>> GetBookshelvesByLibraryIdAsync(int libraryId)
+    {
+        var library = await _context.Libraries
+            .Where(l => l.libraryId == libraryId)
+            .Include(l => l.bookshelfList)
+            .FirstOrDefaultAsync();
+
+        return library?.bookshelfList ?? Enumerable.Empty<Bookshelf>();
     }
 }

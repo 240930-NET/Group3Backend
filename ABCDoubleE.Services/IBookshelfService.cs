@@ -15,5 +15,8 @@ public interface IBookshelfService
     public string DeleteBookshelf(int BookshelfId);
 
     public Bookshelf UpdateBookshelf(Bookshelf bookshelf);
+
+    Task<IEnumerable<Book>> GetBooksByBookshelfIdAsync(int bookshelfId);
+    Task<bool> AddBookToBookshelfAsync(int bookshelfId, BookExternalDTO bookExternalDTO);
  
 }

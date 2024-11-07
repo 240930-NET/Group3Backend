@@ -15,4 +15,6 @@ public interface IUserRepository{
 
     public Task DeleteUser(User user);
 
+    Task<User> GetUserWithLibraryAndBookshelvesAsync(int userId);
+
 }

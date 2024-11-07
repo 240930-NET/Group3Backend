@@ -1,6 +1,7 @@
 using ABCDoubleE.Models;
-
+using ABCDoubleE.DTOs;
 namespace ABCDoubleE.Repositories;
+
 
 public interface IBookshelfRepo
 {
@@ -14,8 +15,7 @@ public interface IBookshelfRepo
 
     public void UpdateBookshelf(Bookshelf bookshelf);
 
+    Task<IEnumerable<Book>> GetBooksByBookshelfIdAsync(int bookshelfId);
 
-
-
-
+    Task<bool> AddBookToBookshelfAsync(int bookshelfId, BookExternalDTO bookExternalDTO);
 }

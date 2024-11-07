@@ -4,6 +4,7 @@ using ABCDoubleE.Models;
 using ABCDoubleE.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Authorization;
+using System.Security.Claims;
 
 [ApiController]
 [Route("api/[controller]")]
@@ -11,10 +12,12 @@ using Microsoft.AspNetCore.Authorization;
 public class LibraryController : ControllerBase
 {
     private readonly ILibraryService _libraryService;
+    public readonly IUserService _userService;
 
-    public LibraryController(ILibraryService libraryService)
+    public LibraryController(ILibraryService libraryService, IUserService userService)
     {
         _libraryService = libraryService;
+        _userService = userService;
     }
 
     // GET: api/Library/{libraryId}
@@ -75,4 +78,61 @@ public class LibraryController : ControllerBase
         }
         return NoContent();
     }
+
+        // GET: api/Library/bookshelves
+    [HttpGet("bookshelves")]
+    public async Task<IActionResult> GetUserBookshelves()
+    {
+        // Step 1: Retrieve userId from the token
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userIdString == null || !int.TryParse(userIdString, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        // Step 2: Retrieve libraryId associated with the user
+        var libraryId = await _libraryService.GetLibraryIdByUserIdAsync(userId);
+        if (libraryId == null)
+        {
+            return NotFound("Library not found for this user.");
+        }
+
+        // Step 3: Fetch bookshelves using libraryId
+        var bookshelves = await _libraryService.GetBookshelvesByLibraryIdAsync(libraryId.Value);
+        if (bookshelves == null || !bookshelves.Any())
+        {
+            return NotFound("No bookshelves found for this user's library.");
+        }
+
+        return Ok(bookshelves);
+    }
+
+    [HttpDelete("bookshelves/{bookshelfId}")]
+    public async Task<IActionResult> DeleteBookshelf(int bookshelfId)
+    {
+        // Step 1: Retrieve userId from the token
+        var userIdString = User.FindFirstValue(ClaimTypes.NameIdentifier);
+        if (userIdString == null || !int.TryParse(userIdString, out int userId))
+        {
+            return Unauthorized("User ID not found in token or invalid format.");
+        }
+
+        // Step 2: Retrieve libraryId associated with the user
+        var libraryId = await _libraryService.GetLibraryIdByUserIdAsync(userId);
+        if (libraryId == null)
+        {
+            return NotFound("Library not found for this user.");
+        }
+
+        // Step 3: Delete the bookshelf using libraryId and bookshelfId
+        var deleted = await _libraryService.DeleteBookshelfAsync(libraryId.Value, bookshelfId);
+        if (!deleted)
+        {
+            return NotFound($"Bookshelf with ID {bookshelfId} was not found in Library {libraryId}.");
+        }
+
+        return NoContent();
+    }
+
+
 }

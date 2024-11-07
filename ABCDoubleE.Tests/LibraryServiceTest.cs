@@ -225,5 +225,45 @@ namespace ABCDoubleE.Tests.Services
             Assert.Equal(libraryId, result);
             _libraryRepositoryMock.Verify(repo => repo.GetLibraryIdByUserIdAsync(userId), Times.Once);
         }
+
+        [Fact]
+        public async Task GetAllBookshelvesAsync_Success()
+        {
+            // Arrange
+            int libraryId = 1;
+            var library = new Library
+            {
+                libraryId = libraryId,
+                bookshelfList = new List<Bookshelf>
+                {
+                    new Bookshelf { bookshelfId = 1, name = "Fiction" },
+                    new Bookshelf { bookshelfId = 2, name = "Non-Fiction" }
+                }
+            };
+            _libraryRepositoryMock.Setup(repo => repo.GetLibraryByIdAsync(libraryId)).ReturnsAsync(library);
+
+            // Act
+            var result = await _libraryService.GetAllBookshelvesAsync(libraryId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(2, result.Count());
+            _libraryRepositoryMock.Verify(repo => repo.GetLibraryByIdAsync(libraryId), Times.Once);
+        }
+
+        [Fact]
+        public async Task GetAllBookshelvesAsync_NotExist()
+        {
+            // Arrange
+            int libraryId = 1;
+            _libraryRepositoryMock.Setup(repo => repo.GetLibraryByIdAsync(libraryId)).ReturnsAsync((Library)null);
+
+            // Act
+            var result = await _libraryService.GetAllBookshelvesAsync(libraryId);
+
+            // Assert
+            Assert.Empty(result);
+            _libraryRepositoryMock.Verify(repo => repo.GetLibraryByIdAsync(libraryId), Times.Once);
+        }
     }
 }

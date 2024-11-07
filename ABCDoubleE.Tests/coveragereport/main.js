@@ -264,7 +264,7 @@ var assemblies = [
       { "name": "ABCDoubleE.DTOs.ReviewCreateDTO", "rp": "ABCDoubleE.DTOs_ReviewCreateDTO.html", "cl": 4, "ucl": 0, "cal": 4, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ABCDoubleE.DTOs.UserDTO", "rp": "ABCDoubleE.DTOs_UserDTO.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 9, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ABCDoubleE.DTOs.UserLoginDTO", "rp": "ABCDoubleE.DTOs_UserLoginDTO.html", "cl": 0, "ucl": 2, "cal": 2, "tl": 6, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ABCDoubleE.DTOs.UserRegisterDTO", "rp": "ABCDoubleE.DTOs_UserRegisterDTO.html", "cl": 0, "ucl": 3, "cal": 3, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.DTOs.UserRegisterDTO", "rp": "ABCDoubleE.DTOs_UserRegisterDTO.html", "cl": 3, "ucl": 0, "cal": 3, "tl": 7, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
   {
     "name": "ABCDoubleE.Models",
@@ -306,10 +306,10 @@ var assemblies = [
       { "name": "ABCDoubleE.Services.DatabaseLookupService", "rp": "ABCDoubleE.Services_DatabaseLookupService.html", "cl": 33, "ucl": 20, "cal": 53, "tl": 93, "cb": 8, "tb": 10, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ABCDoubleE.Services.GenreService", "rp": "ABCDoubleE.Services_GenreService.html", "cl": 10, "ucl": 0, "cal": 10, "tl": 26, "cb": 0, "tb": 0, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ABCDoubleE.Services.GoogleBooksService", "rp": "ABCDoubleE.Services_GoogleBooksService.html", "cl": 106, "ucl": 61, "cal": 167, "tl": 238, "cb": 50, "tb": 106, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ABCDoubleE.Services.LibraryService", "rp": "ABCDoubleE.Services_LibraryService.html", "cl": 69, "ucl": 13, "cal": 82, "tl": 146, "cb": 9, "tb": 12, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ABCDoubleE.Services.PreferenceService", "rp": "ABCDoubleE.Services_PreferenceService.html", "cl": 44, "ucl": 18, "cal": 62, "tl": 99, "cb": 5, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.LibraryService", "rp": "ABCDoubleE.Services_LibraryService.html", "cl": 80, "ucl": 2, "cal": 82, "tl": 146, "cb": 11, "tb": 12, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.PreferenceService", "rp": "ABCDoubleE.Services_PreferenceService.html", "cl": 60, "ucl": 2, "cal": 62, "tl": 99, "cb": 6, "tb": 6, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
       { "name": "ABCDoubleE.Services.ReviewService", "rp": "ABCDoubleE.Services_ReviewService.html", "cl": 43, "ucl": 0, "cal": 43, "tl": 97, "cb": 16, "tb": 16, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
-      { "name": "ABCDoubleE.Services.UserService", "rp": "ABCDoubleE.Services_UserService.html", "cl": 0, "ucl": 84, "cal": 84, "tl": 151, "cb": 0, "tb": 36, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
+      { "name": "ABCDoubleE.Services.UserService", "rp": "ABCDoubleE.Services_UserService.html", "cl": 52, "ucl": 32, "cal": 84, "tl": 151, "cb": 18, "tb": 36, "cm": 0, "tm": 0, "lch": [], "bch": [], "mch": [], "hc": [], "metrics": { } },
     ]},
 ];
 
@@ -328,12 +328,6 @@ var riskHotspots = [
     "metrics": [
       { "value": 1332, "exceeded": true },
       { "value": 36, "exceeded": true },
-    ]},
-  {
-    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "UpdateUserAsync()", "methodShortName": "UpdateUserAsync()", "fileIndex": 0, "line": 72,
-    "metrics": [
-      { "value": 272, "exceeded": true },
-      { "value": 16, "exceeded": true },
     ]},
   {
     "assembly": "ABCDoubleE.Repositories", "class": "ABCDoubleE.Repositories.BookshelfRepo", "reportPath": "ABCDoubleE.Repositories_BookshelfRepo.html", "methodName": "AddBookToBookshelfAsync()", "methodShortName": "AddBookToBookshelfAsync()", "fileIndex": 0, "line": 63,
@@ -372,16 +366,10 @@ var riskHotspots = [
       { "value": 8, "exceeded": false },
     ]},
   {
-    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "AddUser()", "methodShortName": "AddUser()", "fileIndex": 0, "line": 38,
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "UpdateUserAsync()", "methodShortName": "UpdateUserAsync()", "fileIndex": 0, "line": 72,
     "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
-    ]},
-  {
-    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "UpdateUser()", "methodShortName": "UpdateUser()", "fileIndex": 0, "line": 115,
-    "metrics": [
-      { "value": 72, "exceeded": true },
-      { "value": 8, "exceeded": false },
+      { "value": 51.21, "exceeded": true },
+      { "value": 16, "exceeded": true },
     ]},
   {
     "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.GoogleBooksService", "reportPath": "ABCDoubleE.Services_GoogleBooksService.html", "methodName": "PopulateDatabaseWithTitleAsync()", "methodShortName": "PopulateDatabaseWithTitleAsync()", "fileIndex": 0, "line": 97,
@@ -442,6 +430,12 @@ var riskHotspots = [
     "metrics": [
       { "value": 42, "exceeded": true },
       { "value": 6, "exceeded": false },
+    ]},
+  {
+    "assembly": "ABCDoubleE.Services", "class": "ABCDoubleE.Services.UserService", "reportPath": "ABCDoubleE.Services_UserService.html", "methodName": "AddUser()", "methodShortName": "AddUser()", "fileIndex": 0, "line": 38,
+    "metrics": [
+      { "value": 39.05, "exceeded": true },
+      { "value": 8, "exceeded": false },
     ]},
 ];
 

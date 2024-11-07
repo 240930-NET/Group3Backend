@@ -204,5 +204,108 @@ namespace ABCDoubleE.Tests.Services
             Assert.False(result);
             _preferenceRepositoryMock.Verify(repo => repo.RemoveBookFromPreferenceAsync(It.IsAny<PreferenceBook>()), Times.Never);
         }
+
+        [Fact]
+        public async Task CreatePreferenceAsync_Success()
+        {
+            int userId = 1;
+            var preference = new Preference { userId = userId };
+            
+
+            _preferenceRepositoryMock.Setup(repo => repo.CreatePreferenceAsync(It.IsAny<Preference>()))
+                                    .ReturnsAsync(preference);
+
+            // Act
+            var result = await _preferenceService.CreatePreferenceAsync(userId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(userId, result.userId);
+        }
+
+        [Fact]
+        public async Task GetPreferenceByUserIdAsync_Success()
+        {
+            // Arrange
+            int userId = 1;
+            var preference = new Preference { userId = userId };
+            _preferenceRepositoryMock.Setup(repo => repo.GetPreferenceByUserIdAsync(userId)).ReturnsAsync(preference);
+
+            // Act
+            var result = await _preferenceService.GetPreferenceByUserIdAsync(userId);
+
+            // Assert
+            Assert.NotNull(result);
+            Assert.Equal(userId, result.userId);
+        }
+
+        [Fact]
+        public async Task UpdatePreferenceAsync_Success()
+        {
+            // Arrange
+            var preference = new Preference { preferenceId = 1, userId = 1 };
+            _preferenceRepositoryMock.Setup(repo => repo.UpdatePreferenceAsync(preference)).Returns(Task.CompletedTask);
+
+            // Act
+            await _preferenceService.UpdatePreferenceAsync(preference);
+
+            // Assert
+            _preferenceRepositoryMock.Verify(repo => repo.UpdatePreferenceAsync(preference), Times.Once);
+        }
+
+        [Fact]
+        public async Task DeletePreferenceByUserIdAsync_Success()
+        {
+            // Arrange
+            int userId = 1;
+
+            // Act
+            await _preferenceService.DeletePreferenceByUserIdAsync(userId);
+
+            // Assert
+            _preferenceRepositoryMock.Verify(repo => repo.DeletePreferenceByUserIdAsync(userId), Times.Once);
+        }
+
+        [Fact]
+        public async Task RemoveGenreFromPreferenceAsync_NonExist()
+        {
+            // Arrange
+            int preferenceId = 1, genreId = 1;
+            _preferenceRepositoryMock.Setup(repo => repo.GetPreferenceWithGenresByUserIdAsync(preferenceId)).ReturnsAsync((Preference)null);
+
+            // Act
+            var result = await _preferenceService.RemoveGenreFromPreferenceAsync(preferenceId, genreId);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public async Task RemoveAuthorFromPreferenceAsync_NoExist()
+        {
+            // Arrange
+            int preferenceId = 1, authorId = 1;
+            _preferenceRepositoryMock.Setup(repo => repo.GetPreferenceWithAuthorsByUserIdAsync(preferenceId)).ReturnsAsync((Preference)null);
+
+            // Act
+            var result = await _preferenceService.RemoveAuthorFromPreferenceAsync(preferenceId, authorId);
+
+            // Assert
+            Assert.False(result);
+        }
+
+        [Fact]
+        public async Task RemoveBookFromPreferenceAsync_Nonxist()
+        {
+            // Arrange
+            int preferenceId = 1, bookId = 1;
+            _preferenceRepositoryMock.Setup(repo => repo.GetPreferenceWithBooksByUserIdAsync(preferenceId)).ReturnsAsync((Preference)null);
+
+            // Act
+            var result = await _preferenceService.RemoveBookFromPreferenceAsync(preferenceId, bookId);
+
+            // Assert
+            Assert.False(result);
+        }
     }
 }

@@ -59,7 +59,7 @@ public class LibraryService : ILibraryService
             name = b.name
         });
     }
-
+/*
     // Get a bookshelf by ID in a library
     public async Task<BookshelfDTO?> GetBookshelfByIdAsync(int libraryId, int bookshelfId)
     {
@@ -75,6 +75,7 @@ public class LibraryService : ILibraryService
             name = bookshelf.name
         };
     }
+    */
 
     // Add a new bookshelf to a  library
     public async Task<BookshelfDTO?> AddBookshelfAsync(int libraryId, BookshelfCreateDTO bookshelfCreateDto)
